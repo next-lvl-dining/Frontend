@@ -132,5 +132,10 @@
       }
     }
   },
-  "defaultProject": "NLD-frontend"
+  "defaultProject": "NLD-frontend",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

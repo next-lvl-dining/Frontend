@@ -1,28 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { OrderComponent } from './order/order.component';
-import { LoginComponent } from './login/login.component';
-
-const appRoutes: Routes = [
-  { path: 'login', component: LoginComponent },
-];
+import { OrderComponent } from './components/order/order.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     OrderComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(
-      appRoutes,
-    )
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
