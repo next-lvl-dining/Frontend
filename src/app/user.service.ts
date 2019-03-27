@@ -22,6 +22,6 @@ export class UserService {
   }
 
   errorHandler(error: HttpErrorResponse) {
-    return throwError(error.message || 'Server error');
+    return throwError(error.error || 'Server error');
   }
 }

@@ -38,13 +38,24 @@ export class LoginComponent implements OnInit {
 
   checkUser(user) {
     this.userService.findUserByEmail(user.email)
-    .subscribe(data => {
-      console.log(data);
-      // if (response == undefined) {
-      //   this.userService.registerUser({ email: user.email, firstName: user.name });
-      // }
-      error => console.log(error);
-    });
+      .subscribe(data => {
+        // user can be redirected to home page
+      },
+        error => {
+          if (error == 'User not found')
+            this.registerUser(user)
+        }
+      );
+  }
+
+  registerUser(user) {
+    console.log(user);
+    this.userService.registerUser({ email: user.email, firstName: user.name }).subscribe(
+      data => {
+        // user can be redirected to home page
+      },
+      error => { console.log(error) },
+    );
   }
 
 }
