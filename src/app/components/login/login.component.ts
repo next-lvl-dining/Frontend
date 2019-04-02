@@ -43,13 +43,12 @@ export class LoginComponent implements OnInit {
       },
         error => {
           if (error == 'User not found')
-            this.registerUser(user)
+          this.registerUser(user);
         }
       );
   }
 
   registerUser(user) {
-    console.log(user);
     this.userService.registerUser({ email: user.email, firstName: user.name }).subscribe(
       data => {
         // user can be redirected to home page
