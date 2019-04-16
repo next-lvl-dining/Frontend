@@ -1,22 +1,18 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { throwError, Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Role } from 'src/app/models/role';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class RoleService {
 
   constructor(private http: HttpClient, @Inject('API_URL') private API_URL: string) { }
 
-  registerUser(user: any): Observable<Object> {
-    return this.http.post(this.API_URL + '/user', user)
-      .pipe(catchError(this.errorHandler));
-  }
-
-  findUserByEmail(email: String): Observable<Object> {
-    return this.http.get(this.API_URL + '/user/email/' + email)
+  getAll(): Observable<Role[]> {
+    return this.http.get<Role[]>(this.API_URL + '/role/all')
       .pipe(catchError(this.errorHandler));
   }
 

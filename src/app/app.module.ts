@@ -8,7 +8,7 @@ import { OrderComponent } from './components/order/order.component';
 import { LoginComponent } from './components/login/login.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { environment } from 'src/environments/environment';
-import { AuthInterceptor } from './services/token.interceptor';
+import { AuthInterceptor } from './services/auth/token.interceptor';
 
 @NgModule({
   declarations: [

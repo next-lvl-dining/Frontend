@@ -1,3 +1,15 @@
-<p>
-  admin works!
-</p>
+<h1>Users</h1>
+<table>
+  <tr>
+    <th>Firstname</th>
+    <th>Email</th>
+    <th>Roles</th>
+    <td></td>
+  </tr>
+  <tr *ngFor="let user of users">
+    <td>{{user.firstName}}</td>
+    <td>{{user.email}}</td>
+    <td>{{user.roles}}</td>
+    <td><button>Edit Roles</button></td>
+  </tr>
+</table>

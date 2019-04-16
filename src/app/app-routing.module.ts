@@ -3,10 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { OrderComponent } from './components/order/order.component';
 import { LoginComponent } from './components/login/login.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'order', component: OrderComponent },
+  { path: 'admin', component: AdminComponent },
 ];
 
 @NgModule({
