@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service'
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 declare const FB: any;
 
@@ -10,7 +12,8 @@ declare const FB: any;
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit() {
     FB.init({
@@ -39,11 +42,12 @@ export class LoginComponent implements OnInit {
   checkUser(user) {
     this.userService.findUserByEmail(user.email)
       .subscribe(data => {
-        // user can be redirected to home page
+        this.login(user.email)
       },
         error => {
+          console.log(error);
           if (error == 'User not found')
-          this.registerUser(user);
+            this.registerUser(user);
         }
       );
   }
@@ -51,10 +55,19 @@ export class LoginComponent implements OnInit {
   registerUser(user) {
     this.userService.registerUser({ email: user.email, firstName: user.name }).subscribe(
       data => {
-        // user can be redirected to home page
+        this.login(user.email)
       },
       error => { console.log(error) },
     );
+  }
+
+  login(email: string) {
+    this.authService.login(email).subscribe(
+      data => {
+        // user can be redirected to home page
+        this.router.navigateByUrl('/home');
+      },
+      error => { console.log(error) })
   }
 
 }
