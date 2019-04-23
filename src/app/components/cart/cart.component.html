@@ -11,7 +11,7 @@
   </tr>
   <tr *ngFor="let item of items">
     <td align="center">
-      <button class="add" (click)="remove(item.product.id)" > REMOVE </button>
+      <button class="remove" (click)="remove(item.product.id)" > REMOVE </button>
     </td>
     <td>{{item.product.name}}</td>
     <td>

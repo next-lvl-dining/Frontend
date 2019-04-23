@@ -181,7 +181,11 @@ button {
   color: $white;
   cursor: pointer;
   &:hover {
-    background: $tan;
+    background: darkred;
     transition: all .4s ease-in-out;
   }
+}
+
+.remove{
+  background-color:red;
 }
