@@ -1,15 +1,23 @@
 <h1>Users</h1>
-<table>
-  <tr>
-    <th>Firstname</th>
-    <th>Email</th>
-    <th>Roles</th>
-    <td></td>
-  </tr>
-  <tr *ngFor="let user of users">
-    <td>{{user.firstName}}</td>
-    <td>{{user.email}}</td>
-    <td>{{user.roles}}</td>
-    <td><button>Edit Roles</button></td>
-  </tr>
-</table>
+<select #selectedOption>
+  <option *ngFor="let role of availableRoles" [value]="role">
+    {{role}}
+  </option>
+</select>
+<button (click)="addRole(selectedOption.value)">Add Role</button>
+<form>
+  <table>
+    <tr>
+      <td></td>
+      <th>Firstname</th>
+      <th>Email</th>
+      <th>Roles</th>
+    </tr>
+    <tr *ngFor="let user of users">
+      <td><input name="radiobutton" type="radio" value="{{user.id}}" [(ngModel)]="checked"></td>
+      <td>{{user.firstName}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.roles}}</td>
+    </tr>
+  </table>
+</form>

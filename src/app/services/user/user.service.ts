@@ -8,7 +8,6 @@ import { User } from '../../models/user';
   providedIn: 'root'
 })
 export class UserService {
-
   constructor(private http: HttpClient, @Inject('API_URL') private API_URL: string) { }
 
   registerUser(user: any): Observable<Object> {
@@ -23,6 +22,11 @@ export class UserService {
 
   getAll(): Observable<User[]> {
     return this.http.get<User[]>(this.API_URL + '/user/all')
+      .pipe(catchError(this.errorHandler));
+  }
+
+  addRole(uuid: string, role: string): Observable<Object> {
+    return this.http.put(this.API_URL + `/user/${uuid}/role/add/${role}`, {})
       .pipe(catchError(this.errorHandler));
   }
 
