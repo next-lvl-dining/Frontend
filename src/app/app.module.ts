@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment';
 import { AuthInterceptor } from './services/auth/token.interceptor';
 import { ProductService } from './services/product/product.service';
 import { CartComponent } from './components/cart/cart.component';
+import { HistoryComponent } from './components/history/history.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { CartComponent } from './components/cart/cart.component';
     LoginComponent,
     AdminComponent,
     CartComponent,
+    HistoryComponent,
   ],
   imports: [
     BrowserModule,
