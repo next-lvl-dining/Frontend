@@ -9,6 +9,8 @@ import { LoginComponent } from './components/login/login.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { environment } from 'src/environments/environment';
 import { AuthInterceptor } from './services/auth/token.interceptor';
+import { ProductService } from './services/product/product.service';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,7 @@ import { AuthInterceptor } from './services/auth/token.interceptor';
     OrderComponent,
     LoginComponent,
     AdminComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,6 +26,7 @@ import { AuthInterceptor } from './services/auth/token.interceptor';
     HttpClientModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    ProductService,
   { provide: 'API_URL', useValue: environment.API_URL }],
   bootstrap: [AppComponent]
 })
