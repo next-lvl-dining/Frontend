@@ -53,6 +53,7 @@ export class LoginComponent implements OnInit {
   }
 
   registerUser(user) {
+    console.log('register' + user)
     this.userService.registerUser({ email: user.email, firstName: user.name }).subscribe(
       data => {
         this.login(user.email)
@@ -64,8 +65,8 @@ export class LoginComponent implements OnInit {
   login(email: string) {
     this.authService.login(email).subscribe(
       data => {
-        // user can be redirected to home page
-        this.router.navigateByUrl('/home');
+        // user can be redirected to some page
+        this.router.navigateByUrl('/admin');
       },
       error => { console.log(error) })
   }
