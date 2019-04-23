@@ -13,7 +13,7 @@ export class OrderComponent implements OnInit {
 
   private products: Product[];
   private items: Item[] = [];
-  private total: number = 0;
+  private total= 0;
   constructor(
     private productService: ProductService
   ) {
@@ -24,40 +24,40 @@ export class OrderComponent implements OnInit {
   }
 
   add(id: string) {
-    var item: Item = {
+    const item: Item = {
       product: this.productService.find(id),
       quantity: 1
     };
     if (localStorage.getItem('cart') == null) {
-      let cart: any = [];
+      const cart: any = [];
       cart.push(JSON.stringify(item));
       localStorage.setItem('cart', JSON.stringify(cart));
     } else {
-      let cart: any = JSON.parse(localStorage.getItem('cart'));
-      let index: number = -1;
-      for (var i = 0; i < cart.length; i++) {
-        let item: Item = JSON.parse(cart[i]);
-        if (item.product.id == id) {
+      const cart: any = JSON.parse(localStorage.getItem('cart'));
+      let index = -1;
+      for (let i = 0; i < cart.length; i++) {
+        const it: Item = JSON.parse(cart[i]);
+        if (it.product.id === id) {
           index = i;
           break;
         }
       }
-      if (index == -1) {
+      if (index === -1) {
         cart.push(JSON.stringify(item));
         localStorage.setItem('cart', JSON.stringify(cart));
       } else {
-        let item: Item = JSON.parse(cart[index]);
-        item.quantity += 1;
-        cart[index] = JSON.stringify(item);
-        localStorage.setItem("cart", JSON.stringify(cart));
+        const it: Item = JSON.parse(cart[index]);
+        it.quantity += 1;
+        cart[index] = JSON.stringify(it);
+        localStorage.setItem('cart', JSON.stringify(cart));
       }
     }
   }
   cartCount(): number {
     this.total = 0;
-    let cart = JSON.parse(localStorage.getItem('cart'));
-    for (var i = 0; i < cart.length; i++) {
-      let item = JSON.parse(cart[i]);
+    const cart = JSON.parse(localStorage.getItem('cart'));
+    for (let i = 0; i < cart.length; i++) {
+      const item = JSON.parse(cart[i]);
       this.total += item.quantity;
     }
     return this.total;
