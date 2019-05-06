@@ -1,0 +1,142 @@
+
+$form-width: 80%;
+$form-height: 600px;
+$col-icing: #ffb3c9;
+$col-icing-fg: #000000;
+$col-bg: #ffffff;
+$col-fg: #6a6a6a;
+$dot-spacing: 0.8;
+$dot-size: $form-height/10;
+$margin: 20px;
+
+%heading {
+  font-family: Arvo, sans-serif;
+}
+
+
+.container {
+  font-family: PT Sans, sans-serif;
+  font-size: 18px;
+  width: $form-width;
+  min-width: 620px;
+  max-width: 1000px;
+  height: 100%;
+  margin: 50px auto;
+  background: $col-bg;
+
+  overflow: hidden;
+}
+
+.order {
+  flex-grow: 1;
+  padding: $margin 0;
+  margin: $margin 0;
+
+  border: 1px solid $col-icing-fg;
+  border-color: $col-icing-fg transparent;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+h1 {
+  margin-left: -1%;
+}
+h2 {
+  font-size: 1.2em;
+  margin-top:5%;
+  margin-left: -1%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: $margin;
+  flex-grow: 1;
+}
+.line {
+  border: 1px dotted #e1e1e1;
+  width: 100%;
+  margin: 1%;
+  margin-left: -1%;
+}
+.column1{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width:200%;
+  margin-top: $margin;
+  margin-right: $margin / 2;
+  flex-grow: 1;
+}
+.inputs {
+  flex-grow: 1;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: $margin / 2;
+}
+
+.column {
+  width: 100%;
+
+  &:not(:last-child) {
+    margin-right: $margin / 2;
+  }
+}
+
+.label,
+.text-input {
+  float: left;
+  display: block;
+  clear: both;
+}
+
+.label {
+  font-size: 0.8em;
+  margin-bottom: 0.2em;
+  color: #4E4E4E;
+  align-self: flex-start;
+}
+
+.text-input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: $margin / 2;
+
+  font-size: 1em;
+  font-family: inherit;
+
+  background: white;
+  border: 1px solid rgba($col-fg, 0.4);
+  border-radius: 5px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1) inset;
+}
+
+
+
+button {
+  background: darken(#ffab00, 1%);
+  padding: 10px;
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  margin: -1px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #fff;
+  cursor: pointer;
+  float:right;
+  &:hover {
+    background: #447cff;
+    transition: all .4s ease-in-out;
+  }
+}
+

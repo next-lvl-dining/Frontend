@@ -8,13 +8,11 @@ $light: #56a8e0;
 $tan: #3059b0;
 $dark: #4E4E4E;
 
-@import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,400italic|Montserrat:400,700);
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+$font: 'Lato', sans-serif;
 
-
-
-
-$fontSans : 'Montserrat', sans-serif;
-$fontSerif : 'Droid Serif', serif;
+$fontSans : 'Lato', sans-serif;
+$fontSerif : 'Lato', sans-serif;
 
 
 @mixin transition($transition-property, $transition-time, $method) {
