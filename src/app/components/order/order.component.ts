@@ -13,7 +13,7 @@ export class OrderComponent implements OnInit {
 
   private products: Product[];
   private items: Item[] = [];
-  private total= 0;
+  private total = 0;
   constructor(
     private productService: ProductService
   ) {
@@ -56,8 +56,8 @@ export class OrderComponent implements OnInit {
   cartCount(): number {
     this.total = 0;
     const cart = JSON.parse(localStorage.getItem('cart'));
-    for (let i = 0; i < cart.length; i++) {
-      const item = JSON.parse(cart[i]);
+    for (const cartItem of cart) {
+      const item = JSON.parse(cartItem);
       this.total += item.quantity;
     }
     return this.total;

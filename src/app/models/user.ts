@@ -7,9 +7,9 @@ export class User {
   firstName: string;
   lastName: string;
   suffix: string;
-  street:string;
+  street: string;
   streetNumber: string;
-  city:string;
-  zipcode:string;
-  phoneNumber:string;
+  city: string;
+  zipcode: string;
+  phoneNumber: string;
 }

@@ -10,12 +10,12 @@ import { User } from '../../models/user';
 export class UserService {
   constructor(private http: HttpClient, @Inject('API_URL') private API_URL: string) { }
 
-  registerUser(user: any): Observable<Object> {
+  registerUser(user: any): Observable<object> {
     return this.http.post(this.API_URL + '/user', user)
       .pipe(catchError(this.errorHandler));
   }
 
-  findUserByEmail(email: String): Observable<User> {
+  findUserByEmail(email: string): Observable<User> {
     return this.http.get<User>(this.API_URL + '/user/email/' + email)
       .pipe(catchError(this.errorHandler));
   }
@@ -25,7 +25,7 @@ export class UserService {
       .pipe(catchError(this.errorHandler));
   }
 
-  addRole(uuid: string, role: string): Observable<Object> {
+  addRole(uuid: string, role: string): Observable<object> {
     return this.http.put(this.API_URL + `/user/${uuid}/role/add/${role}`, {})
       .pipe(catchError(this.errorHandler));
   }

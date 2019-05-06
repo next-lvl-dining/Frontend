@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/user/user.service'
+import { UserService } from '../../services/user/user.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
@@ -13,7 +13,7 @@ declare const FB: any;
 export class LoginComponent implements OnInit {
 
   constructor(private userService: UserService, private authService: AuthService,
-    private router: Router) { }
+              private router: Router) { }
 
   ngOnInit() {
     FB.init({
@@ -29,36 +29,37 @@ export class LoginComponent implements OnInit {
 
   statusChangeCallback(response: any) {
     if (response.status === 'connected') {
-      FB.api('/me?fields=name,email', (response) => {
-        if (response && !response.error) {
-          this.checkUser(response);
+      FB.api('/me?fields=name,email', (fbResponse) => {
+        if (fbResponse && !fbResponse.error) {
+          this.checkUser(fbResponse);
         }
-      })
+      });
     } else {
-      console.log('facebook login went wrong')
+      console.log('facebook login went wrong');
     }
   }
 
   checkUser(user) {
     this.userService.findUserByEmail(user.email)
       .subscribe(data => {
-        this.login(user.email)
+        this.login(user.email);
       },
         error => {
           console.log(error);
-          if (error == 'User not found')
+          if (error === 'User not found') {
             this.registerUser(user);
+          }
         }
       );
   }
 
   registerUser(user) {
-    console.log('register' + user)
+    console.log('register' + user);
     this.userService.registerUser({ email: user.email, firstName: user.name }).subscribe(
       data => {
-        this.login(user.email)
+        this.login(user.email);
       },
-      error => { console.log(error) },
+      error => { console.log(error); },
     );
   }
 
@@ -68,7 +69,7 @@ export class LoginComponent implements OnInit {
         // user can be redirected to some page
         this.router.navigateByUrl('/admin');
       },
-      error => { console.log(error) })
+      error => { console.log(error); });
   }
 
 }

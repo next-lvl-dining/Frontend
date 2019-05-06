@@ -25,21 +25,19 @@ export class AdminComponent implements OnInit {
   getUsers() {
     this.userService.getAll().subscribe(
       data => this.users = data,
-      error => console.log(error))
+      error => console.log(error));
   }
 
   getRoles() {
     this.roleService.getAll().subscribe(
       data => this.availableRoles = data,
-      error => console.log(error))
+      error => console.log(error));
   }
 
   addRole(role: string) {
-    console.log(this.checked);
-    console.log(role);
     this.userService.addRole(this.checked, role).subscribe(
-      data => { this.getUsers() },
-      error => { alert('User already has role') })
+      data => { this.getUsers(); },
+      error => { alert('User already has role'); });
   }
 
 }
