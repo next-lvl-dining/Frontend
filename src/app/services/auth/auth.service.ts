@@ -14,11 +14,11 @@ export class AuthService {
   constructor(private http: HttpClient, @Inject('API_URL') private API_URL: string) { }
 
   login(email: string) {
-    return this.http.post<Object>(this.API_URL + '/auth', { email }, { observe: 'response' })
+    return this.http.post<object>(this.API_URL + '/auth', { email }, { observe: 'response' })
       .pipe(tap((res) => {
         localStorage.setItem('email', email);
-        this.setSession(res.headers.get("Authorization").slice(7)) // Slice "Bearer "
-      }))
+        this.setSession(res.headers.get('Authorization').slice(7)); // Slice "Bearer "
+      }));
   }
 
   errorHandler(error: HttpErrorResponse) {
@@ -30,12 +30,12 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem("token");
+    localStorage.removeItem('token');
   }
 
   public isLoggedIn() {
-    const token = localStorage.getItem("token");
-    return !this.jwtHelper.isTokenExpired(token)
+    const token = localStorage.getItem('token');
+    return !this.jwtHelper.isTokenExpired(token);
   }
 
   isLoggedOut() {

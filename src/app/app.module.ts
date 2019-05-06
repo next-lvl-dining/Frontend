@@ -13,6 +13,9 @@ import { AuthInterceptor } from './services/auth/token.interceptor';
 import { ProductService } from './services/product/product.service';
 import { CartComponent } from './components/cart/cart.component';
 import { HistoryComponent } from './components/history/history.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { HistorySearchComponent } from './components/history-search/history-search.component';
+import { OrderDetailComponent } from './components/order-detail/order-detail.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,9 @@ import { HistoryComponent } from './components/history/history.component';
     AdminComponent,
     CartComponent,
     HistoryComponent,
+    DashboardComponent,
+    HistorySearchComponent,
+    OrderDetailComponent,
   ],
   imports: [
     BrowserModule,
