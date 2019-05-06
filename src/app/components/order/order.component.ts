@@ -13,7 +13,7 @@ export class OrderComponent implements OnInit {
 
   private products: Product[];
   private items: Item[] = [];
-  private total= 0;
+  private total = 0;
   constructor(
     private productService: ProductService
   ) {

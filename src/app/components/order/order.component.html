@@ -1,7 +1,11 @@
-{{cartCount()}}
+<div class="cartImage">
+  <div class="count">
+    <a href="cart" class="cart"><span>{{cartCount()}}</span></a>
+</div>
+
 <div class="container" *ngFor="let product of products">
   <div class="images">
-    <img src={{product.photo}} width='300' />
+    <img src={{product.photo}} width='250' />
   </div>
   <div class="product">
     <h1>{{product.name}}</h1>
