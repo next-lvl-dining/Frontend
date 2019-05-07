@@ -30,6 +30,11 @@ export class UserService {
       .pipe(catchError(this.errorHandler));
   }
 
+  removeRole(uuid: string, role: string): Observable<object> {
+    return this.http.put(this.API_URL + `/user/${uuid}/role/remove/${role}`, {})
+      .pipe(catchError(this.errorHandler));
+  }
+
   errorHandler(error: HttpErrorResponse) {
     return throwError(error.error || 'Server error');
   }
