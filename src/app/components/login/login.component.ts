@@ -23,48 +23,12 @@ export class LoginComponent implements OnInit {
     });
 
     FB.getLoginStatus(response => {
-      this.statusChangeCallback(response);
+      this.login(response.authResponse.accessToken)
     });
   }
 
-  statusChangeCallback(response: any) {
-    if (response.status === 'connected') {
-      FB.api('/me?fields=name,email', (fbResponse) => {
-        if (fbResponse && !fbResponse.error) {
-          this.checkUser(fbResponse);
-        }
-      });
-    } else {
-      console.log('facebook login went wrong');
-    }
-  }
-
-  checkUser(user) {
-    this.userService.findUserByEmail(user.email)
-      .subscribe(data => {
-        this.login(user.email);
-      },
-        error => {
-          console.log(error);
-          if (error === 'User not found') {
-            this.registerUser(user);
-          }
-        }
-      );
-  }
-
-  registerUser(user) {
-    console.log('register' + user);
-    this.userService.registerUser({ email: user.email, firstName: user.name }).subscribe(
-      data => {
-        this.login(user.email);
-      },
-      error => { console.log(error); },
-    );
-  }
-
-  login(email: string) {
-    this.authService.login(email).subscribe(
+  login(token: string) {
+    this.authService.login(token).subscribe(
       data => {
         // user can be redirected to some page
         this.router.navigateByUrl('/admin');

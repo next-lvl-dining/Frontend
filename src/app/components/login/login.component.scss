@@ -1,5 +1,22 @@
+$form-width: 80%;
+$col-bg: #ffffff;
+
 .container {
-  margin: 0 auto;
   display: block;
   text-align: center;
+  font-family: PT Sans, sans-serif;
+  font-size: 18px;
+  width: $form-width;
+  min-width: 620px;
+  max-width: 1000px;
+  height: 100%;
+  margin: 50px auto;
+  background: $col-bg;
+  overflow: hidden;
+}
+
+.line {
+  border: 1px dotted #e1e1e1;
+  width: 40%;
+  margin: 0 auto 5px auto;
 }

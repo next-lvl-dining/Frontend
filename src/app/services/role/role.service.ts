@@ -12,7 +12,7 @@ export class RoleService {
   constructor(private http: HttpClient, @Inject('API_URL') private API_URL: string) { }
 
   getAll(): Observable<Role[]> {
-    return this.http.get<Role[]>(this.API_URL + '/role/all')
+    return this.http.get<Role[]>(this.API_URL + '/roles/all')
       .pipe(catchError(this.errorHandler));
   }
 

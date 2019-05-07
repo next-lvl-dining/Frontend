@@ -13,10 +13,9 @@ export class AuthService {
 
   constructor(private http: HttpClient, @Inject('API_URL') private API_URL: string) { }
 
-  login(email: string) {
-    return this.http.post<object>(this.API_URL + '/auth', { email }, { observe: 'response' })
+  login(token: string) {
+    return this.http.post<object>(this.API_URL + '/auth', { token }, { observe: 'response' })
       .pipe(tap((res) => {
-        localStorage.setItem('email', email);
         this.setSession(res.headers.get('Authorization').slice(7)); // Slice "Bearer "
       }));
   }
