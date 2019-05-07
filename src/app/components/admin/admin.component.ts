@@ -43,6 +43,6 @@ export class AdminComponent implements OnInit {
   removeRole(role: string) {
     this.userService.removeRole(this.checked, role).subscribe(
       data => this.getUsers(),
-      error => console.log(error));
+      error =>  alert('Can\'t remove role'));
   }
 }
