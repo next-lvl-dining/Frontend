@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     });
 
     FB.getLoginStatus(response => {
-      this.login(response.authResponse.accessToken)
+      this.login(response.authResponse.accessToken);
     });
   }
 

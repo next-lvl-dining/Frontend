@@ -1,0 +1,79 @@
+
+$form-width: 80%;
+$form-height: 600px;
+$col-icing: #ffb3c9;
+$col-icing-fg: #000000;
+$col-bg: #ffffff;
+$col-fg: #6a6a6a;
+$dot-spacing: 0.8;
+$dot-size: $form-height/10;
+$margin: 10px;
+
+%heading {
+  font-family: Arvo, sans-serif;
+}
+
+.invisible {
+  display: none;
+}
+
+.container {
+  text-align: center;
+  font-family: PT Sans, sans-serif;
+  font-size: 18px;
+  width: $form-width;
+  max-width: 1000px;
+  height: 100%;
+  margin: 50px auto;
+  background: $col-bg;
+  overflow: hidden;
+}
+
+.form {
+  min-height: 400px;
+  flex-direction: column;
+  margin-top: $margin;
+  flex-grow: 1;
+}
+
+button {
+  background: darken(#ffab00, 1%);
+  padding: 5px;
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  margin: -1px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #fff;
+  margin: 0 0 0 5px;
+  cursor: pointer;
+  &:hover {
+    background: #447cff;
+    transition: all .4s ease-in-out;
+  }
+}
+
+.line {
+  border: 1px dotted #e1e1e1;
+  width: 40%;
+  margin: 0 auto 5px auto;
+}
+
+.text-input {
+  display: inline-block;
+  clear: both;
+
+  box-sizing: border-box;
+  padding: $margin / 2;
+
+  font-size: 1em;
+  font-family: inherit;
+  width: 150px;
+  text-align: center;
+  background: white;
+  border: 1px solid rgba($col-fg, 0.4);
+  border-radius: 5px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1) inset;
+}

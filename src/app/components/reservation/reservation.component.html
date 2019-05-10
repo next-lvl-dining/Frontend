@@ -1,0 +1,32 @@
+<div class="container">
+  <form [formGroup]="messageForm" (ngSubmit)="onSubmit()" class="form">
+    <h1>Reservation</h1>
+    <div class="line"></div>
+    <label for="dinerType">Menu type</label><br>
+    <select formControlName="diningType" class="text-input" id="dinerType"
+      (change)="onDinerTypeChange(selectedDinerType.value)" #selectedDinerType>
+      <option value="lunch">Lunch</option>
+      <option value="diner">Diner</option>
+    </select><br>
+    <label for="numberOfPeople">Number of people</label><br>
+    <input formControlName="numberOfPeople" class="text-input" id="numberOfPeople" type="number"><br>
+    <div class="diningOptions invisible">
+      <label for="courseType">Course type</label><br>
+      <select formControlName="courseType" class="text-input" id="courseType"
+        (change)="onCourseTypeChange(selectedCourseType.value)" #selectedCourseType>
+        <option value="single">Singlecourse</option>
+        <option value="multi">Multicourse</option>
+      </select><br>
+      <div class="diningTime">
+        <label for="diningTime">Dining time</label><br>
+        <select formControlName="diningTime" class="text-input" id="diningTime">
+          <option value="early">17:30 - 20:00</option>
+          <option value="late">20:00 - 22:30</option>
+        </select><br>
+      </div>
+    </div>
+    <label for="date">Date</label><br>
+    <input formControlName="date" class="text-input" id="date" [min]="today" type="date"><br><br>
+    <button type="submit">Submit reservation</button>
+  </form>
+</div>
