@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -44,7 +44,9 @@ import { CouponComponent } from './components/coupon/coupon.component';
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     ProductService,
-  { provide: 'API_URL', useValue: environment.API_URL }],
+  { provide: 'API_URL', useValue: environment.API_URL },
+  { provide: 'ORDER_API_URL', useValue: environment.ORDER_API_URL }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
