@@ -1,21 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user/user.service';
 import { RoleService } from 'src/app/services/role/role.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { CouponService } from 'src/app/services/coupon/coupon.service';
 import { Role } from 'src/app/models/role';
+import { User } from 'src/app/models/user';
+import { Coupon } from 'src/app/models/coupon';
 
 @Component({
   selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss']
+  templateUrl: './role.component.html',
+  styleUrls: ['./role.component.scss']
 })
-export class AdminComponent implements OnInit {
+export class RoleComponent implements OnInit {
 
   users: User[];
   availableRoles: Role[];
   checked: string;
 
-  constructor(private userService: UserService, private roleService: RoleService) { }
+  constructor(
+    private userService: UserService, private roleService: RoleService) {
+  }
 
   ngOnInit() {
     this.getUsers();
@@ -53,4 +58,5 @@ export class AdminComponent implements OnInit {
       alert('Please select a user');
     }
   }
+
 }

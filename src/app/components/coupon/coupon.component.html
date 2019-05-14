@@ -1,0 +1,44 @@
+<div class="container">
+  <form [formGroup]="messageForm" (ngSubmit)="createCoupon()" class="form">
+    <h1>Create coupon</h1>
+    <div class="line"></div>
+    <label for="coupon">Code</label><br>
+    <input formControlName="couponCode" class="text-input" id="coupon" placeholder="ABC123" type="text"><br>
+    <label for="date">Expiration date</label><br>
+    <input formControlName="date" class="text-input" id="date" [min]="today" type="date"><br>
+    <label for="type">Type</label><br>
+    <select formControlName="type" class="text-input" id="type" (change)="onTypeChange(selectedCouponType.value)"
+      #selectedCouponType>
+      <option value="0">Percentage</option>
+      <option value="1">Flat</option>
+    </select><br>
+    <label for="rate">Rate</label><br>
+    <input formControlName="rate" class="text-input" id="rate" type="number"><br>
+    <label for="maxUses">Max uses</label><br>
+    <input formControlName="maxUses" class="text-input" id="rate" type="number"><br>
+    <label for="user">Assign to User</label><br>
+    <input formControlName="search" type="text" id="user" class="text-input" placeholder="Search user" (keyup)="filter($event)">
+    <div *ngFor="let user of filteredUsers" id="myDropdown" class="dropdown-content">
+      <a (click)="setUser(user)">{{user.email}}</a>
+    </div><br><br>
+    <button type="submit">Create coupon</button>
+  </form>
+  <h1>Coupons</h1>
+  <div class="line"></div>
+  <table>
+    <tr>
+      <th>Code</th>
+      <th>Max uses</th>
+      <th>Rate</th>
+      <th>Type</th>
+      <th>UserId</th>
+    </tr>
+    <tr *ngFor="let coupon of coupons">
+      <td>{{coupon.code}}</td>
+      <td>{{coupon.maxUses}}</td>
+      <td>{{coupon.rate}}</td>
+      <td>{{coupon.type}}</td>
+      <td>{{ coupon.userId ? coupon.userId : 'Not user bound'}}</td>
+    </tr>
+  </table>
+</div>

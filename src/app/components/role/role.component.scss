@@ -27,7 +27,7 @@ $margin: 10px;
 }
 
 .form {
-  min-height: 400px;
+  min-height: 300px;
   flex-direction: column;
   margin-top: $margin;
   flex-grow: 1;
@@ -80,6 +80,7 @@ button {
 
   box-sizing: border-box;
   padding: $margin / 2;
+  width: 150px;
 
   font-size: 1em;
   font-family: inherit;

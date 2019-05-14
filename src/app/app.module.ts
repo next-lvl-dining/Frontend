@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { OrderComponent } from './components/order/order.component';
 import { LoginComponent } from './components/login/login.component';
-import { AdminComponent } from './components/admin/admin.component';
+import { RoleComponent } from './components/role/role.component';
 import { environment } from 'src/environments/environment';
 import { AuthInterceptor } from './services/auth/token.interceptor';
 import { ProductService } from './services/product/product.service';
@@ -18,13 +18,14 @@ import { HistorySearchComponent } from './components/history-search/history-sear
 import { OrderDetailComponent } from './components/order-detail/order-detail.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ReservationComponent } from './components/reservation/reservation.component';
+import { CouponComponent } from './components/coupon/coupon.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     OrderComponent,
     LoginComponent,
-    AdminComponent,
+    RoleComponent,
     CartComponent,
     HistoryComponent,
     DashboardComponent,
@@ -32,6 +33,7 @@ import { ReservationComponent } from './components/reservation/reservation.compo
     OrderDetailComponent,
     CheckoutComponent,
     ReservationComponent,
+    CouponComponent,
   ],
   imports: [
     BrowserModule,
