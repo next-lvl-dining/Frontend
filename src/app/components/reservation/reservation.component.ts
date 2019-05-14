@@ -54,17 +54,23 @@ export class ReservationComponent implements OnInit {
 
     const timeslot: TimeSlot[] = [];
     const date = new Date(this.messageForm.value.date);
-
+    //create timeslot for specicif dining and course type
+    //lunch starts at 12:30 ends at 15:00
     if (this.messageForm.value.diningType === 'lunch') {
       timeslot.push(this.createTimeSlot(date, 12, 30, 15, 0));
     } else if (this.messageForm.value.diningType === 'diner') {
       if (this.messageForm.value.courseType === 'single') {
+        //early dinner starts at 17:00 ends at 20:00
         if (this.messageForm.value.diningTime === 'early') {
           timeslot.push(this.createTimeSlot(date, 17, 30, 20, 0));
-        } else if (this.messageForm.value.diningTime === 'late') {
+        }
+        //late dinner starts at 20:00 ends at 22:30
+        else if (this.messageForm.value.diningTime === 'late') {
           timeslot.push(this.createTimeSlot(date, 20, 0, 22, 30));
         }
-      } else if (this.messageForm.value.courseType === 'multi') {
+      }
+      //Multicourse needs two timeslots
+      else if (this.messageForm.value.courseType === 'multi') {
         timeslot.push(this.createTimeSlot(date, 17, 30, 20, 0));
         timeslot.push(this.createTimeSlot(date, 20, 0, 22, 30));
       }
