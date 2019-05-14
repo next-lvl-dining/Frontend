@@ -16,7 +16,12 @@ export class HistoryComponent implements OnInit {
 
     testButton() {
         console.log('KLIK');
-        this.orderService.getAllLocalOrderFromUser('1');
+
+        this.orderService.getAllLocalOrderFromUser('1').subscribe(
+            data => {
+                alert('got all the shit');
+            },
+            error => { console.log(error); });
     }
 
 }
