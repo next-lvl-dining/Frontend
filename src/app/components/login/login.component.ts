@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
   login(token: string) {
     this.authService.login(token).subscribe(
       data => {
-        // user can be redirected to some page
         this.router.navigateByUrl('/role');
       },
       error => { console.log(error); });

@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { LoggedInService } from '../loggedIn/logged-in.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class AuthService {
 
   jwtHelper: JwtHelperService = new JwtHelperService();
 
-  constructor(private http: HttpClient, @Inject('API_URL') private API_URL: string) { }
+  constructor(private http: HttpClient, @Inject('API_URL') private API_URL: string, private loggedInService: LoggedInService) { }
 
   login(token: string) {
     return this.http.post<object>(this.API_URL + '/auth', { token }, { observe: 'response' })
@@ -26,6 +27,7 @@ export class AuthService {
 
   private setSession(token) {
     localStorage.setItem('token', token);
+    this.loggedInService.isUserLoggedIn.next(true);
   }
 
   isAdmin(): boolean {

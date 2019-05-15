@@ -1,4 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { LoggedInService } from 'src/app/services/loggedIn/logged-in.service';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +8,25 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  isAdmin = false;
+  isLoggedIn = false;
 
-  constructor(private renderer: Renderer2) { }
+  constructor(private authService: AuthService, private loggedInService: LoggedInService, private renderer: Renderer2) { }
 
   ngOnInit() {
+    this.loggedInService.isUserLoggedIn.subscribe(value => {
+      this.updateHeader();
+    });
+    this.updateHeader();
+  }
+
+  updateHeader() {
+    if (this.authService.isAdmin()) {
+      this.isAdmin = true;
+    }
+    if (this.authService.isLoggedIn()) {
+      this.isLoggedIn = true;
+    }
   }
 
   nav(element: string) {
@@ -19,6 +36,12 @@ export class HeaderComponent implements OnInit {
     if (element) {
       this.renderer.addClass(document.getElementsByClassName(element)[0], 'selected');
     }
+  }
+
+  logout() {
+    this.authService.logout();
+    this.isLoggedIn = false;
+    this.isAdmin = false;
   }
 
 }

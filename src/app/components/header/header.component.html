@@ -6,6 +6,9 @@
     <a class="reservation" (click)="nav('reservation')" [routerLink]="['/reservation']">Reservation</a>
   </div>
   <div class="headerRight">
-    <a class="login" (click)="nav('login')" [routerLink]="['/login']">Login</a>
+    <a *ngIf="isAdmin" class="coupon" (click)="nav('coupon')" [routerLink]="['/coupon']">Coupon</a>
+    <a *ngIf="isAdmin" class="role" (click)="nav('role')" [routerLink]="['/role']">Role</a>
+    <a *ngIf="!isLoggedIn" class="header-login" (click)="nav('login')" [routerLink]="['/login']">Login</a>
+    <a *ngIf="isLoggedIn" class="header-logout" (click)="logout()">Logout</a>
   </div>
 </div>

@@ -12,6 +12,7 @@ $accent-light-col: #fdc657;
   padding: 0 50px 0 50px;
   border-bottom: 2px solid darken($accent-col, 1%);
   a {
+    cursor: pointer;
     padding: 10px;
     line-height: 80px;
     color: white;
