@@ -1,0 +1,34 @@
+$accent-col: #ffab00;
+$accent-light-col: #fdc657;
+
+.header {
+  position: fixed;
+  z-index: 1;
+  top: 0px;
+  height: 80px;
+  width: 100%;
+  background-color: $accent-light-col;
+  font-family: PT Sans, sans-serif;
+  padding: 0 50px 0 50px;
+  border-bottom: 2px solid darken($accent-col, 1%);
+  a {
+    padding: 10px;
+    line-height: 80px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    text-decoration: none;
+  }
+}
+
+.headerLeft {
+  float: left;
+}
+
+.headerRight {
+  float: right;
+}
+
+.selected {
+  border-bottom: 2px solid darken($accent-col, 1%);
+}

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL: 'http://localhost:8080/login/api',
+  API_URL: 'http://localhost:8080/promotion-1.0-SNAPSHOT/api',
   ORDER_API_URL: 'http://localhost:8080/order/api'
 };
 

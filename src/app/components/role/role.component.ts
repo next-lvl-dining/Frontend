@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user/user.service';
 import { RoleService } from 'src/app/services/role/role.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { CouponService } from 'src/app/services/coupon/coupon.service';
 import { Role } from 'src/app/models/role';
 import { User } from 'src/app/models/user';
-import { Coupon } from 'src/app/models/coupon';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -19,10 +18,14 @@ export class RoleComponent implements OnInit {
   checked: string;
 
   constructor(
-    private userService: UserService, private roleService: RoleService) {
+    private userService: UserService, private roleService: RoleService, private authService: AuthService, private router: Router) {
   }
 
   ngOnInit() {
+    // if (!this.authService.isAdmin()) {
+    //   alert('Login as admin to continue');
+    //   this.router.navigateByUrl('/login');
+    // }
     this.getUsers();
     this.getRoles();
   }
