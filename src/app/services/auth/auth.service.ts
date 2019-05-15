@@ -28,6 +28,17 @@ export class AuthService {
     localStorage.setItem('token', token);
   }
 
+  isAdmin(): boolean {
+    if (!this.isLoggedIn()) {
+      return false;
+    }
+    const decodedToken = this.jwtHelper.decodeToken(localStorage.getItem('token'));
+    if (decodedToken.roles.indexOf('admin') !== -1) {
+      return true;
+    }
+    return false;
+  }
+
   logout() {
     localStorage.removeItem('token');
   }

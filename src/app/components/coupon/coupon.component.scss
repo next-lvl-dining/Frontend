@@ -39,9 +39,6 @@ table {
     text-align: center;
     padding: 5px 10px;
   }
-  td{
-    text-align: left;
-  }
   th, td {
     padding: 5px 10px;
     border-bottom: 1px solid #ddd;
@@ -93,7 +90,8 @@ button {
 
 .dropdown-content a {
   color: black;
-  width: 150px;
+  text-align: center;
+  width: 250px;
   display: inline-block;
   cursor: pointer;
 }

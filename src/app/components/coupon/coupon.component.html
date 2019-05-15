@@ -3,7 +3,8 @@
     <h1>Create coupon</h1>
     <div class="line"></div>
     <label for="coupon">Code</label><br>
-    <input formControlName="couponCode" class="text-input" id="coupon" placeholder="ABC123" type="text"><br>
+    <input formControlName="couponCode" class="text-input" id="coupon" autocomplete="off" placeholder="ABC123"
+      type="text"><br>
     <label for="date">Expiration date</label><br>
     <input formControlName="date" class="text-input" id="date" [min]="today" type="date"><br>
     <label for="type">Type</label><br>
@@ -17,10 +18,12 @@
     <label for="maxUses">Max uses</label><br>
     <input formControlName="maxUses" class="text-input" id="rate" type="number"><br>
     <label for="user">Assign to User</label><br>
-    <input formControlName="search" type="text" id="user" class="text-input" placeholder="Search user" (keyup)="filter($event)">
+    <input formControlName="search" type="text" id="user" autocomplete="off" class="text-input"
+      placeholder="Search user" (keyup)="filter()">
     <div *ngFor="let user of filteredUsers" id="myDropdown" class="dropdown-content">
       <a (click)="setUser(user)">{{user.email}}</a>
-    </div><br><br>
+    </div>
+    <br><br>
     <button type="submit">Create coupon</button>
   </form>
   <h1>Coupons</h1>
@@ -28,9 +31,10 @@
   <table>
     <tr>
       <th>Code</th>
-      <th>Max uses</th>
+      <th>Max Uses</th>
       <th>Rate</th>
       <th>Type</th>
+      <th>Expiration Date</th>
       <th>UserId</th>
     </tr>
     <tr *ngFor="let coupon of coupons">
@@ -38,6 +42,7 @@
       <td>{{coupon.maxUses}}</td>
       <td>{{coupon.rate}}</td>
       <td>{{coupon.type}}</td>
+      <td>{{coupon.expDate | date:'dd-MM-yyyy'}}</td>
       <td>{{ coupon.userId ? coupon.userId : 'Not user bound'}}</td>
     </tr>
   </table>

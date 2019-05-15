@@ -1,10 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { UserService } from 'src/app/services/user/user.service';
 import { RoleService } from 'src/app/services/role/role.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CouponService } from 'src/app/services/coupon/coupon.service';
 import { Coupon } from 'src/app/models/coupon';
 import { User } from 'src/app/models/user';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-coupon',
@@ -12,7 +14,6 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./coupon.component.scss']
 })
 export class CouponComponent implements OnInit {
-  checked: string;
   messageForm: FormGroup;
   today = new Date().toJSON().split('T')[0];
   coupons: Coupon[];
@@ -22,7 +23,7 @@ export class CouponComponent implements OnInit {
 
   constructor(
     private userService: UserService, private roleService: RoleService, private formBuilder: FormBuilder,
-    private couponService: CouponService) {
+    private couponService: CouponService, private authService: AuthService, private router: Router) {
     this.messageForm = this.formBuilder.group({
       couponCode: ['', Validators.required],
       date: [, Validators.required],
@@ -34,8 +35,13 @@ export class CouponComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getUsers();
-    this.getCoupons();
+    if (!this.authService.isAdmin()) {
+      alert('Login as admin to continue');
+      this.router.navigateByUrl('/login');
+    } else {
+      this.getUsers();
+      this.getCoupons();
+    }
   }
 
   getUsers() {
@@ -49,11 +55,11 @@ export class CouponComponent implements OnInit {
     this.messageForm.patchValue({
       search: user.email
     });
-    this.filter(user.email);
+    this.filteredUsers = [];
   }
 
-  filter(x: any) {
-    this.filteredUsers = this.users.filter(user => user.email.indexOf(x.key) !== -1).slice(0, 3);
+  filter() {
+    this.filteredUsers = this.users.filter(user => user.email.indexOf(this.messageForm.value.search) !== -1).slice(0, 3);
   }
 
   getCoupons() {

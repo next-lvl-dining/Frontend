@@ -12,8 +12,7 @@ declare const FB: any;
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private userService: UserService, private authService: AuthService,
-              private router: Router) { }
+  constructor(private userService: UserService, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     FB.init({
@@ -31,7 +30,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(token).subscribe(
       data => {
         // user can be redirected to some page
-        this.router.navigateByUrl('/admin');
+        this.router.navigateByUrl('/role');
       },
       error => { console.log(error); });
   }
