@@ -5,7 +5,7 @@
     <th>Password</th>
   <tr *ngFor="let x of portalrows">
     <td>{{ x.name }}</td>
-      <td><a [href]="sanitize(x.url)">{{ x.url }}</a></td>
+      <td><a [href]="x.url">{{ x.url }}</a></td>
     <td>{{x.username}}</td>
     <td>{{x.password}}</td>
   </tr>
