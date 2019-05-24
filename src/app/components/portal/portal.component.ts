@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {Portalrow} from "../../models/portalrow";
-import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-portal',
@@ -20,7 +19,7 @@ export class PortalComponent implements OnInit {
 
 
 
-  constructor(private sanitizer:DomSanitizer) { }
+  constructor() { }
 
   ngOnInit() {
       this.imageurl = "../../../assets/images/";
@@ -28,37 +27,37 @@ export class PortalComponent implements OnInit {
       this.jenkins = new Portalrow();
       this.jenkins.name = "Jenkins";
       this.jenkins.password = "admin";
-      this.jenkins.url = "192.168.24.110:8081";
+      this.jenkins.url = "http://192.168.24.110:8081";
       this.jenkins.username= "admin";
       this.jenkins.image =this.imageurl+ "jenkins.png";
 
       this.dockerhost = new Portalrow();
       this.dockerhost.name = "Dockerhost";
-      this.dockerhost.url = "192.168.24.110";
+      this.dockerhost.url = "http://192.168.24.110";
       this.dockerhost.username = "PTS-S63-A";
       this.dockerhost.password = "PTS-S63-A";
       this.dockerhost.image = this.imageurl+"docker.png";
 
       this.wildfly = new Portalrow();
       this.wildfly.name = "Wildfly";
-      this.wildfly.url = "192.168.24.110:9990";
+      this.wildfly.url = "http://192.168.24.110:9990";
       this.wildfly.username = "admin";
       this.wildfly.password = "admin";
       this.wildfly.image = this.imageurl+"wildfly.jpg";
 
       this.nginx = new Portalrow();
       this.nginx.name = "Nginx";
-      this.nginx.url = "192.168.24.110:80";
-      this.nginx.url = this.imageurl+"nginx.png";
+      this.nginx.url = "http://192.168.24.110:80";
+      this.nginx.image = this.imageurl+"nginx.png";
 
       this.databaseServer = new Portalrow();
       this.databaseServer.name = "Databaseserver";
-      this.databaseServer.url = "192.168.24.111";
+      this.databaseServer.url = "http://192.168.24.111";
       this.databaseServer.image = this.imageurl+"mysql.png";
 
       this.sonarqube = new Portalrow();
       this.sonarqube.name = "Sonarqube";
-      this.sonarqube.url = "192.168.24.110:9000";
+      this.sonarqube.url = "http://192.168.24.110:9000";
       this.sonarqube.username = "admin";
       this.sonarqube.password = "admin";
       this.sonarqube.image = this.imageurl+ "sonarqube.png";
