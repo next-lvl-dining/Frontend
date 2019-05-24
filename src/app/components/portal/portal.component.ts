@@ -8,63 +8,76 @@ import {DomSanitizer} from '@angular/platform-browser';
   styleUrls: ['./portal.component.scss']
 })
 export class PortalComponent implements OnInit {
+    imageurl: string;
     portalrows: Portalrow[] =[];
     jenkins: Portalrow;
     dockerhost: Portalrow;
     wildfly: Portalrow;
-    drive: Portalrow;
-    tomcat: Portalrow;
+    nginx: Portalrow;
     databaseServer: Portalrow;
     sonarqube: Portalrow;
+    Drive: Portalrow;
+
 
 
   constructor(private sanitizer:DomSanitizer) { }
 
   ngOnInit() {
+      this.imageurl = "../../../assets/images/";
+
       this.jenkins = new Portalrow();
       this.jenkins.name = "Jenkins";
       this.jenkins.password = "admin";
       this.jenkins.url = "192.168.24.110:8081";
       this.jenkins.username= "admin";
+      this.jenkins.image =this.imageurl+ "jenkins.png";
 
       this.dockerhost = new Portalrow();
       this.dockerhost.name = "Dockerhost";
       this.dockerhost.url = "192.168.24.110";
       this.dockerhost.username = "PTS-S63-A";
       this.dockerhost.password = "PTS-S63-A";
+      this.dockerhost.image = this.imageurl+"docker.png";
 
       this.wildfly = new Portalrow();
       this.wildfly.name = "Wildfly";
       this.wildfly.url = "192.168.24.110:9990";
       this.wildfly.username = "admin";
       this.wildfly.password = "admin";
+      this.wildfly.image = this.imageurl+"wildfly.jpg";
 
-      this.tomcat = new Portalrow();
-      this.tomcat.name = "Tomcat";
-      this.tomcat.url = "192.168.24.110:80";
+      this.nginx = new Portalrow();
+      this.nginx.name = "Nginx";
+      this.nginx.url = "192.168.24.110:80";
+      this.nginx.url = this.imageurl+"nginx.png";
 
       this.databaseServer = new Portalrow();
       this.databaseServer.name = "Databaseserver";
       this.databaseServer.url = "192.168.24.111";
+      this.databaseServer.image = this.imageurl+"mysql.png";
 
       this.sonarqube = new Portalrow();
       this.sonarqube.name = "Sonarqube";
       this.sonarqube.url = "192.168.24.110:9000";
       this.sonarqube.username = "admin";
       this.sonarqube.password = "admin";
+      this.sonarqube.image = this.imageurl+ "sonarqube.png";
+
+      this.Drive = new Portalrow();
+      this.Drive.name="Drive";
+      this.Drive.url = "https://drive.google.com/open?id=1YXpQtebGiC9_E72pBMJmdNxtQ1A6KV-D";
+      this.Drive.image = this.imageurl+ "drive.png";
+
 
       this.portalrows.push(this.jenkins);
       this.portalrows.push(this.sonarqube);
       this.portalrows.push(this.databaseServer);
-      this.portalrows.push(this.tomcat);
+      this.portalrows.push(this.nginx);
       this.portalrows.push(this.wildfly);
       this.portalrows.push(this.dockerhost);
+      this.portalrows.push(this.Drive);
 
   }
-
-    sanitize(url:string){
-        return this.sanitizer.bypassSecurityTrustUrl(url);
-    }
 
 }
 

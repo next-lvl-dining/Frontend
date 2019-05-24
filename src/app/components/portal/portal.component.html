@@ -10,3 +10,7 @@
     <td>{{x.password}}</td>
   </tr>
 </table>
+
+<div class="portalComponent" *ngFor="let x of portalrows">
+   <a href="{{x.url}}"> <img src="{{x.image}}" height="300" width="400"/></a>
+</div>
