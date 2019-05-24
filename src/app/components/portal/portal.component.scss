@@ -1,4 +1,11 @@
 .portalComponent{
   display: flex;
   justify-content: space-evenly;
+  overflow: hidden;
+  position: fixed;
+}
+
+.item{
+  padding: 20px;
+  display: block;
 }

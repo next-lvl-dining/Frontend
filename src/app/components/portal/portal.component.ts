@@ -17,8 +17,6 @@ export class PortalComponent implements OnInit {
     sonarqube: Portalrow;
     Drive: Portalrow;
 
-
-
   constructor() { }
 
   ngOnInit() {
