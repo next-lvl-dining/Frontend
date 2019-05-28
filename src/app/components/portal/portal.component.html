@@ -1,24 +1,12 @@
-<table style="width: 50%; margin: auto">
-    <th>Name</th>
-    <th>URL</th>
-    <th>Username</th>
-    <th>Password</th>
-  <tr *ngFor="let x of portalrows">
-    <td>{{ x.name }}</td>
-      <td><a [href]="x.url">{{ x.url }}</a></td>
-    <td>{{x.username}}</td>
-    <td>{{x.password}}</td>
-  </tr>
-</table>
-
 <div class="portalComponent">
     <div *ngFor="let x of portalrows" class="item">
-        <h2>{{x.name}}</h2>
+        <h4>{{x.name}}</h4>
         <a href="{{x.url}}"> <img src="{{x.image}}" height="300" width="400"/></a>
-        <div class="credentials" ngIf="{{x.username}}"></div>
-        <p>username:</p>
-        <p>{{x.username}}</p>
-        <p>password:</p>
-        <p>{{x.password}}</p>
+        <div *ngIf="x.resturl"><a href="{{x.resturl}}">{{x.resturl}}</a></div>
+        <div class="credentials" *ngIf="x.username">
+            username: {{x.username}}
+            <br>
+            password: {{x.password}}
+        </div>
     </div>
 </div>

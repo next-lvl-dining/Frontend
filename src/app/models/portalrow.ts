@@ -4,4 +4,5 @@ export class Portalrow {
    username: string;
    password: string;
    image: string;
+   resturl: string;
 }

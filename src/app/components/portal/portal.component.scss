@@ -1,11 +1,15 @@
 .portalComponent{
   display: flex;
-  justify-content: space-evenly;
-  overflow: hidden;
-  position: fixed;
+  flex-wrap: wrap;
 }
 
 .item{
   padding: 20px;
   display: block;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.credentials{
+  text-align: center;
 }
