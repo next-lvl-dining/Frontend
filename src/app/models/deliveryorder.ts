@@ -11,7 +11,7 @@ export class DeliveryOrder {
     totalVat: number;
     paymentId: string;
     status: OrderStatus;
-    couponnId: string;
+    couponId: string;
     // for delivery
-    adress: Address;
+    address: Address;
 }
