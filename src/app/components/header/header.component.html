@@ -4,6 +4,7 @@
     <a class="cart" (click)="nav('cart')" [routerLink]="['/cart']">Cart</a>
     <a class="history" (click)="nav('history')" [routerLink]="['/history']">History</a>
     <a class="reservation" (click)="nav('reservation')" [routerLink]="['/reservation']">Reservation</a>
+    <a class="portal" (click)="nav('portal')" [routerLink]="['/portal']">Portal</a>
   </div>
   <div class="headerRight">
     <a *ngIf="isAdmin" class="coupon" (click)="nav('coupon')" [routerLink]="['/coupon']">Coupon</a>

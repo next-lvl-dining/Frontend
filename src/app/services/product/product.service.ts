@@ -1,18 +1,21 @@
-import { Injectable } from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 
 import { Product } from '../../models/product';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {Observable, throwError} from 'rxjs';
+import {catchError} from 'rxjs/operators';
 
 @Injectable()
 export class ProductService {
 
   private products: Product[];
 
-  constructor() {
-    this.products = [
+  constructor(private http: HttpClient, @Inject('ORDER_API_URL') private ORDER_API_URL: string) {
+   /* this.products = [
       { id: 'p01', name: 'Braised Leeks with Mozzarella & a Fried Egg', price: 100, photo: 'https://www.foodandwine.com/sites/default/files/201012-ss-dishes-leeks.jpg', desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\',' },
       { id: 'p02', name: 'Lamb Salad with Fregola', price: 200, photo: 'https://www.foodandwine.com/sites/default/files/201012-ss-dishes-lamb-salad.jpg', desc: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable.' },
       { id: 'p03', name: 'Smoked Pork Jowl with Pickles', price: 300, photo: 'https://www.foodandwine.com/sites/default/files/201012-ss-dishes-smoked-pork.jpg', desc: 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,' }
-    ];
+    ];*/
   }
 
   findAll(): Product[] {
@@ -30,6 +33,15 @@ export class ProductService {
       }
     }
     return -1;
+  }
+
+  getAll(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.ORDER_API_URL + '/products/all')
+      .pipe(catchError(this.errorHandler));
+  }
+
+  errorHandler(error: HttpErrorResponse) {
+    return throwError(error.error || 'Server error');
   }
 
 }

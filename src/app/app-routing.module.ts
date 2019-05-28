@@ -9,6 +9,7 @@ import { HistoryComponent } from './components/history/history.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ReservationComponent } from './components/reservation/reservation.component';
 import { CouponComponent } from './components/coupon/coupon.component';
+import {PortalComponent} from "./components/portal/portal.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'history', component: HistoryComponent },
   { path: 'checkout', component: CheckoutComponent },
-  { path: 'reservation', component: ReservationComponent }
+  { path: 'reservation', component: ReservationComponent },
+  { path: 'portal', component: PortalComponent }
 
 ];
 

@@ -4,6 +4,7 @@ import {Observable, throwError} from 'rxjs';
 import {LocalOrder} from '../../models/localorder';
 import {catchError} from 'rxjs/operators';
 import {DeliveryOrder} from '../../models/deliveryorder';
+import {Product} from '../../models/product';
 
 @Injectable({
     providedIn: 'root'
@@ -18,7 +19,6 @@ export class OrderService {
         return this.http.get<LocalOrder[]>(this.ORDER_API_URL + '/localorders/all/' + userId)
             .pipe(catchError(this.errorHandler));
     }
-
     getAllDeliveryOrderFromUser(userId: string): Observable<DeliveryOrder[]> {
         return this.http.get<DeliveryOrder[]>(this.ORDER_API_URL + '/deliveryorders/all/' + userId)
             .pipe(catchError(this.errorHandler));

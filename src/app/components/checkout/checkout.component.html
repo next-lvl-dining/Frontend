@@ -4,43 +4,82 @@
   <div class="Address">
     <h1>Ready to eat?</h1>
     <h2>Where do you want your order to be delivered? </h2>
-    <form class="form">
+    <form [formGroup]="checkoutForm" novalidate>
       <div class="inputs">
         <div class="line"></div>
         <div class="row">
           <div class="column1">
             <label class="label" for="address">Address</label>
-            <input class="text-input address-input" id="address" />
+            <input formControlName="address" class="text-input address-input" id="address" />
           </div>
           <div class="column">
             <label class="label" for="zipcode">Zip code</label>
-            <input class="text-input address-input" id="zipcode" />
+            <input formControlName="zipcode" class="text-input address-input" id="zipcode" />
           </div>
+
           <div class="column">
             <label class="label" for="city">City</label>
-            <input class="text-input address-input" id="city" />
+            <input formControlName="city" class="text-input address-input" id="city" />
           </div>
+        </div>
+        <div class="row">
+        <div *ngIf="checkoutForm.controls['address'].invalid &&(checkoutForm.controls['address'].dirty||checkoutForm.controls['address'].touched)" class="alert alert-danger">
+          <div *ngIf="checkoutForm.controls['address'].errors.required">
+            Address is required.
+          </div>
+        </div>
+        <div *ngIf="checkoutForm.controls['zipcode'].invalid &&(checkoutForm.controls['zipcode'].dirty||checkoutForm.controls['zipcode'].touched)" class="alert alert-danger">
+          <div *ngIf="checkoutForm.controls['zipcode'].errors.required">
+            Zipcode is required.
+          </div>
+        </div>
+        <div *ngIf="checkoutForm.controls['city'].invalid &&(checkoutForm.controls['city'].dirty||checkoutForm.controls['city'].touched)" class="alert alert-danger">
+          <div *ngIf="checkoutForm.controls['city'].errors.required">
+            City is required.
+          </div>
+        </div>
         </div>
         <h2>How can we reach you? </h2>
         <div class="line"></div>
         <div class="row">
           <div class="column">
             <label class="label" for="name">Name</label>
-            <input class="text-input name-input" id="name"/>
+            <input formControlName="name" class="text-input name-input" id="name"/>
           </div>
+
           <div class="column">
             <label class="label" for="email">E-mail</label>
-            <input class="text-input expiry-input" id="email"/>
+            <input formControlName="email" class="text-input expiry-input" id="email"/>
           </div>
+        </div>
+        <div class="row">
+        <div *ngIf="checkoutForm.controls['name'].invalid &&(checkoutForm.controls['name'].dirty||checkoutForm.controls['name'].touched)" class="alert alert-danger">
+          <div *ngIf="checkoutForm.controls['name'].errors.required">
+            Name is required.
+          </div>
+        </div>
+        <div *ngIf="checkoutForm.controls['email'].invalid &&(checkoutForm.controls['email'].dirty||checkoutForm.controls['email'].touched)" class="alert alert-danger">
+          <div *ngIf="checkoutForm.controls['email'].errors.required">
+            Email is required.
+          </div>
+        </div>
         </div>
         <div class="row">
           <div class="column">
             <label class="label" for="phonenumber">Phone number</label>
-            <input class="text-input " id="phonenumber"/>
+            <input formControlName="phonenumber" class="text-input " id="phonenumber"/>
           </div>
+
           <div class="column" style="visibility: hidden;">
             <label class="label" for="phoneumber">Phone number</label>
             <input class="text-input" id="phoneumber"/>
+          </div>
+        </div>
+        <div class="row">
+          <div *ngIf="checkoutForm.controls['phonenumber'].invalid &&(checkoutForm.controls['phonenumber'].dirty||checkoutForm.controls['phonenumber'].touched)" class="alert alert-danger">
+            <div *ngIf="checkoutForm.controls['phonenumber'].errors.required">
+              Phonenumber is required.
+            </div>
           </div>
         </div>
         <h2>When would you like your food? </h2>
@@ -60,9 +99,11 @@
         <h2>How would you like to pay? </h2>
         <div class="line"></div>
       </div>
-      <div class="buttons">
-        <button class="order-button">ORDER AND PAY</button>
+      <div class="">
+        <button type="submit"  class="" [disabled]="checkoutForm.invalid===true">ORDER AND PAY</button>
       </div>
+      <p>Form value: {{ checkoutForm.value | json }}</p>
+      <p>Form status: {{ checkoutForm.status | json }}</p>
     </form>
   </div>
 </div>

@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { OrderComponent } from './components/order/order.component';
@@ -20,6 +19,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ReservationComponent } from './components/reservation/reservation.component';
 import { CouponComponent } from './components/coupon/coupon.component';
 import { HeaderComponent } from './components/header/header.component';
+import { PortalComponent } from './components/portal/portal.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +36,7 @@ import { HeaderComponent } from './components/header/header.component';
     ReservationComponent,
     CouponComponent,
     HeaderComponent,
+    PortalComponent,
   ],
   imports: [
     BrowserModule,

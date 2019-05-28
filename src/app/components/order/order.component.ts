@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductService } from '../../services/product/product.service';
 import {Item} from '../../models/item';
+import {AuthService} from '../../services/auth/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-order',
@@ -15,14 +17,20 @@ export class OrderComponent implements OnInit {
   private items: Item[] = [];
   private total = 0;
   constructor(
-    private productService: ProductService
-  ) {
+    private productService: ProductService, private authService: AuthService, private router: Router) {
   }
 
   ngOnInit() {
-    this.products = this.productService.findAll();
+    // this.products = this.productService.findAll();
+
+    this.getAllProducts();
   }
 
+  getAllProducts() {
+    this.productService.getAll().subscribe(data => {
+      this.products = data;
+      });
+  }
   add(id: string) {
     const item: Item = {
       product: this.productService.find(id),

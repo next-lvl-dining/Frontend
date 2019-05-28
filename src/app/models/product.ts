@@ -2,6 +2,6 @@ export class Product {
   id: string;
   name: string;
   price: number;
-  photo: string;
-  desc: string;
+  vat: number;
+  category_name: string;
 }

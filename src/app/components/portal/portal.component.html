@@ -1,0 +1,12 @@
+<div class="portalComponent">
+    <div *ngFor="let x of portalrows" class="item">
+        <h4>{{x.name}}</h4>
+        <a href="{{x.url}}"> <img src="{{x.image}}" height="300" width="400"/></a>
+        <div *ngIf="x.resturl"><a href="{{x.resturl}}">{{x.resturl}}</a></div>
+        <div class="credentials" *ngIf="x.username">
+            username: {{x.username}}
+            <br>
+            password: {{x.password}}
+        </div>
+    </div>
+</div>
