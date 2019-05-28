@@ -13,16 +13,15 @@ export class HistoryComponent implements OnInit {
     deliveryOrders: DeliveryOrder[];
 
     constructor(private orderService: OrderService) {
+
     }
 
     ngOnInit() {
         this.getLocalOrders();
         this.getDeliveryOrders();
-        console.log('ngInit');
     }
 
-    testButton() {
-        console.log('KLIK');
+    refreshHistory() {
         this.getLocalOrders();
         this.getDeliveryOrders();
     }
@@ -36,9 +35,10 @@ export class HistoryComponent implements OnInit {
                 this.localOrders = data;
             },
             error => {
-                console.log(error);
+                console.error(error);
             });
     }
+
     getDeliveryOrders() {
         // todo
         this.orderService.getAllDeliveryOrderFromUser('user1').subscribe(
