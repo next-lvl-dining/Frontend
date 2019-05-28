@@ -20,7 +20,7 @@ export class OrderService {
     }
 
     getAllDeliveryOrderFromUser(userId: string): Observable<DeliveryOrder[]> {
-        return this.http.get<DeliveryOrder[]>(this.ORDER_API_URL + '/all/' + userId)
+        return this.http.get<DeliveryOrder[]>(this.ORDER_API_URL + '/deliveryorders/all/' + userId)
             .pipe(catchError(this.errorHandler));
     }
 
