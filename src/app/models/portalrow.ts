@@ -3,4 +3,6 @@ export class Portalrow {
    url: string;
    username: string;
    password: string;
+   image: string;
+   resturl: string;
 }
