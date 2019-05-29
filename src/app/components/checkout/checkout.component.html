@@ -100,7 +100,7 @@
         <div class="line"></div>
       </div>
       <div class="">
-        <button type="submit"  class="" [disabled]="checkoutForm.invalid===true">ORDER AND PAY</button>
+        <button type="submit"  [disabled]="checkoutForm.invalid">ORDER AND PAY</button>
       </div>
       <p>Form value: {{ checkoutForm.value | json }}</p>
       <p>Form status: {{ checkoutForm.status | json }}</p>
