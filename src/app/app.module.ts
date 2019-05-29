@@ -21,6 +21,7 @@ import { CouponComponent } from './components/coupon/coupon.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PortalComponent } from './components/portal/portal.component';
 import { NewProductComponent } from './components/new-product/new-product.component';
+import { MonitoringComponent } from './components/monitoring/monitoring.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { NewProductComponent } from './components/new-product/new-product.compon
     HeaderComponent,
     PortalComponent,
     NewProductComponent,
+    MonitoringComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,11 @@ import { NewProductComponent } from './components/new-product/new-product.compon
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     ProductService,
-  { provide: 'API_URL', useValue: environment.API_URL },
+  { provide: 'LOGIN_API_URL', useValue: environment.LOGIN_API_URL },
+  { provide: 'PAYMENT_API_URL', useValue: environment.PAYMENT_API_URL },
+  { provide: 'PROMOTION_API_URL', useValue: environment.PROMOTION_API_URL },
+  { provide: 'DELIVER_API_URL', useValue: environment.DELIVER_API_URL },
+  { provide: 'RESERVE_API_URL', useValue: environment.RESERVE_API_URL },
   { provide: 'ORDER_API_URL', useValue: environment.ORDER_API_URL }],
   bootstrap: [AppComponent]
 })

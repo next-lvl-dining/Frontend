@@ -8,8 +8,7 @@
     <label for="date">Expiration date</label><br>
     <input formControlName="date" class="text-input" id="date" [min]="today" type="date"><br>
     <label for="type">Type</label><br>
-    <select formControlName="type" class="text-input" id="type" (change)="onTypeChange(selectedCouponType.value)"
-      #selectedCouponType>
+    <select formControlName="type" class="text-input" id="type">
       <option value="0">Percentage</option>
       <option value="1">Flat</option>
     </select><br>

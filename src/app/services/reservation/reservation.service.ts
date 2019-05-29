@@ -9,7 +9,7 @@ import { Reservation } from 'src/app/models/reservation';
   providedIn: 'root'
 })
 export class ReservationService {
-  constructor(private http: HttpClient, @Inject('API_URL') private API_URL: string) { }
+  constructor(private http: HttpClient, @Inject('RESERVE_API_URL') private API_URL: string) { }
 
   createReservation(reservation: Reservation): Observable<object> {
     return this.http.post(this.API_URL + '/reservation/new', reservation)
