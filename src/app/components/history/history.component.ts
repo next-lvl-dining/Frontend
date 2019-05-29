@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {OrderService} from '../../services/order/order.service';
 import {LocalOrder} from '../../models/localorder';
 import {DeliveryOrder} from '../../models/deliveryorder';
+import {convertJSONDateToString} from '../../util/DateParser';
 
 @Component({
     selector: 'app-history',
@@ -31,7 +32,9 @@ export class HistoryComponent implements OnInit {
         // todo
         this.orderService.getAllLocalOrderFromUser('user1').subscribe(
             data => {
-                console.log(data);
+                data.map(order => {
+                    order.date = convertJSONDateToString(order.date);
+                });
                 this.localOrders = data;
             },
             error => {
@@ -43,7 +46,9 @@ export class HistoryComponent implements OnInit {
         // todo
         this.orderService.getAllDeliveryOrderFromUser('user1').subscribe(
             data => {
-                console.log(data);
+                data.map(order => {
+                    order.date = convertJSONDateToString(order.date);
+                });
                 this.deliveryOrders = data;
             },
             error => {
