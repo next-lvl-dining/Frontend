@@ -20,6 +20,7 @@ import { ReservationComponent } from './components/reservation/reservation.compo
 import { CouponComponent } from './components/coupon/coupon.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PortalComponent } from './components/portal/portal.component';
+import { NewProductComponent } from './components/new-product/new-product.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { PortalComponent } from './components/portal/portal.component';
     CouponComponent,
     HeaderComponent,
     PortalComponent,
+    NewProductComponent,
   ],
   imports: [
     BrowserModule,

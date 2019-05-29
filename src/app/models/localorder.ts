@@ -10,7 +10,7 @@ export class LocalOrder {
     totalVat: number;
     paymentId: string;
     status: OrderStatus;
-    couponnId: string;
+    couponId: string;
     // for local
     tableNumber: number;
 }

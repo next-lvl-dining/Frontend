@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {OrderService} from '../../services/order/order.service';
+import {LocalOrder} from '../../models/localorder';
+import {DeliveryOrder} from '../../models/deliveryorder';
 
 @Component({
     selector: 'app-history',
@@ -7,21 +9,45 @@ import {OrderService} from '../../services/order/order.service';
     styleUrls: ['./history.component.scss']
 })
 export class HistoryComponent implements OnInit {
+    localOrders: LocalOrder[];
+    deliveryOrders: DeliveryOrder[];
 
     constructor(private orderService: OrderService) {
+
     }
 
     ngOnInit() {
+        this.getLocalOrders();
+        this.getDeliveryOrders();
     }
 
-    testButton() {
-        console.log('KLIK');
+    refreshHistory() {
+        this.getLocalOrders();
+        this.getDeliveryOrders();
+    }
 
-        this.orderService.getAllLocalOrderFromUser('1').subscribe(
+
+    getLocalOrders() {
+        // todo
+        this.orderService.getAllLocalOrderFromUser('user1').subscribe(
             data => {
-                alert('got all the shit');
+                console.log(data);
+                this.localOrders = data;
             },
-            error => { console.log(error); });
+            error => {
+                console.error(error);
+            });
     }
 
+    getDeliveryOrders() {
+        // todo
+        this.orderService.getAllDeliveryOrderFromUser('user1').subscribe(
+            data => {
+                console.log(data);
+                this.deliveryOrders = data;
+            },
+            error => {
+                console.log(error);
+            });
+    }
 }
