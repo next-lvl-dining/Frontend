@@ -9,7 +9,7 @@ import { Coupon } from 'src/app/models/coupon';
 })
 export class CouponService {
 
-  constructor(private http: HttpClient, @Inject('API_URL') private API_URL: string) { }
+  constructor(private http: HttpClient, @Inject('PROMOTION_API_URL') private API_URL: string) { }
 
   createCoupon(coupon: any): Observable<object> {
     return this.http.post(this.API_URL + '/coupon/new', coupon)

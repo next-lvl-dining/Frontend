@@ -8,7 +8,7 @@ import { User } from '../../models/user';
   providedIn: 'root'
 })
 export class UserService {
-  constructor(private http: HttpClient, @Inject('API_URL') private API_URL: string) { }
+  constructor(private http: HttpClient, @Inject('LOGIN_API_URL') private API_URL: string) { }
 
   registerUser(user: any): Observable<object> {
     return this.http.post(this.API_URL + '/users', user)

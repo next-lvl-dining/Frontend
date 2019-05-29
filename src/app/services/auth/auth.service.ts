@@ -12,7 +12,7 @@ export class AuthService {
 
   jwtHelper: JwtHelperService = new JwtHelperService();
 
-  constructor(private http: HttpClient, @Inject('API_URL') private API_URL: string, private loggedInService: LoggedInService) { }
+  constructor(private http: HttpClient, @Inject('LOGIN_API_URL') private API_URL: string, private loggedInService: LoggedInService) { }
 
   login(token: string) {
     return this.http.post<object>(this.API_URL + '/auth', { token }, { observe: 'response' })

@@ -1,0 +1,29 @@
+.container {
+  width: 1500px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.backendName {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.img {
+  display: inline-block;
+}
+
+.backendItem {
+  text-align: center;
+  width: 280px;
+  height: 150px;
+  padding: 50px;
+  float: left;
+  margin: 20px;
+  background-color: lightgray;
+  border-radius: 50px;
+}
+
+.backendStatus {
+}

@@ -1,0 +1,15 @@
+<div class="container">
+  <div *ngFor="let backend of backends">
+    <div class="backendItem">
+      <div class="backendName">
+        <div class="img" *ngIf="backend.status"> <img src="../../../assets/images/checkmark.png" height="20px"></div>
+        <div class="img" *ngIf="!backend.status"><img src="../../../assets/images/crossmark.png" height="20px"></div>
+        {{ backend.name }}
+      </div>
+      <div class="backendStatus">
+        <div *ngIf="backend.status">Running and working correctly</div>
+        <div *ngIf="!backend.status">Not working correctly</div>
+      </div>
+    </div>
+  </div>
+</div>

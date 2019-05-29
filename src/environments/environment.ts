@@ -3,9 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-    production: false,
-    API_URL: 'http://localhost:8080/promotion-1.0-SNAPSHOT/api',
-    ORDER_API_URL: 'http://localhost:8080/order/api'
+  production: false,
+
+  LOGIN_API_URL: 'http://localhost:8083/login/api',
+  PAYMENT_API_URL: 'http://localhost:8085/payment/api',
+  PROMOTION_API_URL: 'http://localhost:8086/promotion/api',
+  DELIVER_API_URL: 'http://localhost:8088/deliver/api',
+  RESERVE_API_URL: 'http://localhost:8080/reserve/api',
+  ORDER_API_URL: 'http://localhost:8084/order/api'
 };
 
 /*
