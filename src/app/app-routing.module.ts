@@ -11,6 +11,7 @@ import {ReservationComponent} from './components/reservation/reservation.compone
 import {CouponComponent} from './components/coupon/coupon.component';
 import {PortalComponent} from './components/portal/portal.component';
 import {NewProductComponent} from './components/new-product/new-product.component';
+import {LoggingComponent} from './components/logging/logging.component';
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -22,7 +23,8 @@ const routes: Routes = [
     {path: 'checkout', component: CheckoutComponent},
     {path: 'reservation', component: ReservationComponent},
     {path: 'portal', component: PortalComponent},
-    {path: 'product/add', component: NewProductComponent}
+    {path: 'product/add', component: NewProductComponent},
+    {path: 'logging', component: LoggingComponent}
 ];
 
 @NgModule({

@@ -22,6 +22,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { PortalComponent } from './components/portal/portal.component';
 import { NewProductComponent } from './components/new-product/new-product.component';
 import { MonitoringComponent } from './components/monitoring/monitoring.component';
+import { LoggingComponent } from './components/logging/logging.component';
+import { LogListComponent } from './components/log-list/log-list.component';
+import { LogItemComponent } from './components/log-item/log-item.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +44,9 @@ import { MonitoringComponent } from './components/monitoring/monitoring.componen
     PortalComponent,
     NewProductComponent,
     MonitoringComponent,
+    LoggingComponent,
+    LogListComponent,
+    LogItemComponent,
   ],
   imports: [
     BrowserModule,
