@@ -2,6 +2,7 @@ $form-width: 80%;
 $col-bg: #ffffff;
 
 .container {
+  height: 200px;
   display: block;
   text-align: center;
   font-family: PT Sans, sans-serif;
@@ -9,7 +10,6 @@ $col-bg: #ffffff;
   width: $form-width;
   min-width: 620px;
   max-width: 1000px;
-  height: 100%;
   margin: 50px auto;
   background: $col-bg;
   overflow: hidden;
@@ -19,4 +19,11 @@ $col-bg: #ffffff;
   border: 1px dotted #e1e1e1;
   width: 40%;
   margin: 0 auto 5px auto;
+}
+
+#googleButton {
+  background-color: white;
+  margin: 0 auto;
+  width: 254px;
+  height: 40px;
 }
