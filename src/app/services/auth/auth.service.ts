@@ -14,8 +14,8 @@ export class AuthService {
 
   constructor(private http: HttpClient, @Inject('LOGIN_API_URL') private API_URL: string, private loggedInService: LoggedInService) { }
 
-  login(token: string) {
-    return this.http.post<object>(this.API_URL + '/auth', { token }, { observe: 'response' })
+  login(token: string, provider: string) {
+    return this.http.post<object>(this.API_URL + '/auth', { token, provider }, { observe: 'response' })
       .pipe(tap((res) => {
         this.setSession(res.headers.get('Authorization').slice(7)); // Slice "Bearer "
       }));
