@@ -30,7 +30,11 @@ export class MonitoringComponent implements OnInit {
   ngOnInit() {
     this.backends.forEach((backend) => {
       // Commented until backend is working
-      this.monitoringService.ping(backend.url).subscribe(data => backend.status = data, error => { });
+      if (backend.url.indexOf('login') !== -1) {
+        this.monitoringService.ping(backend.url + '/test').subscribe(data => backend.status = data, error => { });
+      } else {
+        this.monitoringService.ping(backend.url + '/ping').subscribe(data => backend.status = data, error => { });
+      }
     });
   }
 
