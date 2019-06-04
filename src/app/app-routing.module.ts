@@ -10,7 +10,6 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ReservationComponent } from './components/reservation/reservation.component';
 import { CouponComponent } from './components/coupon/coupon.component';
 import { PortalComponent } from './components/portal/portal.component';
-import { NewProductComponent } from './components/new-product/new-product.component';
 import { MonitoringComponent } from './components/monitoring/monitoring.component';
 
 const routes: Routes = [
@@ -23,7 +22,6 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent },
   { path: 'reservation', component: ReservationComponent },
   { path: 'portal', component: PortalComponent },
-  { path: 'product/add', component: NewProductComponent },
   { path: 'monitoring', component: MonitoringComponent }
 ];
 
