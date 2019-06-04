@@ -18,7 +18,7 @@ export class ReservationComponent implements OnInit {
   constructor(private reservationService: ReservationService, private renderer: Renderer2, private formBuilder: FormBuilder) {
     this.messageForm = this.formBuilder.group({
       diningType: ['lunch', Validators.required],
-      numberOfPeople: [2, Validators.required],
+      numberOfPeople: [2, [Validators.required, Validators.min(1)]],
       date: [, Validators.required],
       courseType: ['single'],
       diningTime: ['early']

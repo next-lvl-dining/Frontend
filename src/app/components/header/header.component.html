@@ -9,7 +9,7 @@
   <div class="headerRight">
     <a *ngIf="isAdmin" class="coupon" (click)="nav('coupon')" [routerLink]="['/coupon']">Coupon</a>
     <a *ngIf="isAdmin" class="role" (click)="nav('role')" [routerLink]="['/role']">Role</a>
-    <a *ngIf="!isLoggedIn" class="header-login" (click)="nav('login')" [routerLink]="['/login']">Login</a>
+    <a *ngIf="!isLoggedIn" class="header-login" (click)="nav('header-login')" [routerLink]="['/login']">Login</a>
     <a *ngIf="isLoggedIn" class="header-logout" (click)="logout()">Logout</a>
   </div>
 </div>

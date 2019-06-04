@@ -18,8 +18,8 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
-    this.facebookInit();
     this.googleInit();
+    this.facebookInit();
   }
 
   googleInit() {
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  public attachSignin(element) {
+  attachSignin(element) {
     this.auth2.attachClickHandler(element, {},
       (googleUser) => {
         this.login(googleUser.getAuthResponse().id_token, 'Google');
