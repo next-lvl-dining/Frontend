@@ -11,7 +11,7 @@ export class MonitoringService {
   constructor(private http: HttpClient) { }
 
   ping(backend: string): Observable<boolean> {
-    return this.http.get<boolean>(backend + '/ping')
+    return this.http.get<boolean>(backend)
       .pipe(catchError(this.errorHandler));
   }
 

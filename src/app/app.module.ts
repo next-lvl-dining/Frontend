@@ -56,6 +56,7 @@ import { AdminComponent } from './components/admin/admin.component';
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     ProductService,
   { provide: 'LOGIN_API_URL', useValue: environment.LOGIN_API_URL },
+  { provide: 'LOGGING_API_URL', useValue: environment.LOGGING_API_URL },
   { provide: 'PAYMENT_API_URL', useValue: environment.PAYMENT_API_URL },
   { provide: 'PROMOTION_API_URL', useValue: environment.PROMOTION_API_URL },
   { provide: 'DELIVER_API_URL', useValue: environment.DELIVER_API_URL },
