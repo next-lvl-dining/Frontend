@@ -1,13 +1,52 @@
-<p>
-  product works!
-</p>
+<h1>
+  Manage products
+</h1>
+<div>
+  <h2>Change product</h2>
+  <select [(ngModel)]="selectedProduct" (change)="setProduct()" class="text-input" id="productC">
+    <option *ngFor="let product of products" [ngValue]="product">{{product.name}}</option>
+  </select>
+  <button type="submit" (click)="deleteProduct()">Delete product</button>
+  <br/>
+  <form [formGroup]="changeProductForm" (ngSubmit)="changeProduct()" class="form">
+
+    <div class="line"></div>
+    <label for="nameC">Name</label><br>
+    <input formControlName="name" class="text-input" id="nameC" autocomplete="off" placeholder="productName"
+           type="text"><br>
+
+    <label for="priceC">Price</label><br>
+    <input formControlName="price" class="text-input" id="priceC" autocomplete="off" placeholder="9.95"
+           type="text"><br>
+
+    <label for="vatC">VAT</label><br>
+    <input formControlName="vat" class="text-input" id="vatC" autocomplete="off" placeholder="9.0"
+           type="text"><br>
+
+
+    <label for="categoryC">Category</label><br>
+    <select formControlName="category" class="text-input" id="categoryC">
+      <option *ngFor="let category of categories" [value]="category.name">{{category.name}}</option>
+    </select>
+    <br/>
+
+    <button type="submit">Update product</button>
+
+  </form>
+
+
+</div>
 
 <div>
   <form [formGroup]="productForm" (ngSubmit)="createProduct()" class="form">
-    <h1>Add new product</h1>
+    <h2>Add new product</h2>
     <div class="line"></div>
     <label for="name">Name</label><br>
     <input formControlName="name" class="text-input" id="name" autocomplete="off" placeholder="productName"
+           type="text"><br>
+
+    <label for="price">Price</label><br>
+    <input formControlName="price" class="text-input" id="price" autocomplete="off" placeholder="9.95"
            type="text"><br>
 
     <label for="vat">VAT</label><br>
@@ -19,7 +58,6 @@
     <select formControlName="category" class="text-input" id="category">
       <option *ngFor="let category of categories" [value]="category.name">{{category.name}}</option>
     </select>
-    <button type="button">Add Category</button>
     <br/>
 
     <button type="submit">Create product</button>

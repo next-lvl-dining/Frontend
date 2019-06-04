@@ -1,9 +1,10 @@
 import {Inject, Injectable} from '@angular/core';
 
 import { Product } from '../../models/product';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
+import {Category} from '../../models/category';
 
 @Injectable()
 export class ProductService {
@@ -35,9 +36,32 @@ export class ProductService {
     return -1;
   }
 
+  createProduct(product: Product): Observable<Product>{
+    return this.http.post<Product>(this.ORDER_API_URL + '/products/new', product)
+        .pipe(catchError(this.errorHandler));
+  }
+
   getAll(): Observable<Product[]> {
     return this.http.get<Product[]>(this.ORDER_API_URL + '/products/all')
       .pipe(catchError(this.errorHandler));
+  }
+
+  updateProduct(product: Product): Observable<Product> {
+      return this.http.post<Product>(this.ORDER_API_URL + '/products/edit', product)
+          .pipe(catchError(this.errorHandler));
+  }
+
+  deleteProduct(product: Product) {
+    console.log('here');
+    console.log(product)
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      body: product
+    }
+
+    this.http.delete(this.ORDER_API_URL + '/products/delete', options).subscribe();
   }
 
   errorHandler(error: HttpErrorResponse) {

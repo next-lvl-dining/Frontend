@@ -1,3 +1,29 @@
-<p>
-  category works!
-</p>
+<h1>
+  Manage catogories
+</h1>
+<div>
+  <h2>Delete category</h2>
+
+  <label for="category">Category</label><br>
+  <select [(ngModel)]="selectedOption" class="text-input" id="category">
+  <option *ngFor="let category of categories" [value]="category.name">{{category.name}}</option>
+  </select>
+  <br/>
+  <button type="submit" (click)="deleteCategory()">Delete category</button>
+  <br/>
+
+</div>
+
+<div>
+  <form [formGroup]="categoryForm" (ngSubmit)="createCategory()" class="form">
+    <h2>Add new category</h2>
+    <div class="line"></div>
+    <label for="name">Name</label><br>
+    <input formControlName="name" class="text-input" id="name" autocomplete="off" placeholder="categoryName"
+           type="text"><br>
+
+
+
+    <button type="submit">Create category</button>
+  </form>
+</div>

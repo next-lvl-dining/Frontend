@@ -20,8 +20,10 @@ import { ReservationComponent } from './components/reservation/reservation.compo
 import { CouponComponent } from './components/coupon/coupon.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PortalComponent } from './components/portal/portal.component';
-import { NewProductComponent } from './components/new-product/new-product.component';
 import { MonitoringComponent } from './components/monitoring/monitoring.component';
+import { ProductComponent } from './components/product/product.component';
+import { CategoryComponent } from './components/category/category.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -39,8 +41,10 @@ import { MonitoringComponent } from './components/monitoring/monitoring.componen
     CouponComponent,
     HeaderComponent,
     PortalComponent,
-    NewProductComponent,
     MonitoringComponent,
+    ProductComponent,
+    CategoryComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
