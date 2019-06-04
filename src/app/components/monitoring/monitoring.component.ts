@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MonitoringService } from '../../services/monitoring/monitoring.service';
 import { Monitoring } from '../../models/monitoring';
 
@@ -9,25 +9,28 @@ import { Monitoring } from '../../models/monitoring';
 })
 export class MonitoringComponent implements OnInit {
 
-  baseUrl = 'http://localhost';
-
   backends: Monitoring[] = [
-    { name: 'Reserve', url: `${this.baseUrl}:8080`, status: true },
-    { name: 'Logging', url: `${this.baseUrl}:8082`, status: false },
-    { name: 'Login', url: `${this.baseUrl}:8083`, status: false },
-    { name: 'Order', url: `${this.baseUrl}:8084`, status: true },
-    { name: 'Payment', url: `${this.baseUrl}:8085`, status: true },
-    { name: 'Promotion', url: `${this.baseUrl}:8086`, status: false },
-    { name: 'Deliver', url: `${this.baseUrl}:8088`, status: false },
+    { name: 'Reserve', url: this.RESERVE_API_URL, status: false },
+    { name: 'Logging', url: this.LOGGING_API_URL, status: false },
+    { name: 'Login', url: this.LOGIN_API_URL, status: false },
+    { name: 'Order', url: this.ORDER_API_URL, status: false },
+    { name: 'Payment', url: this.PAYMENT_API_URL, status: false },
+    { name: 'Promotion', url: this.PROMOTION_API_URL, status: false },
+    { name: 'Deliver', url: this.DELIVER_API_URL, status: false },
   ];
 
-  constructor(private monitoringService: MonitoringService) {
+  constructor(
+    private monitoringService: MonitoringService, @Inject('RESERVE_API_URL') private RESERVE_API_URL: string,
+    @Inject('LOGGING_API_URL') private LOGGING_API_URL: string, @Inject('LOGIN_API_URL') private LOGIN_API_URL: string,
+    @Inject('ORDER_API_URL') private ORDER_API_URL: string, @Inject('PAYMENT_API_URL') private PAYMENT_API_URL: string,
+    @Inject('PROMOTION_API_URL') private PROMOTION_API_URL: string, @Inject('DELIVER_API_URL') private DELIVER_API_URL: string
+  ) {
   }
 
   ngOnInit() {
     this.backends.forEach((backend) => {
       // Commented until backend is working
-      // this.monitoringService.ping(backend.url).subscribe(data => backend.status = data, error => { });
+      this.monitoringService.ping(backend.url).subscribe(data => backend.status = data, error => { });
     });
   }
 

@@ -2,15 +2,18 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+const baseUrl = '192.168.24.110';
+
 export const environment = {
   production: false,
 
-  LOGIN_API_URL: 'http://localhost:8083/login/api',
-  PAYMENT_API_URL: 'http://localhost:8085/payment/api',
-  PROMOTION_API_URL: 'http://localhost:8086/promotion/api',
-  DELIVER_API_URL: 'http://localhost:8088/deliver/api',
-  RESERVE_API_URL: 'http://localhost:8080/reserve/api',
-  ORDER_API_URL: 'http://localhost:8084/order/api'
+  LOGIN_API_URL: `http://${baseUrl}:8083/login/api`,
+  LOGGING_API_URL: `http://${baseUrl}:8082/logging/api`,
+  PAYMENT_API_URL: `http://${baseUrl}:8085/payment/api`,
+  PROMOTION_API_URL: `http://${baseUrl}:8086/promotion/api`,
+  DELIVER_API_URL: `http://${baseUrl}:8088/deliver/api`,
+  RESERVE_API_URL: `http://${baseUrl}:8080/reserve/api`,
+  ORDER_API_URL: `http://${baseUrl}:8084/order/api`
 };
 
 /*
