@@ -10,7 +10,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class DeliveryComponent implements OnInit {
   /// Add websocket
-
+  /// create delivery
   order: DeliveryOrder;
 
   constructor(private orderService: OrderService, private route: ActivatedRoute) {
@@ -19,7 +19,6 @@ export class DeliveryComponent implements OnInit {
               this.order = dOrder;
           });
       });
-
   }
 
   ngOnInit() {
