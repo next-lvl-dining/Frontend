@@ -24,6 +24,7 @@ import { MonitoringComponent } from './components/monitoring/monitoring.componen
 import { ProductComponent } from './components/product/product.component';
 import { CategoryComponent } from './components/category/category.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { AdminComponent } from './components/admin/admin.component';
     ProductComponent,
     CategoryComponent,
     AdminComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

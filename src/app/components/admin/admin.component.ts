@@ -15,7 +15,7 @@ export class AdminComponent implements OnInit {
   }
 
   manageAccounts() {
-    this.router.navigateByUrl('/account');
+    this.router.navigateByUrl('/profile');
   }
 
   manageProducts() {

@@ -4,7 +4,6 @@ import {AuthService} from '../../services/auth/auth.service';
 import {CategoryService} from '../../services/category/category.service';
 import {Router} from '@angular/router';
 import {Category} from '../../models/category';
-import {Coupon} from '../../models/coupon';
 
 @Component({
     selector: 'app-category',
@@ -35,6 +34,7 @@ export class CategoryComponent implements OnInit {
         this.categoryService.getAllCategories().subscribe(
             data => {
                 this.categories = data;
+                //console.log(data);
             },
             error => {
                 console.error(error);

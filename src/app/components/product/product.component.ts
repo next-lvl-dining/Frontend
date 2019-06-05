@@ -67,7 +67,7 @@ export class ProductComponent implements OnInit {
                 name: this.productForm.value.name,
                 price: this.productForm.value.price,
                 vat: this.productForm.value.vat,
-                Category: category
+                category: category
             }
 
             console.log(product)
@@ -93,6 +93,7 @@ export class ProductComponent implements OnInit {
             }
 
             const product: any = {
+                id: this.selectedProduct.id,
                 name: this.changeProductForm.value.name,
                 price: this.changeProductForm.value.price,
                 vat: this.changeProductForm.value.vat,
