@@ -24,6 +24,11 @@ export class OrderService {
             .pipe(catchError(this.errorHandler));
     }
 
+    getDeliveryOrderById(orderId: string): Observable<DeliveryOrder> {
+        return this.http.get<DeliveryOrder>(this.ORDER_API_URL + '/deliveryorders/' + orderId)
+            .pipe(catchError(this.errorHandler));
+    }
+
     errorHandler(error: HttpErrorResponse) {
         return throwError(error.error || 'Server error');
     }
