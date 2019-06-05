@@ -26,7 +26,9 @@ export class AuthService {
   }
 
   private setSession(token) {
+    const decodedToken = this.jwtHelper.decodeToken(localStorage.getItem('token'));
     localStorage.setItem('token', token);
+    localStorage.setItem('id', decodedToken.id);
     this.loggedInService.isUserLoggedIn.next(true);
   }
 
