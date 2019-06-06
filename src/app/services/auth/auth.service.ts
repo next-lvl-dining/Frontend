@@ -14,8 +14,15 @@ export class AuthService {
 
   constructor(private http: HttpClient, @Inject('LOGIN_API_URL') private API_URL: string, private loggedInService: LoggedInService) { }
 
-  login(token: string, provider: string) {
-    return this.http.post<object>(this.API_URL + '/auth', { token, provider }, { observe: 'response' })
+  socialLogin(token: string, provider: string) {
+    return this.http.post<object>(this.API_URL + '/auth/social', { token, provider }, { observe: 'response' })
+      .pipe(tap((res) => {
+        this.setSession(res.headers.get('Authorization').slice(7)); // Slice "Bearer "
+      }));
+  }
+
+  login(credentials: any) {
+    return this.http.post<object>(this.API_URL + '/auth', credentials, { observe: 'response' })
       .pipe(tap((res) => {
         this.setSession(res.headers.get('Authorization').slice(7)); // Slice "Bearer "
       }));
@@ -26,6 +33,7 @@ export class AuthService {
   }
 
   private setSession(token) {
+    const decodedToken = this.jwtHelper.decodeToken(token);
     localStorage.setItem('token', token);
     this.loggedInService.isUserLoggedIn.next(true);
   }
@@ -43,6 +51,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('id');
   }
 
   public isLoggedIn() {
