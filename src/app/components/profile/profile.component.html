@@ -1,0 +1,47 @@
+<h1>Profiel gegevens bewerken</h1>
+<div>
+  <form [formGroup]="profileForm" (ngSubmit)="updateUser()" class="form">
+
+    <div class="line"></div>
+    <label for="email">Email</label><br>
+    <input formControlName="email" class="text-input" id="email" autocomplete="off" placeholder="email"
+           type="text"><br>
+
+    <label for="firstName">First name</label><br>
+    <input formControlName="firstName" class="text-input" id="firstName" autocomplete="off" placeholder="firstname"
+           type="text"><br>
+
+    <label for="lastName">Last name</label><br>
+    <input formControlName="lastName" class="text-input" id="lastName" autocomplete="off" placeholder="lastname"
+           type="text"><br>
+
+    <label for="suffix">Suffix</label><br>
+    <input formControlName="suffix" class="text-input" id="suffix" autocomplete="off" placeholder="suffix"
+           type="text"><br>
+
+    <label for="street">Street</label><br>
+    <input formControlName="street" class="text-input" id="street" autocomplete="off" placeholder="street"
+           type="text"><br>
+
+    <label for="streetNumber">Street number</label><br>
+    <input formControlName="streetNumber" class="text-input" id="streetNumber" autocomplete="off" placeholder="streetnumber"
+           type="text"><br>
+
+    <label for="city">City</label><br>
+    <input formControlName="city" class="text-input" id="city" autocomplete="off" placeholder="city"
+           type="text"><br>
+
+    <label for="zipcode">Zipcode</label><br>
+    <input formControlName="zipcode" class="text-input" id="zipcode" autocomplete="off" placeholder="zipcode"
+           type="text"><br>
+
+    <label for="phoneNumber">Phone number</label><br>
+    <input formControlName="phoneNumber" class="text-input" id="phoneNumber" autocomplete="off" placeholder="phone number"
+           type="text"><br>
+
+    <br/>
+    <button type="submit">Opslaan</button>
+
+  </form>
+
+</div>

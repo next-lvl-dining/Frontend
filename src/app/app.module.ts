@@ -20,8 +20,11 @@ import { ReservationComponent } from './components/reservation/reservation.compo
 import { CouponComponent } from './components/coupon/coupon.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PortalComponent } from './components/portal/portal.component';
-import { NewProductComponent } from './components/new-product/new-product.component';
 import { MonitoringComponent } from './components/monitoring/monitoring.component';
+import { ProductComponent } from './components/product/product.component';
+import { CategoryComponent } from './components/category/category.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -39,8 +42,11 @@ import { MonitoringComponent } from './components/monitoring/monitoring.componen
     CouponComponent,
     HeaderComponent,
     PortalComponent,
-    NewProductComponent,
     MonitoringComponent,
+    ProductComponent,
+    CategoryComponent,
+    AdminComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +58,7 @@ import { MonitoringComponent } from './components/monitoring/monitoring.componen
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     ProductService,
   { provide: 'LOGIN_API_URL', useValue: environment.LOGIN_API_URL },
+  { provide: 'LOGGING_API_URL', useValue: environment.LOGGING_API_URL },
   { provide: 'PAYMENT_API_URL', useValue: environment.PAYMENT_API_URL },
   { provide: 'PROMOTION_API_URL', useValue: environment.PROMOTION_API_URL },
   { provide: 'DELIVER_API_URL', useValue: environment.DELIVER_API_URL },
