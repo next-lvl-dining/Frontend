@@ -47,6 +47,11 @@ export class ReservationComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
 
+    if (localStorage.getItem('id') == null) {
+      alert('Log in to create a reservation');
+      return;
+    }
+
     if (this.messageForm.invalid) {
       alert('Please fill all fields');
       return;
@@ -75,7 +80,7 @@ export class ReservationComponent implements OnInit {
     }
 
     const reservation: Reservation = {
-      userID: '1',
+      userID: localStorage.getItem('id'),
       nrofPeople: this.messageForm.value.numberOfPeople,
       date: new Date(this.messageForm.value.date),
       timeSlots: timeslot
