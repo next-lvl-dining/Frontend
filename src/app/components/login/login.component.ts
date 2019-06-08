@@ -1,25 +1,57 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/user/user.service';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 declare const FB: any;
 declare const gapi: any;
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, AfterViewInit {
 
   public auth2: any;
+  messageForm: FormGroup;
+  submitted = false;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {
+    this.messageForm = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
 
   ngOnInit() {
-    this.googleInit();
     this.facebookInit();
+  }
+
+  ngAfterViewInit() {
+    // this.googleInit();
+  }
+
+  onSubmit() {
+    this.submitted = true;
+
+    if (this.messageForm.invalid) {
+      alert('Fill in the required fields please');
+      return;
+    }
+
+    this.authService.login({ email: this.messageForm.controls.email.value, password: this.messageForm.controls.password.value })
+      .subscribe((data) => {
+        this.nav('/reservation');
+      },
+        error => {
+          if (error.status === 400) {
+            alert('Wrong username/password combination');
+          } else {
+            alert('Login went wrong');
+          }
+        });
   }
 
   googleInit() {
@@ -29,6 +61,7 @@ export class LoginComponent implements OnInit {
         cookiepolicy: 'single_host_origin',
         scope: 'profile email'
       });
+
       this.attachSignin(document.getElementById('googleButton'));
     });
   }
@@ -43,23 +76,43 @@ export class LoginComponent implements OnInit {
   }
 
   facebookInit() {
-    FB.init({
-      appId: '614405052374313',
-      xfbml: true,
-      version: 'v3.2'
-    });
 
-    FB.getLoginStatus(response => {
-      this.login(response.authResponse.accessToken, 'Facebook');
-    });
+    (window as any).fbAsyncInit = () => {
+      FB.init({
+        appId: '614405052374313',
+        cookie: true,
+        xfbml: true,
+        version: 'v3.2'
+      });
+      FB.AppEvents.logPageView();
+
+      FB.getLoginStatus(response => {
+        this.login(response.authResponse.accessToken, 'Facebook');
+      });
+
+    };
+
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) { return; }
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/en_US/sdk.js';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    FB.XFBML.parse();
   }
 
   login(token: string, provider: string) {
-    this.authService.login(token, provider).subscribe(
+    this.authService.socialLogin(token, provider).subscribe(
       data => {
-        // this.router.navigateByUrl('/role');
+        this.nav('/reservation');
       },
       error => { console.log(error); });
+  }
+
+  nav(location: string) {
+    this.router.navigateByUrl(location);
   }
 
 }
