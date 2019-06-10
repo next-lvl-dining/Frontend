@@ -35,7 +35,7 @@ export class CouponComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (!this.authService.isAdmin()) {
+    if (!this.authService.hasRole('admin')) {
       alert('Login as admin to continue');
       this.router.navigateByUrl('/login');
     } else {

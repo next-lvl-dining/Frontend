@@ -39,12 +39,12 @@ export class AuthService {
     this.loggedInService.isUserLoggedIn.next(true);
   }
 
-  isAdmin(): boolean {
+  hasRole(role: string): boolean {
     if (!this.isLoggedIn()) {
       return false;
     }
     const decodedToken = this.jwtHelper.decodeToken(localStorage.getItem('token'));
-    if (decodedToken.roles.indexOf('admin') !== -1) {
+    if (decodedToken.roles.indexOf(role) !== -1) {
       return true;
     }
     return false;

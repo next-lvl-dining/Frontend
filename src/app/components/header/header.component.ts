@@ -9,6 +9,8 @@ import { LoggedInService } from 'src/app/services/loggedIn/logged-in.service';
 })
 export class HeaderComponent implements OnInit {
   isAdmin = false;
+  isTable = false;
+  isUser = false;
   isLoggedIn = false;
 
   constructor(private authService: AuthService, private loggedInService: LoggedInService, private renderer: Renderer2) { }
@@ -21,8 +23,14 @@ export class HeaderComponent implements OnInit {
   }
 
   updateHeader() {
-    if (this.authService.isAdmin()) {
+    if (this.authService.hasRole('admin')) {
       this.isAdmin = true;
+    }
+    if (this.authService.hasRole('table')) {
+      this.isTable = true;
+    }
+    if (this.authService.hasRole('user')) {
+      this.isUser = true;
     }
     if (this.authService.isLoggedIn()) {
       this.isLoggedIn = true;

@@ -3,9 +3,13 @@
     <div *ngIf="isAdmin">
       <a class="coupon" (click)="nav('coupon')" [routerLink]="['/coupon']">Coupon</a>
       <a class="role" (click)="nav('role')" [routerLink]="['/role']">Role</a>
+      <a class="monitoring" (click)="nav('monitoring')" [routerLink]="['/monitoring']">Monitoring</a>
       <a class="portal" (click)="nav('portal')" [routerLink]="['/portal']">Portal</a>
     </div>
-    <div *ngIf="!isAdmin">
+    <div *ngIf="isTable">
+      <a class="order" (click)="nav('order')" [routerLink]="['/order']">Order</a>
+    </div>
+    <div *ngIf="isUser">
       <a class="order" (click)="nav('order')" [routerLink]="['/order']">Order</a>
       <a class="cart" (click)="nav('cart')" [routerLink]="['/cart']">Cart</a>
       <a class="history" (click)="nav('history')" [routerLink]="['/history']">History</a>
