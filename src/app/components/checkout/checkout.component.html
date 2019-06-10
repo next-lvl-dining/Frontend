@@ -108,3 +108,24 @@
   </div>
 </div>
 <button (click)="openCheckout()">Pay with Credit card</button>
+
+<form id="payment-form">
+  <div class="form-row">
+    <label for="name">
+      Name
+    </label>
+    <input id="name" name="name" placeholder="Richard" required>
+  </div>
+
+  <div class="form-row">
+    <label for="ideal-bank-element">
+      iDEAL Bank
+    </label>
+    <div id="ideal-bank-element">
+    </div>
+  </div>
+
+  <button (click)="idealPayment()">Submit Payment</button>
+
+  <div id="error-message" role="alert"></div>
+</form>

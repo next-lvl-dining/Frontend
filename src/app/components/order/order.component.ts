@@ -33,7 +33,7 @@ export class OrderComponent implements OnInit {
   }
   add(id: string) {
     const item: Item = {
-      product: this.productService.find(id),
+      product: this.find(id),
       quantity: 1
     };
     if (localStorage.getItem('cart') == null) {
@@ -69,5 +69,17 @@ export class OrderComponent implements OnInit {
       this.total += item.quantity;
     }
     return this.total;
+  }
+  find(id: string): Product {
+    return this.products[this.getSelectedIndex(id)];
+  }
+
+  private getSelectedIndex(id: string) {
+    for (let i = 0; i < this.products.length; i++) {
+      if (this.products[i].id === id) {
+        return i;
+      }
+    }
+    return -1;
   }
 }
