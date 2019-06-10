@@ -11,6 +11,8 @@ declare var Stripe: any;
 })
 export class CheckoutComponent implements OnInit {
   checkoutForm: FormGroup;
+  stripe = Stripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
+  idealBank: any;
 
   constructor(private formBuilder: FormBuilder, private paymentService: PaymentService) {
     this.createForm();
@@ -38,7 +40,7 @@ export class CheckoutComponent implements OnInit {
       locale: 'auto',
       token: token => {
         // gets they credit charge
-        this.paymentService.creditCheckout(token.id, '100').subscribe(
+        this.paymentService.creditCheckout(token.id, '100', token.email).subscribe(
           data => {
             // update order after that redirect to success delivery page
           },
@@ -57,11 +59,10 @@ export class CheckoutComponent implements OnInit {
   idealBanks() {
 
     // stripe client with public test key
-    const stripe = Stripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
     // calling elements
-    const elements = stripe.elements();
+    const elements = this.stripe.elements();
 
-    // needs to  moved to sccs
+    // needs to  moved to scss
     const style = {
       base: {
         padding: '10px 12px',
@@ -79,9 +80,40 @@ export class CheckoutComponent implements OnInit {
     };
 
     // creating bank
-    const idealBank = elements.create('idealBank', {style});
+    this.idealBank = elements.create('idealBank', {style});
 
     // add instance to a div
-    idealBank.mount('#ideal-bank-element');
+    this.idealBank.mount('#ideal-bank-element');
+  }
+
+  idealPayment() {
+
+    const sourceData = {
+      type: 'ideal',
+      amount: 10000,
+      currency: 'eur',
+      owner: {
+        name: 'Richard',
+      },
+      redirect: {
+        return_url: 'https://shop.example.com/crtA6B28E1',
+      },
+    };
+    this.stripe.createSource(this.idealBank, sourceData).then(result => {
+      if (result.error) {
+      console.log('error');
+      } else {
+        console.log(JSON.stringify(result));
+        this.authRedirect(result.source);
+        /*this.paymentService.creditCheckout(result.source.id, '100', 'ruud.richard@hotmail.com').subscribe(data => {
+          console.log(JSON.stringify(data));
+          this.authRedirect(result.source);
+        });*/
+      }
+      });
+  }
+
+  authRedirect(source: any) {
+    document.location.href = source.redirect.url;
   }
 }
