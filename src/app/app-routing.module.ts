@@ -15,6 +15,10 @@ import {CategoryComponent} from './components/category/category.component';
 import {AdminComponent} from './components/admin/admin.component';
 import {ProfileComponent} from './components/profile/profile.component';
 import {MonitoringComponent} from './components/monitoring/monitoring.component';
+import {HomeAdminComponent} from './components/home-admin/home-admin/home-admin.component';
+import {HomeEmployeeComponent} from './components/home-employee/home-employee/home-employee.component';
+import {HomeUserComponent} from './components/home-user/home-user/home-user.component';
+import {HomeTableComponent} from './components/home-table/home-table/home-table.component';
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -30,7 +34,11 @@ const routes: Routes = [
     {path: 'category', component: CategoryComponent},
     {path: 'admin', component: AdminComponent},
     {path: 'profile', component: ProfileComponent},
-    {path: 'monitoring', component: MonitoringComponent}
+    {path: 'monitoring', component: MonitoringComponent},
+    {path: 'home-admin', component: HomeAdminComponent},
+    {path: 'home-table', component: HomeTableComponent},
+    {path: 'home-user', component: HomeUserComponent},
+    {path: 'home-employee', component: HomeEmployeeComponent},
 ];
 
 @NgModule({

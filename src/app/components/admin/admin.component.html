@@ -1,7 +1,25 @@
-<h1>Admin Panel</h1>
+<!--<h1>Admin Panel</h1>-->
 
-<div>
-  <button (click)="manageCategories()">Manage Categories</button>
-  <button (click)="manageProducts()">Manage Products</button>
-  <button (click)="manageAccounts()">Manage Accounts</button>
+<!--<div>-->
+  <!--<button (click)="manageCategories()">Manage Categories</button>-->
+  <!--<button (click)="manageProducts()">Manage Products</button>-->
+  <!--<button (click)="manageAccounts()">Manage Accounts</button>-->
+  <!--<button (click)="manageCoupons()">Manage Coupons</button>-->
+<!--</div>-->
+
+
+<div class="header">
+  <div class="headerLeft">
+    <div>
+      <a class="coupon" (click)="nav('coupon')" [routerLink]="['/coupon']">Coupon</a>
+      <a class="role" (click)="nav('role')" [routerLink]="['/role']">Role</a>
+      <a class="product" (click)="nav('product')" [routerLink]="['/product']">Product</a>
+      <a class="category" (click)="nav('category')" [routerLink]="['/category']">Category</a>
+    </div>
+  </div>
+  <div class="headerRight">
+    <a class="profile" (click)="nav('profile')" [routerLink]="['/profile']">Profile</a>
+    <a *ngIf="!isLoggedIn" class="header-login" (click)="nav('header-login')" [routerLink]="['/login']">Login</a>
+    <a *ngIf="isLoggedIn" class="header-logout" (click)="logout()" [routerLink]="['/login']">Logout</a>
+  </div>
 </div>
