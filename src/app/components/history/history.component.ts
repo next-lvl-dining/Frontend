@@ -14,7 +14,8 @@ export class HistoryComponent implements OnInit {
     deliveryOrders: DeliveryOrder[];
 
     constructor(private orderService: OrderService) {
-
+        // todo remove
+        localStorage.setItem('userId', 'login1')
     }
 
     ngOnInit() {
@@ -30,7 +31,7 @@ export class HistoryComponent implements OnInit {
 
     getLocalOrders() {
         // todo
-        this.orderService.getAllLocalOrderFromUser('user1').subscribe(
+        this.orderService.getAllLocalOrderFromUser(localStorage.getItem('userId')).subscribe(
             data => {
                 data.map(order => {
                     order.date = convertJSONDateToString(order.date);
@@ -44,8 +45,9 @@ export class HistoryComponent implements OnInit {
 
     getDeliveryOrders() {
         // todo
-        this.orderService.getAllDeliveryOrderFromUser('user1').subscribe(
+        this.orderService.getAllDeliveryOrderFromUser(localStorage.getItem('userId')).subscribe(
             data => {
+                console.log(data);
                 data.map(order => {
                     order.date = convertJSONDateToString(order.date);
                 });

@@ -20,6 +20,16 @@ export class UserService {
       .pipe(catchError(this.errorHandler));
   }
 
+  findUserById(id: string): Observable<User> {
+    return this.http.get<User>(this.API_URL + '/users/' + id)
+        .pipe(catchError(this.errorHandler));
+  }
+
+  updateUser(user: any): Observable<object> {
+    return this.http.put(this.API_URL + '/users', user)
+        .pipe(catchError(this.errorHandler));
+  }
+
   getAll(): Observable<User[]> {
     return this.http.get<User[]>(this.API_URL + '/users/all')
       .pipe(catchError(this.errorHandler));

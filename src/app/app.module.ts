@@ -20,11 +20,14 @@ import {ReservationComponent} from './components/reservation/reservation.compone
 import {CouponComponent} from './components/coupon/coupon.component';
 import {HeaderComponent} from './components/header/header.component';
 import {PortalComponent} from './components/portal/portal.component';
-import {NewProductComponent} from './components/new-product/new-product.component';
 import {MonitoringComponent} from './components/monitoring/monitoring.component';
 import {LoggingComponent} from './components/logging/logging.component';
 import {LogListComponent} from './components/log-list/log-list.component';
 import {LogItemComponent} from './components/log-item/log-item.component';
+import { ProductComponent } from './components/product/product.component';
+import { CategoryComponent } from './components/category/category.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -42,11 +45,14 @@ import {LogItemComponent} from './components/log-item/log-item.component';
     CouponComponent,
     HeaderComponent,
     PortalComponent,
-    NewProductComponent,
     MonitoringComponent,
     LoggingComponent,
     LogListComponent,
     LogItemComponent,
+    ProductComponent,
+    CategoryComponent,
+    AdminComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,15 +61,15 @@ import {LogItemComponent} from './components/log-item/log-item.component';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     ProductService,
-    {provide: 'LOGGING_API_URL', useValue: environment.LOGGING_API_URL},
-    {provide: 'LOGIN_API_URL', useValue: environment.LOGIN_API_URL},
-    {provide: 'PAYMENT_API_URL', useValue: environment.PAYMENT_API_URL},
-    {provide: 'PROMOTION_API_URL', useValue: environment.PROMOTION_API_URL},
-    {provide: 'DELIVER_API_URL', useValue: environment.DELIVER_API_URL},
-    {provide: 'RESERVE_API_URL', useValue: environment.RESERVE_API_URL},
-    {provide: 'ORDER_API_URL', useValue: environment.ORDER_API_URL}],
+  { provide: 'LOGIN_API_URL', useValue: environment.LOGIN_API_URL },
+  { provide: 'LOGGING_API_URL', useValue: environment.LOGGING_API_URL },
+  { provide: 'PAYMENT_API_URL', useValue: environment.PAYMENT_API_URL },
+  { provide: 'PROMOTION_API_URL', useValue: environment.PROMOTION_API_URL },
+  { provide: 'DELIVER_API_URL', useValue: environment.DELIVER_API_URL },
+  { provide: 'RESERVE_API_URL', useValue: environment.RESERVE_API_URL },
+  { provide: 'ORDER_API_URL', useValue: environment.ORDER_API_URL }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

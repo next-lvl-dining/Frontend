@@ -87,7 +87,7 @@ img {
       color: #fff;
       background: #ffab00;
       font-weight: bold;
-      border-radius: 50px;
+      //border-radius: 50px;
       float: right;
       text-align: right;
       @include transition(all, .25s, linear);
@@ -101,7 +101,7 @@ img {
 
     }
     &:hover , &:focus, &:active {
-      background: #f69679;
+      background: #447cff;
 
       &:after {
         right: -10px;
@@ -185,7 +185,7 @@ img {
           padding: .5em 0 0 1em;
           text-transform: uppercase;
           &.out {
-            color: #F69679;
+            color: #447cff;
           }
         }
 
@@ -251,7 +251,7 @@ a.remove {
   padding: .5em;
   font-size: .75em;
   display: inline-block;
-  border-radius: 100%;
+  //border-radius: 100%;
   line-height: .85;
   @include transition(all, .25s, linear);
   &:hover {
@@ -289,12 +289,12 @@ a.remove {
     float: left;
     width: 15%;
     padding: .75em 0;
-    border-radius: 0 1em 1em 0;
+    border-radius: 0 0em 0em 0;
     text-align: center;
     border: 1px solid #ffab00;
     &:hover {
-      border: 1px solid #f69679;
-      background: #f69679;
+      border: 1px solid #447cff;
+      background: #447cff;
     }
   }
 }
@@ -309,7 +309,7 @@ a.remove {
     color: #fff;
     background: #ffab00;
     font-weight: bold;
-    border-radius: 50px;
+    //border-radius: 50px;
     float: right;
     text-align: right;
     @include transition(all, .25s, linear);
@@ -323,7 +323,7 @@ a.remove {
 
   }
   &:hover , &:focus, &:active {
-    background: #f69679;
+    background: #447cff;
     &:after {
       right: -10px;
     }

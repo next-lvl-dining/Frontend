@@ -1,15 +1,19 @@
 <div class="header">
   <div class="headerLeft">
-    <a class="order" (click)="nav('order')" [routerLink]="['/order']">Order</a>
-    <a class="cart" (click)="nav('cart')" [routerLink]="['/cart']">Cart</a>
-    <a class="history" (click)="nav('history')" [routerLink]="['/history']">History</a>
-    <a class="reservation" (click)="nav('reservation')" [routerLink]="['/reservation']">Reservation</a>
-    <a class="portal" (click)="nav('portal')" [routerLink]="['/portal']">Portal</a>
+    <div *ngIf="isAdmin">
+      <a class="coupon" (click)="nav('coupon')" [routerLink]="['/coupon']">Coupon</a>
+      <a class="role" (click)="nav('role')" [routerLink]="['/role']">Role</a>
+      <a class="portal" (click)="nav('portal')" [routerLink]="['/portal']">Portal</a>
+    </div>
+    <div *ngIf="!isAdmin">
+      <a class="order" (click)="nav('order')" [routerLink]="['/order']">Order</a>
+      <a class="cart" (click)="nav('cart')" [routerLink]="['/cart']">Cart</a>
+      <a class="history" (click)="nav('history')" [routerLink]="['/history']">History</a>
+      <a class="reservation" (click)="nav('reservation')" [routerLink]="['/reservation']">Reservation</a>
+    </div>
   </div>
   <div class="headerRight">
-    <a *ngIf="isAdmin" class="coupon" (click)="nav('coupon')" [routerLink]="['/coupon']">Coupon</a>
-    <a *ngIf="isAdmin" class="role" (click)="nav('role')" [routerLink]="['/role']">Role</a>
-    <a *ngIf="!isLoggedIn" class="header-login" (click)="nav('login')" [routerLink]="['/login']">Login</a>
-    <a *ngIf="isLoggedIn" class="header-logout" (click)="logout()">Logout</a>
+    <a *ngIf="!isLoggedIn" class="header-login" (click)="nav('header-login')" [routerLink]="['/login']">Login</a>
+    <a *ngIf="isLoggedIn" class="header-logout" (click)="logout()" [routerLink]="['/login']">Logout</a>
   </div>
 </div>

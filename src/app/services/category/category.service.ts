@@ -1,5 +1,5 @@
 import {Inject, Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {Category} from '../../models/category';
 import {catchError} from 'rxjs/operators';
@@ -15,6 +15,23 @@ export class CategoryService {
         private ORDER_API_URL: string
     ) {
     }
+
+    createCategory(category: Category): Observable<Category>{
+        return this.http.post<Category>(this.ORDER_API_URL + '/categories/new', category)
+            .pipe(catchError(this.errorHandler));
+    }
+
+    deleteCategory(category: Category) {
+        const options = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json'
+            }),
+            body: category
+        }
+
+        this.http.delete(this.ORDER_API_URL + '/categories/delete', options).subscribe();
+    }
+
 
     getAllCategories(): Observable<Category[]> {
         return this.http.get<Category[]>(this.ORDER_API_URL + '/categories/all')

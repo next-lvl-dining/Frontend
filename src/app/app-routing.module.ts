@@ -10,8 +10,12 @@ import {CheckoutComponent} from './components/checkout/checkout.component';
 import {ReservationComponent} from './components/reservation/reservation.component';
 import {CouponComponent} from './components/coupon/coupon.component';
 import {PortalComponent} from './components/portal/portal.component';
-import {NewProductComponent} from './components/new-product/new-product.component';
 import {LoggingComponent} from './components/logging/logging.component';
+import {ProductComponent} from './components/product/product.component';
+import {CategoryComponent} from './components/category/category.component';
+import {AdminComponent} from './components/admin/admin.component';
+import {ProfileComponent} from './components/profile/profile.component';
+import {MonitoringComponent} from './components/monitoring/monitoring.component';
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -23,7 +27,11 @@ const routes: Routes = [
     {path: 'checkout', component: CheckoutComponent},
     {path: 'reservation', component: ReservationComponent},
     {path: 'portal', component: PortalComponent},
-    {path: 'product/add', component: NewProductComponent},
+    {path: 'product', component: ProductComponent},
+    {path: 'category', component: CategoryComponent},
+    {path: 'admin', component: AdminComponent},
+    {path: 'profile', component: ProfileComponent},
+    {path: 'monitoring', component: MonitoringComponent},
     {path: 'logging', component: LoggingComponent}
 ];
 

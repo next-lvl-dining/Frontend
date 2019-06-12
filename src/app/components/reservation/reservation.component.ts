@@ -18,7 +18,7 @@ export class ReservationComponent implements OnInit {
   constructor(private reservationService: ReservationService, private renderer: Renderer2, private formBuilder: FormBuilder) {
     this.messageForm = this.formBuilder.group({
       diningType: ['lunch', Validators.required],
-      numberOfPeople: [2, Validators.required],
+      numberOfPeople: [2, [Validators.required, Validators.min(1)]],
       date: [, Validators.required],
       courseType: ['single'],
       diningTime: ['early']
@@ -46,6 +46,11 @@ export class ReservationComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+
+    if (localStorage.getItem('id') == null) {
+      alert('Log in to create a reservation');
+      return;
+    }
 
     if (this.messageForm.invalid) {
       alert('Please fill all fields');
@@ -75,7 +80,7 @@ export class ReservationComponent implements OnInit {
     }
 
     const reservation: Reservation = {
-      userID: '1',
+      userID: localStorage.getItem('id'),
       nrofPeople: this.messageForm.value.numberOfPeople,
       date: new Date(this.messageForm.value.date),
       timeSlots: timeslot

@@ -1,6 +1,22 @@
-<div class="container">
+<div class="loginContainer">
   <h1>Login</h1>
-  <div class="line"></div>
-  <div class="fb-login-button" data-size="large" data-button-type="continue_with" data-auto-logout-link="false"
-    data-use-continue-as="false" data-scope="public_profile, email"></div>
+  <div class="line"></div><br>
+  <!-- <div id="googleButton" class="g-signin2" data-width="254" data-height="40"></div><br> -->
+  <div id="facebookButton" class="fb-login-button" data-size="large" data-button-type="continue_with"
+    data-auto-logout-link="false" data-use-continue-as="false" data-scope="public_profile,email">
+  </div><br><br>
+  <div class="line"></div> <br>
+
+  <form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+    <input placeholder="Email" class="text-input" type="text" name="email" id="email" formControlName="email">
+    <br><br>
+
+    <input placeholder="Password" class="text-input" type="text" name="password" id="password"
+      formControlName="password" type="password">
+    <br><br>
+
+    <button type="submit">Log in</button>
+
+  </form>
+
 </div>
