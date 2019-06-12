@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Log} from "../../models/log";
 
 @Component({
   selector: 'app-log-list',
@@ -6,6 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./log-list.component.scss']
 })
 export class LogListComponent implements OnInit {
+
+  logs: Log[];
+
+  @Input()
+  set logList(x: Log[]) {
+    this.logs = x;
+  }
 
   constructor() { }
 

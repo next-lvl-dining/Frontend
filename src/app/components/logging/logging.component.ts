@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {ServerComponent} from "../../models/component.enum";
+import {Level} from "../../models/level.enum";
+import {LoggingService} from "../../services/logging/logging.service";
+import {Log} from "../../models/log";
 
 @Component({
   selector: 'app-logging',
@@ -7,9 +11,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoggingComponent implements OnInit {
 
-  constructor() { }
+  private logList: Log[];
+
+  private component: ServerComponent;
+  private level: Level;
+
+  private testMessage: string;
+  private testLevel: Level;
+
+  constructor(private loggingService: LoggingService) { }
 
   ngOnInit() {
+    this.loggingService.getAllLogs().subscribe(x => this.logList = x)
+  }
+
+  sendTestLog() {
+    this.loggingService.addTestLog(this.testMessage, this.testLevel).subscribe(x => this.addLogToList(x))
+  }
+
+  addLogToList(log: Log){
+    this.logList.push(log);
   }
 
 }

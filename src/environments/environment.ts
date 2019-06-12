@@ -6,6 +6,7 @@ const baseUrl = '192.168.24.110';
 export const environment = {
   production: false,
 
+  LOGGING_API_URL: `http://${baseUrl}:8082/logging/api`,
   LOGIN_API_URL: `http://${baseUrl}:8083/login/api`,
   PAYMENT_API_URL: `http://${baseUrl}:8085/payment/api`,
   PROMOTION_API_URL: `http://${baseUrl}:8086/promotion/api`,
