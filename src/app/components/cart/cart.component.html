@@ -30,12 +30,12 @@
     </ul>
   </div>
 
-  <div class="promoCode"><label for="">Have A Promo Code?</label><input type="text" name="promo" placholder="Enter Code" />
-    <a href="#" class="btn"></a></div>
+  <div *ngIf="loadCart()!= null" class="promoCode"><label for="prom">Have A Promo Code?</label><input #prom id="prom" type="text" name="promo" placholder="Enter Code" />
+    <button class="btn" (click)="validateCoupon(prom.value)"> claim</button></div>
 
-  <div class="subtotal cf">
+  <div *ngIf="loadCart()!= null" class="subtotal cf">
     <ul>
-      <li class="totalRow final"><span class="label">Total</span><span class="value">{{total}}</span></li>
+      <li class="totalRow final"><span class="label">Total</span><span class="value">€{{total}}</span></li>
       <li class="totalRow"><a href="checkout" class="btn continue">Checkout</a></li>
     </ul>
   </div>
