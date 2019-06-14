@@ -4,6 +4,20 @@
 
 <div>
 
+  <h2>Fetch logs</h2>
+  <form (ngSubmit)="fetchLogs()" #fetchLogForm="ngForm">
+
+    <select [(ngModel)]="component" class="text-input" name="component">
+      <option *ngFor="let entry of componentKeys()" [ngValue]="entry.toString()">{{entry.toString()}}</option>
+    </select>
+
+    <select [(ngModel)]="level" class="text-input" name="level">
+      <option *ngFor="let entry of levelKeys()" [ngValue]="entry.toString()">{{entry.toString()}}</option>
+    </select>
+
+    <button type="submit">Fetch</button>
+
+  </form>
 </div>
 
 <div>
@@ -14,13 +28,14 @@
   <h2>Send a test log to the logging system</h2>
   <form (ngSubmit)="sendTestLog()" #testLogForm="ngForm">
     <div class="form-group">
-      <label for="component">Component</label>
-      <input type="component" class="form-control" id="component" required [(ngModel)]="testMessage" name="component">
+      <label for="testMessage">Message</label>
+      <input type="text" class="form-control" id="testMessage" required [(ngModel)]="testMessage" name="testMessage">
     </div>
 
     <div class="form-group">
-      <label for="level">Level</label>
-      <input type="level" class="form-control" id="level" required [(ngModel)]="testLevel" name="level">
+      <select [(ngModel)]="testLevel" class="text-input" name="testLevel">
+        <option *ngFor="let entry of levelKeys()" [ngValue]="entry.toString()">{{entry.toString()}}</option>
+      </select>
     </div>
 
     <button type="submit">Send log</button>

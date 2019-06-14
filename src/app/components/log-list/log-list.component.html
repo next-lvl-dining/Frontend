@@ -4,6 +4,6 @@
 
 <div>
   <ul>
-    <li *ngFor="let log of logs"> <b>{{log.classname}}</b> <br>{{log.component}} <br> </li>
+    <li *ngFor="let log of logs"> <b>{{log.level.name}}</b> <br>{{log.message}} <br/> from component: {{log.component}}<br/> in class: {{log.className}}</li>
   </ul>
 </div>

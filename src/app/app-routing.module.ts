@@ -31,7 +31,7 @@ const routes: Routes = [
     {path: 'category', component: CategoryComponent},
     {path: 'admin', component: AdminComponent},
     {path: 'profile', component: ProfileComponent},
-    {path: 'monitoring', component: MonitoringComponent},
+    {path: 'MONITORING', component: MonitoringComponent},
     {path: 'logging', component: LoggingComponent}
 ];
 

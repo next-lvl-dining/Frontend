@@ -9,7 +9,6 @@ export const environment = {
 
   LOGGING_API_URL: `http://${baseUrl}:8082/logging/api`,
   LOGIN_API_URL: `http://${baseUrl}:8083/login/api`,
-  LOGGING_API_URL: `http://${baseUrl}:8082/logging/api`,
   PAYMENT_API_URL: `http://${baseUrl}:8085/payment/api`,
   PROMOTION_API_URL: `http://${baseUrl}:8086/promotion/api`,
   DELIVER_API_URL: `http://${baseUrl}:8088/deliver/api`,
