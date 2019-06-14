@@ -45,7 +45,7 @@ export class CategoryComponent implements OnInit {
     }
 
     checkIfAdmin() {
-        if (!this.authService.isAdmin()) {
+        if (!this.authService.hasRole('admin')) {
             alert('Login as admin to continue');
             this.router.navigateByUrl('/login');
         }
