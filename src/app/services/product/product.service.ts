@@ -42,8 +42,6 @@ export class ProductService {
     }
 
     deleteProduct(product: Product) {
-        console.log('here');
-        console.log(product);
         const options = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json'
@@ -66,5 +64,4 @@ export class ProductService {
         }
         return -1;
     }
-
 }

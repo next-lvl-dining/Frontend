@@ -32,6 +32,8 @@ export class MonitoringComponent implements OnInit {
       // Commented until backend is working
       if (backend.url.indexOf('login') !== -1) {
         this.monitoringService.ping(backend.url + '/test').subscribe(data => backend.status = data, error => { });
+      } else if (backend.url.indexOf('logging') !== -1) {
+        this.monitoringService.ping(backend.url + '/health').subscribe(data => backend.status = data, error => { });
       } else {
         this.monitoringService.ping(backend.url + '/ping').subscribe(data => backend.status = data, error => { });
       }
