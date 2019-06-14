@@ -20,13 +20,13 @@ export class CouponService {
     return this.http.get<Coupon[]>(this.API_URL + '/coupon/getall')
       .pipe(catchError(this.errorHandler));
   }
-  getCoupon(couponCode: string) {
-    return this.http.get<Coupon>(this.API_URL + '/coupon/' + couponCode)
+  useCoupon(couponCode: string) {
+    return this.http.put<Coupon>(this.API_URL + '/coupon/' + couponCode, {})
       .pipe(catchError(this.errorHandler));
   }
 
-  useCoupon(couponCode: string) {
-    return this.http.put<Coupon>(this.API_URL + '/coupon/' + couponCode, {})
+  valCoupon(couponCode: string) {
+    return this.http.get<Coupon>(this.API_URL + '/coupon/' + couponCode, {})
       .pipe(catchError(this.errorHandler));
   }
 

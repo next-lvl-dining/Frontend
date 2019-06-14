@@ -25,6 +25,7 @@ import { ProductComponent } from './components/product/product.component';
 import { CategoryComponent } from './components/category/category.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { PaidComponent } from './components/paid/paid.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     CategoryComponent,
     AdminComponent,
     ProfileComponent,
+    PaidComponent,
   ],
   imports: [
     BrowserModule,

@@ -157,3 +157,14 @@ button:hover {
   background: #447cff;
   transition: all .4s ease-in-out;
 }
+
+.input-hidden {
+  position: absolute;
+  left: -9999px;
+}
+
+input[type=radio]:checked + label>img {
+  border: 1px solid #fff;
+  box-shadow: 0 0 3px 3px #090;
+}
+

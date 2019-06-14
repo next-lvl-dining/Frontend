@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Item } from '../../models/item';
 import {CouponService} from '../../services/coupon/coupon.service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -11,11 +12,14 @@ import {CouponService} from '../../services/coupon/coupon.service';
 })
 export class CartComponent implements OnInit {
 
-  private items: Item[] = [];
-  private total = 0;
-  constructor( private couponService: CouponService
+  items: Item[] = [];
+  total = 0;
+  korting = 0;
+  coupon: string;
+  constructor( private couponService: CouponService, private router: Router
   ) { }
   ngOnInit() {
+    delete this.coupon;
     this.loadCart();
   }
 
@@ -31,6 +35,7 @@ export class CartComponent implements OnInit {
           quantity: item.quantity
         });
         this.total += item.product.price * item.quantity;
+        localStorage.setItem('total', JSON.stringify(this.total));
       }
     }
   }
@@ -49,15 +54,34 @@ export class CartComponent implements OnInit {
   }
 
   validateCoupon(couponCode: string) {
-    this.couponService.getCoupon(couponCode).subscribe(
-      data => {
-        if (data.type === 0) {
-          this.total = this.total - (this.total * (data.rate / 100));
-        } else if (data.type === 1) {
-            this.total = this.total - data.rate;
-        }
-        this.couponService.useCoupon(data.code).subscribe(d => {});
-      }
-    );
+   this.couponService.valCoupon(couponCode).subscribe(data => {
+     console.log('test', JSON.stringify(data));
+     this.coupon = couponCode;
+
+     if (data.type.toString() === 'PERCENTAGE') {
+       this.korting = Math.round((this.total * (data.rate / 100) * 100)) / 100;
+       this.total = this.total - this.korting;
+       console.log('percentage');
+     } else if (data.type.toString() === 'FLAT') {
+       this.korting = Math.round(this.korting * 100) / 100;
+       this.total = this.total - this.korting;
+       this.total = Math.round(this.total * 100) / 100;
+       console.log('flat');
+     }
+   });
+  }
+
+  checkout() {
+    if (this.coupon != null) {
+      this.couponService.useCoupon(this.coupon).subscribe( data => {
+        this.nav('/checkout');
+      });
+    } else {
+      this.nav('/checkout');
+    }
+  }
+
+  nav(location: string) {
+    this.router.navigateByUrl(location);
   }
 }

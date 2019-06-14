@@ -1,6 +1,12 @@
-import {Component, NgZone, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
-import { PaymentService } from 'src/app/services/payment/payment.service';
+import {PaymentService } from 'src/app/services/payment/payment.service';
+import {OrderService} from '../../services/order/order.service';
+import {DeliveryOrder} from '../../models/deliveryorder';
+import {OrderType} from '../../util/ordertype';
+import {OrderStatus} from '../../models/orderstatus';
+import {Address} from '../../models/address';
+import {Router} from '@angular/router';
 
 
 
@@ -15,17 +21,21 @@ export class CheckoutComponent implements OnInit {
   checkoutForm: FormGroup;
   stripe = Stripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
   idealBank: any;
-  sId: any;
-  client: any;
-  source: any;
+  paymentMethod: any;
+  address: Address;
+  total: any;
 
-  constructor(private formBuilder: FormBuilder, private paymentService: PaymentService, private ngZone: NgZone) {
+  constructor(private formBuilder: FormBuilder,
+              private paymentService: PaymentService,
+              private orderService: OrderService,
+              private router: Router) {
     this.createForm();
   }
 
   ngOnInit() {
+    this.total = localStorage.getItem('total');
+    console.log(this.total);
     this.idealBanks();
-    //  this.pollSourceStatus();
   }
 
   createForm() {
@@ -35,22 +45,75 @@ export class CheckoutComponent implements OnInit {
       email: ['', Validators.required],
       name: ['', Validators.required],
       city: ['', Validators.required],
-      phonenumber: ['', Validators.required]
+      phonenumber: ['', Validators.required],
+      nr: ['', Validators.required]
     });
   }
 
-  openCheckout() {
+  testOrderButton() {
+    const orderStatus: OrderStatus = {status: 'Paid'};
+    const address: Address = {
+      street: this.checkoutForm.value.address,
+      streetNr: this.checkoutForm.value.nr,
+      city: this.checkoutForm.value.city,
+      zipcode: this.checkoutForm.value.zipcode
+    };
+
+    const deliverOrder: DeliveryOrder = {
+      userId: localStorage.getItem('id'),
+      type: OrderType.DELIVERY,
+      totalPrice: this.total,
+      totalVat: 9,
+      paymentId: '',
+      status: orderStatus,
+      couponId: '',
+      // for delivery
+      address
+    };
+    console.log(JSON.stringify(deliverOrder.totalPrice));
+    if (this.paymentMethod === 'creditCard') {
+      console.log('test');
+      this.orderService.createAddress(address).subscribe(data => {
+        this.orderService.createDeliveryOrder(
+          deliverOrder.userId,
+          deliverOrder.totalPrice,
+          deliverOrder.totalVat,
+          deliverOrder.status
+        ).subscribe(d => {
+          this.openCheckout(deliverOrder.totalPrice);
+          console.log('success -> creditcard');
+        });
+      });
+    } else if (this.paymentMethod === 'iDeal') {
+      this.orderService.createAddress(address).subscribe(data => {
+        this.orderService.createDeliveryOrder(
+          deliverOrder.userId,
+          deliverOrder.totalPrice,
+          deliverOrder.totalVat,
+          deliverOrder.status
+        ).subscribe(d => {
+          this.idealPayment(deliverOrder.totalPrice);
+          console.log('success -> iDeal');
+        });
+      });
+      console.log('iDeal');
+    }
+  }
+
+  openCheckout(amounts: number) {
     const handler = (window as any).StripeCheckout.configure({
       // public test key to get stripe token
       key: 'pk_test_huGgDHbJfir0H6xdkZ1JI9RJ00wQBU5ZhL',
       locale: 'auto',
       token: token => {
         // gets they credit charge
-        this.paymentService.creditCheckout(token.id, '100').subscribe(
+        this.paymentService.creditCheckout(token.id, amounts.toString()).subscribe(
           data => {
-            // update order after that redirect to success delivery page
+
+            this.nav('paid');
           },
           error => {
+            this.nav('paid');
             console.log(error);
           });
       }
@@ -59,7 +122,7 @@ export class CheckoutComponent implements OnInit {
     handler.open({
       name: 'Next Level Dining',
       description: 'Food for all',
-      amount: 10000,
+      amount: amounts * 100,
       currency: 'EUR'
     });
   }
@@ -94,17 +157,17 @@ export class CheckoutComponent implements OnInit {
     this.idealBank.mount('#ideal-bank-element');
   }
 
-  idealPayment() {
+  idealPayment(amounts: number) {
 
     const sourceData = {
       type: 'ideal',
-      amount: 10000,
+      amount: amounts,
       currency: 'eur',
       owner: {
         name: 'Richard',
       },
       redirect: {
-        return_url: 'http://localhost:4200/checkout',
+        return_url: 'http://localhost:4200/paid',
       },
     };
     this.stripe.createSource(this.idealBank, sourceData).then(result => {
@@ -119,6 +182,10 @@ export class CheckoutComponent implements OnInit {
 
   authRedirect(source: any) {
     document.location.href = source.redirect.url;
+  }
+
+  nav(location: string) {
+    this.router.navigateByUrl(location);
   }
 
 }

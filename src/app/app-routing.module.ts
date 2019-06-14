@@ -15,6 +15,7 @@ import {CategoryComponent} from './components/category/category.component';
 import {AdminComponent} from './components/admin/admin.component';
 import {ProfileComponent} from './components/profile/profile.component';
 import {MonitoringComponent} from './components/monitoring/monitoring.component';
+import {PaidComponent} from './components/paid/paid.component';
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -30,7 +31,8 @@ const routes: Routes = [
     {path: 'category', component: CategoryComponent},
     {path: 'admin', component: AdminComponent},
     {path: 'profile', component: ProfileComponent},
-    {path: 'monitoring', component: MonitoringComponent}
+    {path: 'monitoring', component: MonitoringComponent},
+    {path: 'paid', component: PaidComponent}
 ];
 
 @NgModule({
