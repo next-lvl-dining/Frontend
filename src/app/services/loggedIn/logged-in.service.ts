@@ -7,4 +7,6 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable()
 export class LoggedInService {
   public isUserLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
+  public loggedInUserRole: BehaviorSubject<string> = new BehaviorSubject<string>("");
 }

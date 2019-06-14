@@ -36,6 +36,10 @@ export class PortalComponent implements OnInit {
   grafanadevelop: Portalrow;
   prometheusmaster: Portalrow;
   grafanamaster: Portalrow;
+  rabbitmqdevelop: Portalrow;
+  rabbitmqmaster: Portalrow;
+  simulationmaster: Portalrow;
+  simulationdevelop: Portalrow;
   constructor() { }
 
   ngOnInit() {
@@ -238,6 +242,30 @@ export class PortalComponent implements OnInit {
     this.grafanamaster.password = 'admin';
     this.grafanamaster.image = this.imageurl + 'grafana.png';
 
+    this.rabbitmqdevelop = new Portalrow();
+    this.rabbitmqdevelop.name = 'RabbitMQ Develop';
+    this.rabbitmqdevelop.url = 'http://192.168.24.110:15672';
+    this.rabbitmqdevelop.username = 'guest';
+    this.rabbitmqdevelop.password = 'guest';
+    this.rabbitmqdevelop.image = this.imageurl + 'rabbitmq.jpg';
+
+    this.rabbitmqmaster = new Portalrow();
+    this.rabbitmqmaster.name = 'RabbitMQ Master';
+    this.rabbitmqmaster.url = 'http://192.168.24.113:15672';
+    this.rabbitmqmaster.username = 'guest';
+    this.rabbitmqmaster.password = 'guest';
+    this.rabbitmqmaster.image = this.imageurl + 'rabbitmq.jpg';
+
+    this.simulationdevelop = new Portalrow();
+    this.simulationdevelop.name = 'Simulation Develop';
+    this.simulationdevelop.url = 'http://192.168.24.110:22';
+    this.simulationdevelop.image = this.imageurl + 'python.png';
+
+    this.simulationmaster = new Portalrow();
+    this.simulationmaster.name = 'Simulation Master';
+    this.simulationmaster.url = 'http://192.168.24.113:22';
+    this.simulationmaster.image = this.imageurl + 'python.png';
+
     this.portalrows.push(this.jenkins);
     this.portalrows.push(this.sonarqube);
     this.portalrows.push(this.databaseServer);
@@ -265,6 +293,10 @@ export class PortalComponent implements OnInit {
     this.portalrows.push(this.prometheusmaster);
     this.portalrows.push(this.grafanadevelop);
     this.portalrows.push(this.grafanamaster);
+    this.portalrows.push(this.rabbitmqdevelop);
+    this.portalrows.push(this.rabbitmqmaster);
+    this.portalrows.push(this.simulationdevelop);
+    this.portalrows.push(this.simulationmaster);
   }
 
 }
