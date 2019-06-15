@@ -30,7 +30,10 @@ import { HomeAdminComponent } from './components/home-admin/home-admin/home-admi
 import { HomeEmployeeComponent } from './components/home-employee/home-employee/home-employee.component';
 import { HomeTableComponent } from './components/home-table/home-table/home-table.component';
 import { LocaldeliveryComponent } from './components/localdelivery/localdelivery/localdelivery.component';
+import { DeliveryComponent } from './components/delivery/delivery.component';
+import { DelivererMapComponent } from './components/deliverer-map/deliverer-map.component';
 import { PaidComponent } from './components/paid/paid.component';
+import { DelivererComponent } from './components/deliverer/deliverer.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +61,10 @@ import { PaidComponent } from './components/paid/paid.component';
     HomeEmployeeComponent,
     HomeTableComponent,
     LocaldeliveryComponent,
+    DeliveryComponent,
+    DelivererMapComponent,
     PaidComponent,
+    DelivererComponent,
   ],
   imports: [
     BrowserModule,

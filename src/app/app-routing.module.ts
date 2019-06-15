@@ -19,7 +19,10 @@ import {HomeAdminComponent} from './components/home-admin/home-admin/home-admin.
 import {HomeEmployeeComponent} from './components/home-employee/home-employee/home-employee.component';
 import {HomeUserComponent} from './components/home-user/home-user/home-user.component';
 import {HomeTableComponent} from './components/home-table/home-table/home-table.component';
+import { LocaldeliveryComponent } from './components/localdelivery/localdelivery/localdelivery.component';
+import { DeliveryComponent } from './components/delivery/delivery.component';
 import {PaidComponent} from './components/paid/paid.component';
+import { DelivererComponent } from './components/deliverer/deliverer.component';
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -40,7 +43,9 @@ const routes: Routes = [
     {path: 'home-table', component: HomeTableComponent},
     {path: 'home-user', component: HomeUserComponent},
     {path: 'home-employee', component: HomeEmployeeComponent},
-    {path: 'paid', component: PaidComponent}
+    {path: 'paid', component: PaidComponent},
+    {path: 'delivery', component: DeliveryComponent},
+    {path: 'deliverer', component : DelivererComponent }
 ];
 
 @NgModule({
