@@ -35,9 +35,6 @@ export class LoggingComponent implements OnInit {
     this.loggingService.addTestLog(this.testMessage, this.testLevel).subscribe(x => this.fetchLogs())
   }
 
-  addLogToList(log: Log){
-  }
-
   fetchLogs() {
     //todo
     if(this.level != undefined && this.component != undefined){
