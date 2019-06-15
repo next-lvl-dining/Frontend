@@ -28,6 +28,12 @@ import { ProductComponent } from './components/product/product.component';
 import { CategoryComponent } from './components/category/category.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { HomeUserComponent } from './components/home-user/home-user/home-user.component';
+import { HomeAdminComponent } from './components/home-admin/home-admin/home-admin.component';
+import { HomeEmployeeComponent } from './components/home-employee/home-employee/home-employee.component';
+import { HomeTableComponent } from './components/home-table/home-table/home-table.component';
+import { LocaldeliveryComponent } from './components/localdelivery/localdelivery/localdelivery.component';
+import { PaidComponent } from './components/paid/paid.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +59,12 @@ import { ProfileComponent } from './components/profile/profile.component';
     CategoryComponent,
     AdminComponent,
     ProfileComponent,
+    HomeUserComponent,
+    HomeAdminComponent,
+    HomeEmployeeComponent,
+    HomeTableComponent,
+    LocaldeliveryComponent,
+    PaidComponent,
   ],
   imports: [
     BrowserModule,

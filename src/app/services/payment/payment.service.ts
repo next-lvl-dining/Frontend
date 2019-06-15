@@ -12,7 +12,7 @@ export class PaymentService {
   }
 
   creditCheckout(token: string, amount: string ): Observable<object> {
-    return this.http.post('http://localhost:8080/payment/api' + '/payment/card', {token, amount})
+    return this.http.post(this.API_URL + '/payment/card', {token, amount})
       .pipe(catchError(this.errorHandler));
   }
   errorHandler(error: HttpErrorResponse) {

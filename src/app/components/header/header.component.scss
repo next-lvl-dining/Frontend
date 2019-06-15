@@ -1,6 +1,18 @@
 $accent-col: #ffab00;
 $accent-light-col: #fdc657;
 
+.admin {
+  background-color: #ff3300!important;
+}
+
+.employee {
+  background-color: #447cff!important;
+}
+
+.table {
+  background-color: darkolivegreen!important;
+}
+
 .header {
   position: fixed;
   z-index: 1;

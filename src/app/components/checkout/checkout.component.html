@@ -4,7 +4,7 @@
   <div class="Address">
     <h1>Ready to eat?</h1>
     <h2>Where do you want your order to be delivered? </h2>
-    <form [formGroup]="checkoutForm" novalidate>
+    <form [formGroup]="checkoutForm" novalidate (ngSubmit)="testOrderButton()">
       <div class="inputs">
         <div class="line"></div>
         <div class="row">
@@ -12,6 +12,24 @@
             <label class="label" for="address">Address</label>
             <input formControlName="address" class="text-input address-input" id="address" />
           </div>
+          <div class="column">
+            <label class="label" for="nr">Nr:</label>
+            <input formControlName="nr" class="text-input address-input" id="nr" />
+          </div>
+        </div>
+        <div class="row">
+          <div *ngIf="checkoutForm.controls['address'].invalid &&(checkoutForm.controls['address'].dirty||checkoutForm.controls['address'].touched)" class="alert alert-danger">
+            <div *ngIf="checkoutForm.controls['address'].errors.required">
+              Address is required.
+            </div>
+          </div>
+          <div *ngIf="checkoutForm.controls['zipcode'].invalid &&(checkoutForm.controls['zipcode'].dirty||checkoutForm.controls['zipcode'].touched)" class="alert alert-danger">
+            <div *ngIf="checkoutForm.controls['zipcode'].errors.required">
+              Zipcode is required.
+            </div>
+          </div>
+        </div>
+        <div class="row">
           <div class="column">
             <label class="label" for="zipcode">Zip code</label>
             <input formControlName="zipcode" class="text-input address-input" id="zipcode" />
@@ -23,14 +41,9 @@
           </div>
         </div>
         <div class="row">
-        <div *ngIf="checkoutForm.controls['address'].invalid &&(checkoutForm.controls['address'].dirty||checkoutForm.controls['address'].touched)" class="alert alert-danger">
-          <div *ngIf="checkoutForm.controls['address'].errors.required">
-            Address is required.
-          </div>
-        </div>
-        <div *ngIf="checkoutForm.controls['zipcode'].invalid &&(checkoutForm.controls['zipcode'].dirty||checkoutForm.controls['zipcode'].touched)" class="alert alert-danger">
-          <div *ngIf="checkoutForm.controls['zipcode'].errors.required">
-            Zipcode is required.
+        <div *ngIf="checkoutForm.controls['nr'].invalid &&(checkoutForm.controls['nr'].dirty||checkoutForm.controls['nr'].touched)" class="alert alert-danger">
+          <div *ngIf="checkoutForm.controls['nr'].errors.required">
+            Nr. is required.
           </div>
         </div>
         <div *ngIf="checkoutForm.controls['city'].invalid &&(checkoutForm.controls['city'].dirty||checkoutForm.controls['city'].touched)" class="alert alert-danger">
@@ -104,6 +117,7 @@
       </div>
       <p>Form value: {{ checkoutForm.value | json }}</p>
       <p>Form status: {{ checkoutForm.status | json }}</p>
+
     </form>
   </div>
 </div>
@@ -129,3 +143,17 @@
 
   <div id="error-message" role="alert"></div>
 </form>
+
+
+
+<div>
+  <input [(ngModel)]="paymentMethod" type="radio" id="creditCard" name="payment" value="creditCard" class="input-hidden" >
+  <label for="creditCard">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Visa.svg/1200px-Visa.svg.png" width="126">
+  </label>
+
+  <input [(ngModel)]="paymentMethod" type="radio" id="iDeal" name="payment" value="iDeal" class="input-hidden">
+  <label for="iDeal">
+    <img src="https://www.cardgate.com/wp-content/uploads/iDEAL-logo-302x261.png" width="88">
+  </label>
+</div>

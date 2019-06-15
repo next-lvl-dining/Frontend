@@ -36,15 +36,17 @@ export class AuthService {
     const decodedToken = this.jwtHelper.decodeToken(token);
     localStorage.setItem('token', token);
     localStorage.setItem('id', decodedToken.id);
+    localStorage.setItem('role', decodedToken.roles)
+    console.log('role: ' + decodedToken.roles)
     this.loggedInService.isUserLoggedIn.next(true);
   }
 
-  isAdmin(): boolean {
+  hasRole(role: string): boolean {
     if (!this.isLoggedIn()) {
       return false;
     }
     const decodedToken = this.jwtHelper.decodeToken(localStorage.getItem('token'));
-    if (decodedToken.roles.indexOf('admin') !== -1) {
+    if (decodedToken.roles.indexOf(role) !== -1) {
       return true;
     }
     return false;
@@ -53,6 +55,7 @@ export class AuthService {
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('id');
+    localStorage.removeItem('role');
   }
 
   public isLoggedIn() {
