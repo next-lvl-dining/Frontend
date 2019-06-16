@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
     this.authService.login({ email: this.messageForm.controls.email.value, password: this.messageForm.controls.password.value })
       .subscribe((data) => {
-        this.nav('/reservation');
+        this.navigateAccordingToRole();
       },
         error => {
           if (error.status === 400) {
@@ -93,7 +93,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     };
 
     (function (d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
+      let js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) { return; }
       js = d.createElement(s); js.id = id;
       js.src = 'https://connect.facebook.net/en_US/sdk.js';
@@ -106,9 +106,22 @@ export class LoginComponent implements OnInit, AfterViewInit {
   login(token: string, provider: string) {
     this.authService.socialLogin(token, provider).subscribe(
       data => {
-        this.nav('/reservation');
+        this.navigateAccordingToRole();
       },
       error => { console.log(error); });
+  }
+
+  navigateAccordingToRole() {
+    const role = localStorage.getItem('role');
+    if (role === 'admin') {
+      this.nav('/role');
+    } else if (role === 'employee') {
+      this.nav('/day-reservation');
+    } else if (role === 'table') {
+      this.nav('/order');
+    } else if (role === 'user') {
+      this.nav('/reservation');
+    }
   }
 
   nav(location: string) {
