@@ -87,7 +87,7 @@ export class DelivererMapComponent implements OnInit {
     let behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(this.map));
     this.ui = H.ui.UI.createDefault(this.map, defaultLayers);
     var query = "";
-    this.deliveryOrderService.connect("ws://localhost:8080/order/websocket/1");
+    this.deliveryOrderService.connect("ws://192.168.24.110:8084/order/websocket/1");
     this.deliveryOrderService.deliveryorders.subscribe(msg => {
       this.placeMarkersForOrders(msg.deliveryOrders);
     })

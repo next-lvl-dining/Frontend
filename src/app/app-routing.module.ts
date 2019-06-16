@@ -22,6 +22,9 @@ import { HomeUserComponent } from './components/home-user/home-user/home-user.co
 import { HomeTableComponent } from './components/home-table/home-table/home-table.component';
 import { PaidComponent } from './components/paid/paid.component';
 import { DayReservationsComponent } from './components/day-reservations/day-reservations.component';
+import { DelivererComponent } from './components/deliverer/deliverer.component';
+import { DeliveryComponent } from './components/delivery/delivery.component';
+import { ManagerComponent } from './components/manager/manager.component';
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -42,7 +45,11 @@ const routes: Routes = [
     {path: 'home-table', component: HomeTableComponent},
     {path: 'home-user', component: HomeUserComponent},
     {path: 'home-employee', component: HomeEmployeeComponent},
-    {path: 'paid', component: PaidComponent}
+    {path: 'paid', component: PaidComponent},
+    {path: 'delivery', component: DeliveryComponent},
+    {path: 'deliverer', component : DelivererComponent },
+    {path: 'manager',component : ManagerComponent}
+
 ];
 
 @NgModule({

@@ -40,6 +40,16 @@ export class OrderService {
       return this.http.post<DeliveryOrder>(this.ORDER_API_URL + '/deliveryorders/new/', {userId, totalPrice, totalVat, status, address})
         .pipe(catchError(this.errorHandler));
     }
+    getAllDeliveryOrderWithStatus(status : string): Observable<DeliveryOrder[]>{
+      return this.http.get<DeliveryOrder[]>(this.ORDER_API_URL + '/deliveryorders/all/status/' + status)
+              .pipe(catchError(this.errorHandler));
+    }
+    startDelivery(id : string): Observable<Response> {
+      console.log(id);
+      return this.http.get<Response>( this.ORDER_API_URL + '/deliveryorders/startdelivery/' + id)
+              .pipe(catchError(this.errorHandler));
+    }
+
 
   createAddress(address: Address): Observable<Address> {
     return this.http.post<Address>(this.ORDER_API_URL + '/addresses/new/', address)
