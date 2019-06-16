@@ -2,6 +2,8 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {HttpResponse} from "@angular/common/http";
+import {log} from "util";
 
 declare const FB: any;
 declare const gapi: any;

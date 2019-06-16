@@ -4,7 +4,6 @@ import { throwError, Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { LoggedInService } from '../loggedIn/logged-in.service';
-import {log} from "util";
 
 @Injectable({
   providedIn: 'root'
@@ -18,14 +17,14 @@ export class AuthService {
   socialLogin(token: string, provider: string) {
     return this.http.post<object>(this.API_URL + '/auth/social', { token, provider }, { observe: 'response' })
       .pipe(tap((res) => {
-        log("got response with: " + res.headers.get('Authorization')); // Slice "Bearer "
+        this.setSession(res.headers.get('Authorization').slice(7)); // Slice "Bearer "
       }));
   }
 
   login(credentials: any) {
     return this.http.post<object>(this.API_URL + '/auth', credentials, { observe: 'response' })
       .pipe(tap((res) => {
-        log("got response with: " + res.headers.get('Authorization')); // Slice "Bearer "
+        this.setSession(res.headers.get('Authorization').slice(7)); // Slice "Bearer "
       }));
   }
 
@@ -33,7 +32,7 @@ export class AuthService {
     return throwError(error.error || 'Server error');
   }
 
-  setSession(token) {
+  private setSession(token) {
     const decodedToken = this.jwtHelper.decodeToken(token);
     localStorage.setItem('token', token);
     localStorage.setItem('id', decodedToken.id);
