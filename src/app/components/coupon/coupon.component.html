@@ -32,6 +32,7 @@
   <table>
     <tr>
       <th>Code</th>
+      <th>Uses</th>
       <th>Max Uses</th>
       <th>Rate</th>
       <th>Type</th>
@@ -40,6 +41,7 @@
     </tr>
     <tr *ngFor="let coupon of coupons">
       <td>{{coupon.code}}</td>
+      <td>{{coupon.uses}}</td>
       <td>{{coupon.maxUses}}</td>
       <td>{{coupon.rate}}</td>
       <td>{{coupon.type}}</td>

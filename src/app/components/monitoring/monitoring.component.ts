@@ -1,6 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MonitoringService } from '../../services/monitoring/monitoring.service';
 import { Monitoring } from '../../models/monitoring';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-monitoring',
@@ -23,11 +25,16 @@ export class MonitoringComponent implements OnInit {
     private monitoringService: MonitoringService, @Inject('RESERVE_API_URL') private RESERVE_API_URL: string,
     @Inject('LOGGING_API_URL') private LOGGING_API_URL: string, @Inject('LOGIN_API_URL') private LOGIN_API_URL: string,
     @Inject('ORDER_API_URL') private ORDER_API_URL: string, @Inject('PAYMENT_API_URL') private PAYMENT_API_URL: string,
-    @Inject('PROMOTION_API_URL') private PROMOTION_API_URL: string, @Inject('DELIVER_API_URL') private DELIVER_API_URL: string
+    @Inject('PROMOTION_API_URL') private PROMOTION_API_URL: string, @Inject('DELIVER_API_URL') private DELIVER_API_URL: string,
+    private authService: AuthService, private router: Router
   ) {
   }
 
   ngOnInit() {
+    if (!this.authService.hasRole('admin')) {
+      alert('Login as admin to continue');
+      this.router.navigateByUrl('/login');
+    }
     this.backends.forEach((backend) => {
       // Commented until backend is working
       if (backend.url.indexOf('login') !== -1) {

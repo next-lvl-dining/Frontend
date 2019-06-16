@@ -34,6 +34,7 @@ import { HomeEmployeeComponent } from './components/home-employee/home-employee/
 import { HomeTableComponent } from './components/home-table/home-table/home-table.component';
 import { LocaldeliveryComponent } from './components/localdelivery/localdelivery/localdelivery.component';
 import { PaidComponent } from './components/paid/paid.component';
+import { DayReservationsComponent } from './components/day-reservations/day-reservations.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { PaidComponent } from './components/paid/paid.component';
     HomeTableComponent,
     LocaldeliveryComponent,
     PaidComponent,
+    DayReservationsComponent,
   ],
   imports: [
     BrowserModule,

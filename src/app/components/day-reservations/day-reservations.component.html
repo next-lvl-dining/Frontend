@@ -1,0 +1,31 @@
+<div class="container">
+  <h1>Reservations by day</h1>
+  <form [formGroup]="messageForm">
+    <label for="date">Select date</label><br>
+    <input formControlName="date" class="text-input" id="date" type="date"><br>
+  </form>
+  <br>
+  <div *ngIf="reservations.length > 0">
+    <table>
+      <tr>
+        <th>User</th>
+        <th>Couverts</th>
+        <th>Time</th>
+        <th>Tables</th>
+        <th>Date</th>
+        <th>Type</th>
+      </tr>
+      <tr *ngFor="let reservation of reservations">
+        <td>{{reservation.user.email}}</td>
+        <td>{{reservation.numberOfPeople}}</td>
+        <td>{{reservation.time}}</td>
+        <td>{{reservation.diningTables}}</td>
+        <td>{{reservation.date | date:'dd-MM-yyyy'}}</td>
+        <td>{{reservation.type.toLowerCase()}}</td>
+      </tr>
+    </table>
+  </div>
+  <div *ngIf="reservations.length == 0">
+    No reservations for found for this day
+  </div>
+</div>
