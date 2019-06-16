@@ -9,29 +9,17 @@ $dot-spacing: 0.8;
 $dot-size: $form-height/10;
 $margin: 10px;
 
-%heading {
-  font-family: Arvo, sans-serif;
-}
-
 .container {
   text-align: center;
   font-family: PT Sans, sans-serif;
   font-size: 18px;
-  width: 100%;
+  width: 500px;
   min-width: 850px;
-  max-width: 1400px;
+  max-width: 1000px;
   height: 100%;
   margin: 50px auto;
   background: $col-bg;
   overflow: hidden;
-}
-
-.form {
-  min-height: 300px;
-  //max-width: 400px;
-  display: inline-block;
-  margin-top: $margin;
-  flex-grow: 1;
 }
 
 table {
@@ -110,8 +98,4 @@ button {
   &:not(:last-child) {
     margin-right: $margin / 2;
   }
-}
-
-.blocking{
-  display: inline-block;
 }

@@ -1,5 +1,5 @@
 import {Inject, Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {LocalOrder} from '../../models/localorder';
 import {catchError} from 'rxjs/operators';
@@ -8,11 +8,19 @@ import {Address} from '../../models/address';
 import {OrderStatus} from '../../models/orderstatus';
 import {Category} from '../../models/category';
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json'
+  })
+};
+
 @Injectable({
     providedIn: 'root'
 })
 export class OrderService {
 
+
+  
     constructor(private http: HttpClient, @Inject('ORDER_API_URL') private ORDER_API_URL: string) {
     }
     getAllLocalOrderFromUser(userId: string): Observable<LocalOrder[]> {
@@ -37,6 +45,16 @@ export class OrderService {
       return this.http.post<DeliveryOrder>(this.ORDER_API_URL + '/deliveryorders/new/', {userId, totalPrice, totalVat, status, address})
         .pipe(catchError(this.errorHandler));
     }
+    getAllDeliveryOrderWithStatus(status : string): Observable<DeliveryOrder[]>{
+      return this.http.get<DeliveryOrder[]>(this.ORDER_API_URL + '/deliveryorders/all/status/' + status)
+              .pipe(catchError(this.errorHandler));
+    }
+    startDelivery(id : string): Observable<Response> {
+      console.log(id);
+      return this.http.get<Response>( this.ORDER_API_URL + '/deliveryorders/startdelivery/' + id)
+              .pipe(catchError(this.errorHandler));
+    }
+
 
   createAddress(address: Address): Observable<Address> {
     return this.http.post<Address>(this.ORDER_API_URL + '/addresses/new/', address)

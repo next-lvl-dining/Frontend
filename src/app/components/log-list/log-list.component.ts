@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Log} from "../../models/log";
+import {Log} from '../../models/log';
 
 @Component({
   selector: 'app-log-list',
