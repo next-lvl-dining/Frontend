@@ -48,7 +48,7 @@ const routes: Routes = [
     {path: 'paid', component: PaidComponent},
     {path: 'delivery', component: DeliveryComponent},
     {path: 'deliverer', component : DelivererComponent },
-    {path: 'manager',component : ManagerComponent}
+    {path: 'manager', component : ManagerComponent}
 
 ];
 

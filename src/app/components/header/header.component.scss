@@ -46,4 +46,13 @@ $accent-light-col: #fdc657;
   border-bottom: 2px solid darken($accent-col, 1%);
 }
 
+img{
+  color: white;
+  -webkit-filter: brightness(0) invert(1);
+  filter: brightness(0) invert(1);
+}
 
+.filter {
+  -webkit-filter: brightness(0) invert(1);
+  filter: brightness(0) invert(1);
+}
