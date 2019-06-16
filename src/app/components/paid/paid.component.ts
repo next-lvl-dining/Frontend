@@ -34,4 +34,8 @@ export class PaidComponent implements OnInit {
     }
   }
 
+  clearCart() {
+    localStorage.removeItem('cart');
+    localStorage.removeItem('total');
+  }
 }

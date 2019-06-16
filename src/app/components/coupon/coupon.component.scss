@@ -17,8 +17,8 @@ $margin: 10px;
   text-align: center;
   font-family: PT Sans, sans-serif;
   font-size: 18px;
-  width: $form-width;
-  min-width: 620px;
+  width: 500px;
+  min-width: 850px;
   max-width: 1000px;
   height: 100%;
   margin: 50px auto;
@@ -28,7 +28,8 @@ $margin: 10px;
 
 .form {
   min-height: 300px;
-  flex-direction: column;
+  //max-width: 400px;
+  display: inline-block;
   margin-top: $margin;
   flex-grow: 1;
 }
@@ -94,4 +95,23 @@ button {
   width: 250px;
   display: inline-block;
   cursor: pointer;
+}
+.row {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: $margin / 2;
+}
+
+
+.column {
+  width: 100%;
+
+  &:not(:last-child) {
+    margin-right: $margin / 2;
+  }
+}
+
+.blocking{
+  display: inline-block;
 }

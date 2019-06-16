@@ -71,32 +71,36 @@ export class CheckoutComponent implements OnInit {
       address
     };
     console.log(JSON.stringify(deliverOrder.totalPrice));
-    if (this.paymentMethod === 'creditCard') {
-      console.log('test');
-      this.orderService.createAddress(address).subscribe(data => {
-        this.orderService.createDeliveryOrder(
-          deliverOrder.userId,
-          deliverOrder.totalPrice,
-          deliverOrder.totalVat,
-          deliverOrder.status
-        ).subscribe(d => {
-          this.openCheckout(deliverOrder.totalPrice);
-          console.log('success -> creditcard');
+    if (this.paymentMethod != null) {
+      if (this.paymentMethod === 'creditCard') {
+        console.log('test');
+        this.orderService.createAddress(address).subscribe(data => {
+          this.orderService.createDeliveryOrder(
+            deliverOrder.userId,
+            deliverOrder.totalPrice,
+            deliverOrder.totalVat,
+            deliverOrder.status
+          ).subscribe(d => {
+            this.openCheckout(deliverOrder.totalPrice);
+            console.log('success -> creditcard');
+          });
         });
-      });
-    } else if (this.paymentMethod === 'iDeal') {
-      this.orderService.createAddress(address).subscribe(data => {
-        this.orderService.createDeliveryOrder(
-          deliverOrder.userId,
-          deliverOrder.totalPrice,
-          deliverOrder.totalVat,
-          deliverOrder.status
-        ).subscribe(d => {
-          this.idealPayment(deliverOrder.totalPrice);
-          console.log('success -> iDeal');
+      } else if (this.paymentMethod === 'iDeal') {
+        this.orderService.createAddress(address).subscribe(data => {
+          this.orderService.createDeliveryOrder(
+            deliverOrder.userId,
+            deliverOrder.totalPrice,
+            deliverOrder.totalVat,
+            deliverOrder.status
+          ).subscribe(d => {
+            this.idealPayment(deliverOrder.totalPrice);
+            console.log('success -> iDeal');
+          });
         });
-      });
-      console.log('iDeal');
+        console.log('iDeal');
+      }
+    } else {
+      alert('Please select a payment method');
     }
   }
 

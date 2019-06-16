@@ -3,17 +3,19 @@
     <h1>Create coupon</h1>
     <div class="line"></div>
     <label for="coupon">Code</label><br>
-    <input formControlName="couponCode" class="text-input" id="coupon" autocomplete="off" placeholder="ABC123"
-      type="text"><br>
+      <input formControlName="couponCode" class="text-input" id="coupon" autocomplete="off" placeholder="ABC123"
+             type="text"><br>
     <label for="date">Expiration date</label><br>
     <input formControlName="date" class="text-input" id="date" [min]="today" type="date"><br>
-    <label for="type">Type</label><br>
+
+      <label for="type">Type</label><br>
     <select formControlName="type" class="text-input" id="type">
       <option value="0">Percentage</option>
       <option value="1">Flat</option>
     </select><br>
     <label for="rate">Rate</label><br>
     <input formControlName="rate" class="text-input" id="rate" type="number"><br>
+
     <label for="maxUses">Max uses</label><br>
     <input formControlName="maxUses" class="text-input" id="rate" type="number"><br>
     <label for="user">Assign to User</label><br>

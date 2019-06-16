@@ -62,9 +62,11 @@ export class OrderComponent implements OnInit {
   cartCount(): number {
     this.total = 0;
     const cart = JSON.parse(localStorage.getItem('cart'));
-    for (const cartItem of cart) {
-      const item = JSON.parse(cartItem);
-      this.total += item.quantity;
+    if (cart != null) {
+      for (const cartItem of cart) {
+        const item = JSON.parse(cartItem);
+        this.total += item.quantity;
+      }
     }
     return this.total;
   }

@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit {
 
   updateHeader() {
     this.role = localStorage.getItem('role')
-    //this.loggedInService.loggedInUserRole.next(localStorage.getItem('role'));
+    // this.loggedInService.loggedInUserRole.next(localStorage.getItem('role'));
     if (this.authService.hasRole('admin')) {
       this.isAdmin = true;
     }
@@ -59,6 +59,6 @@ export class HeaderComponent implements OnInit {
     this.isLoggedIn = false;
     this.isAdmin = false;
     this.role = '';
-    //this.loggedInService.loggedInUserRole.next('');
+    // this.loggedInService.loggedInUserRole.next('');
   }
 }
