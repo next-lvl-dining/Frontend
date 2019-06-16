@@ -69,7 +69,7 @@ export class CartComponent implements OnInit {
        this.total = Math.round(this.total * 100) / 100;
        console.log('flat');
      }
-   });
+   }, error => alert('Coupon code: ' + couponCode + ' is not valid'));
   }
 
   checkout() {

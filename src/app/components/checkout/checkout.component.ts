@@ -117,7 +117,6 @@ export class CheckoutComponent implements OnInit {
         // gets they credit charge
         this.paymentService.creditCheckout(token.id, amounts.toString()).subscribe(
           data => {
-
             this.nav('paid');
           },
           error => {

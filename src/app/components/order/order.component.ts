@@ -5,6 +5,8 @@ import { ProductService } from '../../services/product/product.service';
 import {Item} from '../../models/item';
 import {AuthService} from '../../services/auth/auth.service';
 import {Router} from '@angular/router';
+import {Category} from '../../models/category';
+import {CategoryService} from '../../services/category/category.service';
 
 @Component({
   selector: 'app-order',
@@ -14,13 +16,19 @@ import {Router} from '@angular/router';
 export class OrderComponent implements OnInit {
 
   private products: Product[];
+  private categories: Category[];
   private items: Item[] = [];
   private total = 0;
+
   constructor(
-    private productService: ProductService, private authService: AuthService, private router: Router) {
+    private productService: ProductService,
+    private categorieService: CategoryService,
+    private authService: AuthService,
+    private router: Router) {
   }
 
   ngOnInit() {
+    this.getCategories();
     this.getAllProducts();
   }
 
@@ -81,5 +89,9 @@ export class OrderComponent implements OnInit {
       }
     }
     return -1;
+  }
+
+  private getCategories() {
+  this.categorieService.getAllCategories().subscribe( data => {this.categories = data; });
   }
 }

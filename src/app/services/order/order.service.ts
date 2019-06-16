@@ -6,6 +6,7 @@ import {catchError} from 'rxjs/operators';
 import {DeliveryOrder} from '../../models/deliveryorder';
 import {Address} from '../../models/address';
 import {OrderStatus} from '../../models/orderstatus';
+import {Category} from '../../models/category';
 
 @Injectable({
     providedIn: 'root'
@@ -24,6 +25,10 @@ export class OrderService {
         return this.http.get<DeliveryOrder[]>(this.ORDER_API_URL + '/deliveryorders/all/' + userId)
             .pipe(catchError(this.errorHandler));
     }
+  getCategories(): Observable<Category[]> {
+    return this.http.get<Category[]>(this.ORDER_API_URL + '/categories/all')
+      .pipe(catchError(this.errorHandler));
+  }
     createDeliveryOrder(userId: string,
                         totalPrice: number,
                         totalVat: number,
