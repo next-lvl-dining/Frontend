@@ -1,4 +1,5 @@
-<div #map [style.width]="width" [style.height]="height"></div>
+<div #map1 [style.width]="width" [style.height]="height"></div>
+<div *ngIf="deliveryOrders?.length > 0"> 
 <table style="width:100%">
   <tr>
     <th>OrderID</th>
@@ -24,3 +25,4 @@
     <td align="left"><button (click)="deliver()">Deliver Selected orders</button></td>
   </tr> 
 </table>
+</div>

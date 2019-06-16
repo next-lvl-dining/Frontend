@@ -17,7 +17,7 @@ export class Deliveryorderservice {
   }
 
   public connect(url: String){
-    this.deliveryorders = <Subject<DeliveryOrderEvent>>this.wsService.connect("ws://192.168.24.110:8084/order/websocket/1").pipe(map(
+    this.deliveryorders = <Subject<DeliveryOrderEvent>>this.wsService.connect(url).pipe(map(
       (response: MessageEvent): DeliveryOrderEvent => {
         console.log("Data from subscribe" + JSON.parse(response.data));
         let data = JSON.parse(response.data);

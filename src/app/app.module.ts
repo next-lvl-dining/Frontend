@@ -34,6 +34,8 @@ import { DeliveryComponent } from './components/delivery/delivery.component';
 import { DelivererMapComponent } from './components/deliverer-map/deliverer-map.component';
 import { PaidComponent } from './components/paid/paid.component';
 import { DelivererComponent } from './components/deliverer/deliverer.component';
+import { ManagerMapComponent } from './components/manager-map/manager-map.component';
+import { ManagerComponent } from './components/manager/manager.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +67,8 @@ import { DelivererComponent } from './components/deliverer/deliverer.component';
     DelivererMapComponent,
     PaidComponent,
     DelivererComponent,
+    ManagerMapComponent,
+    ManagerComponent,
   ],
   imports: [
     BrowserModule,

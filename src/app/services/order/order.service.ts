@@ -39,7 +39,7 @@ export class OrderService {
     }
     startDelivery(id : string): Observable<Response> {
       console.log(id);
-      return this.http.get<Response>( this.ORDER_API_URL +'/deliveryorders/startdelivery/' + id)
+      return this.http.get<Response>( 'http://localhost:8080/order/api/deliveryorders/startdelivery/' + id)
               .pipe(catchError(this.errorHandler));
     }
     createDeliveryOrder(userId: string, totalPrice: number, totalVat: number, status: OrderStatus): Observable<Response> {

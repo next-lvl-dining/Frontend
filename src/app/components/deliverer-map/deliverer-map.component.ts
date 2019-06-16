@@ -3,6 +3,11 @@ import { OrderService } from 'src/app/services/order/order.service';
 import { convertJSONDateToString } from 'src/app/util/DateParser';
 import { DeliveryOrder } from 'src/app/models/deliveryorder';
 import { Deliveryorderservice } from 'src/app/services/deliveryorder/deliveryorder.service';
+import { Delivery } from 'src/app/models/delivery';
+import { Route } from 'src/app/models/route';
+import { XLocation } from 'src/app/models/xlocation';
+import { Xliff } from '@angular/compiler';
+import { DeliveryService } from 'src/app/services/delivery/delivery.service';
 
 declare var H: any;
 
@@ -17,7 +22,7 @@ export class DelivererMapComponent implements OnInit {
   private deliveryOrderService: Deliveryorderservice;
 
 
-  @ViewChild("map")
+  @ViewChild("map1")
   public mapElement: ElementRef;
 
   @Input()
@@ -50,9 +55,13 @@ export class DelivererMapComponent implements OnInit {
 
   orderService: OrderService;
 
-  constructor(private delService: Deliveryorderservice,private orservice: OrderService) {
+  deliveryService : DeliveryService;
+
+
+  constructor(private delService: Deliveryorderservice, private orservice: OrderService ,private deliverySer : DeliveryService) {
     this.deliveryOrderService = delService;
     this.orderService = orservice;
+    this.deliveryService = deliverySer;
   }
 
 
@@ -78,9 +87,8 @@ export class DelivererMapComponent implements OnInit {
     let behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(this.map));
     this.ui = H.ui.UI.createDefault(this.map, defaultLayers);
     var query = "";
-    this.deliveryOrderService.connect("ws://192.168.24.110:8084/order/websocket/1");
+    this.deliveryOrderService.connect("ws://localhost:8080/order/websocket/1");
     this.deliveryOrderService.deliveryorders.subscribe(msg => {
-      console.log(msg);
       this.placeMarkersForOrders(msg.deliveryOrders);
     })
 
@@ -89,8 +97,9 @@ export class DelivererMapComponent implements OnInit {
 
   public placeMarkersForOrders(delOrders: DeliveryOrder[]) {
     var query = "";
+    this.map.removeObjects(this.map.getObjects());
     console.log("Length of delorders " + delOrders.length);
-
+    this.deliveryOrders = [];
     for (let i = 0; i < delOrders.length; i++) {
 
       query = delOrders[i].address.street + " " + delOrders[i].address.streetNr + " " + delOrders[i].address.city + " " + delOrders[i].address.zipcode;
@@ -155,7 +164,34 @@ export class DelivererMapComponent implements OnInit {
     }
   }
   deliver() {
-    
+    var orderids : String[] = [];
+    var routes : Route[] = [];
+    var startLocation : XLocation;
+    var endLocation : XLocation;
+    var empid: String;
+    console.log(this.chosenOrders);
+    for (let i = 0; i < this.chosenOrders.length; i++) {
+      if(i===0){
+        this.orderService.startDelivery(this.chosenOrders[i].id).subscribe();
+        orderids.push(this.chosenOrders[i].id);
+        startLocation = new XLocation(51.436736,5.478337);
+        endLocation = new XLocation(this.chosenOrders[i].lat,this.chosenOrders[i].lon);
+        var route = new Route(startLocation,endLocation);
+        routes.push(route);
+      }else{
+        startLocation = endLocation;
+        endLocation = new XLocation(this.chosenOrders[i].lat,this.chosenOrders[i].lon);
+        var route = new Route(startLocation,endLocation);
+        routes.push(route);
+      }
+      this.orderService.startDelivery(this.chosenOrders[i].id).subscribe();
+      empid = this.chosenOrders[i].id;
+      this.chosenOrders = [];
+    }
+    var delivery = new Delivery(empid,orderids,routes);
+    console.log("Delivery = " + delivery.routes[0].endLocation.latitude);
+    this.deliveryService.createDelivery(delivery).subscribe();
+    this.deliveryService.startSimulation(delivery).subscribe();
   }
 
 }

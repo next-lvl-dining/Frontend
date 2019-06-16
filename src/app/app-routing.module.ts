@@ -23,6 +23,7 @@ import { LocaldeliveryComponent } from './components/localdelivery/localdelivery
 import { DeliveryComponent } from './components/delivery/delivery.component';
 import {PaidComponent} from './components/paid/paid.component';
 import { DelivererComponent } from './components/deliverer/deliverer.component';
+import { ManagerComponent } from './components/manager/manager.component';
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -45,7 +46,8 @@ const routes: Routes = [
     {path: 'home-employee', component: HomeEmployeeComponent},
     {path: 'paid', component: PaidComponent},
     {path: 'delivery', component: DeliveryComponent},
-    {path: 'deliverer', component : DelivererComponent }
+    {path: 'deliverer', component : DelivererComponent },
+    {path: 'manager',component : ManagerComponent}
 ];
 
 @NgModule({

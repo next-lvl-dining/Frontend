@@ -27,7 +27,8 @@ export class SimulationService{
         return{
           lat: data.lat,
           lon: data.lon,
-          orderid: data.orderid
+          orderid: data.orderid,
+          employeeId: data.employeeId
         };
       }
     ));
