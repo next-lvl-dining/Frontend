@@ -1,11 +1,11 @@
 import {Inject, Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {Log} from "../../models/log";
-import {Observable, of, throwError} from "rxjs";
-import {catchError, tap} from "rxjs/operators";
-import {log} from "util";
-import {Level} from "../../models/level.enum";
-import {ServerComponent} from "../../models/component.enum";
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {Log} from '../../models/log';
+import {Observable, of, throwError} from 'rxjs';
+import {catchError, tap} from 'rxjs/operators';
+import {log} from 'util';
+import {Level} from '../../models/level.enum';
+import {ServerComponent} from '../../models/component.enum';
 
 @Injectable({
   providedIn: 'root'

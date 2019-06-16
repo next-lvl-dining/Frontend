@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ServerComponent} from "../../models/component.enum";
-import {Level} from "../../models/level.enum";
-import {LoggingService} from "../../services/logging/logging.service";
-import {Log} from "../../models/log";
+import {ServerComponent} from '../../models/component.enum';
+import {Level} from '../../models/level.enum';
+import {LoggingService} from '../../services/logging/logging.service';
+import {Log} from '../../models/log';
 
 @Component({
   selector: 'app-logging',
@@ -32,19 +32,19 @@ export class LoggingComponent implements OnInit {
   sendTestLog() {
     this.component = undefined;
     this.level = undefined;
-    this.loggingService.addTestLog(this.testMessage, this.testLevel).subscribe(x => this.fetchLogs())
+    this.loggingService.addTestLog(this.testMessage, this.testLevel).subscribe(x => this.fetchLogs());
   }
 
   fetchLogs() {
-    //todo
-    if(this.level != undefined && this.component != undefined){
-      this.loggingService.getLogsForComponentWithLevel(this.level, this.component).subscribe(x => this.logList = x)
-    } else if (this.level != undefined){
-      this.loggingService.getLogsWithLevel(this.level).subscribe(x => this.logList = x)
-    } else if (this.component != undefined){
-      this.loggingService.getLogsWithComponent(this.component).subscribe(x => this.logList = x)
+    // todo
+    if (this.level != undefined && this.component != undefined) {
+      this.loggingService.getLogsForComponentWithLevel(this.level, this.component).subscribe(x => this.logList = x);
+    } else if (this.level != undefined) {
+      this.loggingService.getLogsWithLevel(this.level).subscribe(x => this.logList = x);
+    } else if (this.component != undefined) {
+      this.loggingService.getLogsWithComponent(this.component).subscribe(x => this.logList = x);
     } else {
-      this.loggingService.getAllLogs().subscribe(x => this.logList = x)
+      this.loggingService.getAllLogs().subscribe(x => this.logList = x);
     }
   }
 
@@ -53,6 +53,6 @@ export class LoggingComponent implements OnInit {
   }
 
   levelKeys(): string[] {
-    return Object.keys(this.levels)
+    return Object.keys(this.levels);
   }
 }

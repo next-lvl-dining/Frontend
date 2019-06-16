@@ -1,61 +1,64 @@
-<h3>History</h3>
-<!--<app-history-search></app-history-search>-->
-<br/>
-<div>
-    <h1>LOCAL ORDERS</h1>
+<div class="container">
+  <h1>History</h1>
+  <!--<app-history-search></app-history-search>-->
+  <br />
+  <div>
+    <h3>LOCAL ORDERS</h3>
     <table>
-        <tr>
-            <th>ID</th>
-            <th>DATE</th>
-            <th>TYPE</th>
-            <th>VAT</th>
-            <th>PRICE</th>
-            <th>PAYMENT ID</th>
-            <th>STATUS</th>
-            <th>COUPON ID</th>
-            <th>TABLENUMBER</th>
-        </tr>
-        <tr *ngFor="let localorder of localOrders">
-            <td>{{localorder.id}}</td>
-            <td>{{localorder.date}}</td>
-            <td>{{localorder.type}}</td>
-            <td>{{localorder.totalVat}}</td>
-            <td>{{localorder.totalPrice}}</td>
-            <td>{{localorder.paymentId}}</td>
-            <td>{{localorder.status.status}}</td>
-            <td>{{localorder.couponId}}</td>
-            <td>{{localorder.tableNumber}}</td>
-        </tr>
+      <tr>
+        <th>ID</th>
+        <th>DATE</th>
+        <th>TYPE</th>
+        <th>VAT</th>
+        <th>PRICE</th>
+        <th>PAYMENT ID</th>
+        <th>STATUS</th>
+        <th>COUPON ID</th>
+        <th>TABLENUMBER</th>
+      </tr>
+      <tr *ngFor="let localorder of localOrders">
+        <td>{{localorder.id}}</td>
+        <td>{{localorder.date}}</td>
+        <td>{{localorder.type}}</td>
+        <td>{{localorder.totalVat}}</td>
+        <td>{{localorder.totalPrice}}</td>
+        <td>{{localorder.paymentId}}</td>
+        <td>{{localorder.status.status}}</td>
+        <td>{{localorder.couponId}}</td>
+        <td>{{localorder.tableNumber}}</td>
+      </tr>
     </table>
-</div>
-<br/>
-<div>
-    <h1>DELIVERY ORDERS</h1>
+  </div>
+  <br />
+  <div>
+    <h3>DELIVERY ORDERS</h3>
     <table>
-        <tr>
-            <th>ID</th>
-            <th>DATE</th>
-            <th>TYPE</th>
-            <th>VAT</th>
-            <th>PRICE</th>
-            <th>PAYMENT ID</th>
-            <th>STATUS</th>
-            <th>COUPON ID</th>
-            <th>ADDRESS</th>
-        </tr>
-        <tr *ngFor="let deliveryOrder of deliveryOrders">
-            <td>{{deliveryOrder.id}}</td>
-            <td>{{deliveryOrder.date}}</td>
-            <td>{{deliveryOrder.type}}</td>
-            <td>{{deliveryOrder.totalVat}}</td>
-            <td>{{deliveryOrder.totalPrice}}</td>
-            <td>{{deliveryOrder.paymentId}}</td>
-            <td>{{deliveryOrder.status.status}}</td>
-            <td>{{deliveryOrder.couponId}}</td>
-            <td>{{deliveryOrder.address.street}} {{deliveryOrder.address.streetNr}}, {{deliveryOrder.address.zipcode}}, {{deliveryOrder.address.city}}</td>
-        </tr>
+      <tr>
+        <th>ID</th>
+        <th>DATE</th>
+        <th>TYPE</th>
+        <th>VAT</th>
+        <th>PRICE</th>
+        <th>PAYMENT ID</th>
+        <th>STATUS</th>
+        <th>COUPON ID</th>
+        <th>ADDRESS</th>
+      </tr>
+      <tr *ngFor="let deliveryOrder of deliveryOrders">
+        <td>{{deliveryOrder.id}}</td>
+        <td>{{deliveryOrder.date}}</td>
+        <td>{{deliveryOrder.type}}</td>
+        <td>{{deliveryOrder.totalVat}}</td>
+        <td>{{deliveryOrder.totalPrice}}</td>
+        <td>{{deliveryOrder.paymentId}}</td>
+        <td>{{deliveryOrder.status.status}}</td>
+        <td>{{deliveryOrder.couponId}}</td>
+        <td>{{deliveryOrder.address.street}} {{deliveryOrder.address.streetNr}}, {{deliveryOrder.address.zipcode}},
+          {{deliveryOrder.address.city}}</td>
+      </tr>
     </table>
-</div>
-<div class="button">
+  </div><br>
+  <div class="button">
     <button class="add" (click)="refreshHistory()"> REFRESH</button>
+  </div>
 </div>
