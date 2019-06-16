@@ -11,23 +11,26 @@
         </div>
         <div class="menu-sidebar__content js-scrollbar1">
           <nav class="navbar-sidebar">
-                <ul class="list-unstyled navbar__sub-list js-sub-list">
-                  <li>
-                    <a class="coupon" (click)="nav('coupon')" [routerLink]="['/coupon']">Coupon</a>
-                  </li>
-                  <li>
-                    <a class="role" (click)="nav('role')" [routerLink]="['/role']">Role</a>
-                  </li>
-                  <li>
-                    <a class="product" (click)="nav('product')" [routerLink]="['/product']">Product</a>
-                  </li>
-                  <li>
-                    <a class="category" (click)="nav('category')" [routerLink]="['/category']">Category</a>
-                  </li>
-                  <li>
-                    <a class="logging" (click)="nav('logging')" [routerLink]="['/logging']">Logging</a>
-                  </li>
-                </ul>
+            <ul class="list-unstyled navbar__sub-list js-sub-list">
+              <li>
+                <a class="coupon" (click)="nav('coupon')" [routerLink]="['/coupon']">Coupon</a>
+              </li>
+              <li>
+                <a class="role" (click)="nav('role')" [routerLink]="['/role']">Role</a>
+              </li>
+              <li>
+                <a class="product" (click)="nav('product')" [routerLink]="['/product']">Product</a>
+              </li>
+              <li>
+                <a class="category" (click)="nav('category')" [routerLink]="['/category']">Category</a>
+              </li>
+              <li>
+                <a class="logging" (click)="nav('logging')" [routerLink]="['/logging']">Logging</a>
+              </li>
+              <li>
+                <a class="monitoring" (click)="nav('monitoring')" [routerLink]="['/monitoring']">Monitoring</a>
+              </li>
+            </ul>
           </nav>
         </div>
       </aside>
@@ -42,12 +45,11 @@
       <a class="order" (click)="nav('order')" [routerLink]="['/order']">Order</a>
     </div>
     <div *ngIf="role == 'employee'">
-        <a class="dayReservations" (click)="nav('dayReservations')" [routerLink]="['/day-reservation']">Reservations</a>
+      <a class="dayReservations" (click)="nav('dayReservations')" [routerLink]="['/day-reservation']">Reservations</a>
     </div>
   </div>
   <div class="headerRight">
     <a *ngIf="role == 'user'" class="profile" (click)="nav('profile')" [routerLink]="['/profile']">Profile</a>
-    <a *ngIf="role == 'admin'" class="profile">Admin</a>
     <a *ngIf="!isLoggedIn" class="header-login" (click)="nav('header-login')" [routerLink]="['/login']">Login</a>
     <a *ngIf="isLoggedIn" class="header-logout" (click)="logout()" [routerLink]="['/login']">Logout</a>
   </div>

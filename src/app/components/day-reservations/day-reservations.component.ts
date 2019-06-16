@@ -30,12 +30,11 @@ export class DayReservationsComponent implements OnInit {
   }
 
   ngOnInit() {
-    // if (!this.authService.hasRole('employee')) {
-    //   alert('Login as employee to continue');
-    //   this.router.navigateByUrl('/login');
-    // } else {
+    if (!this.authService.hasRole('employee')) {
+      alert('Login as employee to continue');
+      this.router.navigateByUrl('/login');
+    }
     this.getReservations(this.getDateString(new Date()));
-    // }
   }
 
   getDateString(date: Date): string {

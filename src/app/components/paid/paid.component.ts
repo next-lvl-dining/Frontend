@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from '../../models/item';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-paid',
@@ -10,10 +11,14 @@ export class PaidComponent implements OnInit {
 
   items: Item[] = [];
   total: number;
-  constructor() { }
+  korting: string;
+  order: string;
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.total = parseInt(localStorage.getItem('total'), 2 );
+    this.korting = localStorage.getItem('korting');
+    this.order = localStorage.getItem('orderid');
     this.loadCart();
   }
 
@@ -37,5 +42,11 @@ export class PaidComponent implements OnInit {
   clearCart() {
     localStorage.removeItem('cart');
     localStorage.removeItem('total');
+    localStorage.removeItem('korting');
+    this.nav('/delivery');
+  }
+
+  nav(location: string) {
+    this.router.navigateByUrl(location);
   }
 }

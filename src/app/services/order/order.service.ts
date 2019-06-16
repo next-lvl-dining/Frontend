@@ -24,13 +24,17 @@ export class OrderService {
         return this.http.get<DeliveryOrder[]>(this.ORDER_API_URL + '/deliveryorders/all/' + userId)
             .pipe(catchError(this.errorHandler));
     }
-    createDeliveryOrder(userId: string, totalPrice: number, totalVat: number, status: OrderStatus): Observable<Response> {
-      return this.http.post<Response>(this.ORDER_API_URL + '/deliveryorders/new/', {userId, totalPrice, totalVat, status})
+    createDeliveryOrder(userId: string,
+                        totalPrice: number,
+                        totalVat: number,
+                        status: OrderStatus,
+                        address: Address): Observable<DeliveryOrder> {
+      return this.http.post<DeliveryOrder>(this.ORDER_API_URL + '/deliveryorders/new/', {userId, totalPrice, totalVat, status, address})
         .pipe(catchError(this.errorHandler));
     }
 
-  createAddress(address: Address): Observable<Response> {
-    return this.http.post<Response>(this.ORDER_API_URL + '/addresses/new/', address)
+  createAddress(address: Address): Observable<Address> {
+    return this.http.post<Address>(this.ORDER_API_URL + '/addresses/new/', address)
       .pipe(catchError(this.errorHandler));
   }
 

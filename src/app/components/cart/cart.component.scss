@@ -299,7 +299,8 @@ a.remove {
   }
 }
 
-.btn {
+.btn {    background: #ffab00;
+  color: #fff;
   &:link , &:visited {
     text-decoration: none;
     font-family: $fontSans;

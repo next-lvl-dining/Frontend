@@ -66,8 +66,8 @@
           </div>
         </div>
         <div class="row">
-        <div *ngIf="checkoutForm.controls['entry'].invalid &&(checkoutForm.controls['entry'].dirty||checkoutForm.controls['entry'].touched)" class="alert alert-danger">
-          <div *ngIf="checkoutForm.controls['entry'].errors.required">
+        <div *ngIf="checkoutForm.controls['name'].invalid &&(checkoutForm.controls['name'].dirty||checkoutForm.controls['name'].touched)" class="alert alert-danger">
+          <div *ngIf="checkoutForm.controls['name'].errors.required">
             Name is required.
           </div>
         </div>
@@ -115,45 +115,34 @@
       <div class="">
         <button type="submit"  [disabled]="checkoutForm.invalid">ORDER AND PAY</button>
       </div>
-      <p>Form value: {{ checkoutForm.value | json }}</p>
-      <p>Form status: {{ checkoutForm.status | json }}</p>
-
     </form>
-  </div>
-</div>
-<button (click)="openCheckout()">Pay with Credit card</button>
-
-<form id="payment-form">
-  <div class="form-row">
-    <label for="name">
-      Name
-    </label>
-    <input id="name" name="name" placeholder="Richard" required>
-  </div>
-
-  <div class="form-row">
+    <div [hidden]="paymentMethod != 'iDeal'">
     <label for="ideal-bank-element">
       iDEAL Bank
     </label>
-    <div id="ideal-bank-element">
+    <div  id="ideal-bank-element">
+    </div>
     </div>
   </div>
+  <div>
+    <input [(ngModel)]="paymentMethod" type="radio" id="creditCard" name="payment" value="creditCard" class="input-hidden" >
+    <label for="creditCard">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Visa.svg/1200px-Visa.svg.png" width="126">
+    </label>
 
-  <button (click)="idealPayment()">Submit Payment</button>
+    <input [(ngModel)]="paymentMethod" type="radio" id="iDeal" name="payment" value="iDeal" class="input-hidden">
+    <label for="iDeal">
+      <img src="https://www.cardgate.com/wp-content/uploads/iDEAL-logo-302x261.png" width="88">
+    </label>
 
-  <div id="error-message" role="alert"></div>
-</form>
+  </div>
 
 
-
-<div>
-  <input [(ngModel)]="paymentMethod" type="radio" id="creditCard" name="payment" value="creditCard" class="input-hidden" >
-  <label for="creditCard">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Visa.svg/1200px-Visa.svg.png" width="126">
-  </label>
-
-  <input [(ngModel)]="paymentMethod" type="radio" id="iDeal" name="payment" value="iDeal" class="input-hidden">
-  <label for="iDeal">
-    <img src="https://www.cardgate.com/wp-content/uploads/iDEAL-logo-302x261.png" width="88">
-  </label>
 </div>
+
+
+<div class="form-row">
+
+
+</div>
+<div id="error-message" role="alert"></div>
