@@ -38,7 +38,7 @@ body {
 
 h1 {
   color: $dark;
-  margin-top: -5px;
+  margin-top: 40px;
 }
 
 h2 {
@@ -48,16 +48,16 @@ h2 {
 }
 
 .images {
-  width: 20%;
-  align-items: center;
-  margin: 5%;
+ align-items: center;
+ float: right;
+  margin-top: 30px;
 }
 
 .product {
   position: absolute;
   width: 40%;
-  height: 100%;
-  top: 10%;
+  height: 40%;
+ // top: 10%;
   left: 50%;
   align-self: center;
 }

@@ -135,7 +135,6 @@ export class CheckoutComponent implements OnInit {
   }
 
   idealBanks() {
-
     // stripe client with public test key
     // calling elements
     const elements = this.stripe.elements();
