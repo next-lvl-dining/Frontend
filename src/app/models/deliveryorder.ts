@@ -14,4 +14,6 @@ export class DeliveryOrder {
     couponId: string;
     // for delivery
     address: Address;
+    lat ?: number;
+    lon ?: number;
 }

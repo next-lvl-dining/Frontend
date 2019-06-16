@@ -2,16 +2,15 @@ import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
 import { SimulationService } from 'src/app/services/simulation/simulation.service';
 import { WebsocketService } from 'src/app/services/websocket/websocket.service';
 
+
 declare var H: any;
 
-
 @Component({
-  selector: 'app-localdelivery',
-  templateUrl: './localdelivery.component.html',
-  styleUrls: ['./localdelivery.component.scss'],
-  providers: [WebsocketService, SimulationService]
+  selector: 'app-manager-map',
+  templateUrl: './manager-map.component.html',
+  styleUrls: ['./manager-map.component.scss']
 })
-export class LocaldeliveryComponent implements OnInit {
+export class ManagerMapComponent implements OnInit {
 
   private simulatioService : SimulationService;
 
@@ -66,8 +65,7 @@ export class LocaldeliveryComponent implements OnInit {
     );
     let behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(this.map));
     this.ui = H.ui.UI.createDefault(this.map, defaultLayers);
-    var query = "";
-    this.simulatioService.connect("ws:/192.168.24.110:8088/deliver/simulation/3/websocket");
+    this.simulatioService.connect("ws:/localhost:8080/deliver/simulation/manager/websocket");
     this.simulatioService.messages.subscribe(msg => {
       if(!msg.lat.includes('stop')||!msg.lon.includes('stop')){
       var lon = msg.lon.replace(" ", "");
@@ -76,15 +74,32 @@ export class LocaldeliveryComponent implements OnInit {
       var lat = msg.lat;
       var latnumber = +lat;
       console.log("this is lon " + lonnumber + " this is lat " + latnumber);
-      console.log(latnumber);
-      console.log(lonnumber);
-      this.dropMarker({ "lat": lonnumber, "lng": latnumber }, "deliverer" + msg.orderid);}
+      console.log(msg.employeeId);
+      this.dropMarker({ "lat": lonnumber, "lng": latnumber }, "deliverer" + msg.employeeId);}
+      else{
+        this.clearFinalMarker("deliverer" + msg.employeeId);
+      }
     })
 
-
+  }
+  private clearFinalMarker(data:string){
+    var objects = this.map.getObjects();
+    for(let i = 0; i < objects.length ; i++){
+      if(objects[i].getData()==data){
+        this.map.removeObject(objects[i]);
+      }
+      
+    }
   }
   private dropMarker(coordinates: any, data: string) {
-    this.map.removeObjects(this.map.getObjects());
+    var objects = this.map.getObjects();
+    for(let i = 0; i < objects.length ; i++){
+      if(objects[i].getData()==data){
+        this.map.removeObject(objects[i]);
+      }
+      
+    }
+    //this.map.removeObjects(this.map.getObjects());
     var blueicon = new H.map.Icon("https://image.flaticon.com/icons/png/512/1332/1332184.png", { size: { w: 56, h: 56 } });
     let marker = new H.map.Marker(coordinates);
     marker.setData(data.toString());
@@ -96,7 +111,7 @@ export class LocaldeliveryComponent implements OnInit {
         this.ui.addBubble(bubble);
     }, false);
     this.map.addObject(marker);
-    this.map.setCenter({lat:coordinates.lat, lng:coordinates.lng});
+    //this.map.setCenter({lat:coordinates.lat, lng:coordinates.lng});
 }
 
 }

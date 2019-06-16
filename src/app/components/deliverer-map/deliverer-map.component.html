@@ -1,0 +1,28 @@
+<div #map1 [style.width]="width" [style.height]="height"></div>
+<div *ngIf="deliveryOrders?.length > 0"> 
+<table style="width:100%">
+  <tr>
+    <th>OrderID</th>
+    <th>UserId</th> 
+    <th>TotalPrice</th>
+    <th>Address</th>
+    <th>Delliver this order</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let o of deliveryOrders">
+    <td align="left">{{o.id}}</td>
+    <td align="left">{{o.userId}}</td>
+    <td align="left">{{o.totalPrice}}</td>
+    <td align="left">{{o.address.street}} {{o.address.streetNr}}</td>
+    <td align="left"> <input type="checkbox" (change)="checkValue($event)" name={{o.id}} value={{o.id}}> </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td align="left"><button (click)="deliver()">Deliver Selected orders</button></td>
+  </tr> 
+</table>
+</div>
