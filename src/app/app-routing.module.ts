@@ -41,7 +41,7 @@ const routes: Routes = [
     {path: 'home-table', component: HomeTableComponent},
     {path: 'home-user', component: HomeUserComponent},
     {path: 'home-employee', component: HomeEmployeeComponent},
-    {path: 'paid', component: PaidComponent}
+    {path: 'paid', component: PaidComponent},
     {path: 'logging', component: LoggingComponent}
 ];
 
