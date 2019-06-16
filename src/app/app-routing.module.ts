@@ -48,7 +48,7 @@ const routes: Routes = [
   { path: 'logging', component: LoggingComponent },
   { path: 'day-reservation', component: DayReservationsComponent },
   { path: 'table', component: TableComponent, children: [
-      { path: 'table-order-overview', component: TableOrderOverviewComponent},
+      { path: 'table-order', component: TableOrderOverviewComponent},
       { path: 'table-home', component: HomeTableComponent},
       { path: 'table-checkout', component: TableCheckoutComponent}
     ]

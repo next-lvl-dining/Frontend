@@ -1,3 +1,10 @@
 <p>
   table-checkout works!
 </p>
+<div class="container" *ngFor="let product of products">
+  <div class="product"> Item: {{product.name}} - Price: €{{product.price}}
+  </div>
+</div>
+
+<button>Back</button>
+<button>Pay</button>

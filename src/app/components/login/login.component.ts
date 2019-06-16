@@ -122,7 +122,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     } else if (role === 'employee') {
       this.nav('/day-reservation');
     } else if (role === 'table') {
-      this.nav('/table');
+      this.nav('/table/table-home');
     } else if (role === 'user') {
       this.nav('/reservation');
     }

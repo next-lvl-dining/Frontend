@@ -1,3 +1,25 @@
 <p>
   table-order-overview works!
 </p>
+<div *ngIf="orderList">
+  currently choosing {{orderList.length}} items.
+</div>
+<div *ngIf="orderedList">
+  Ordered {{orderedList.length}} items.
+</div>
+<div class="container" *ngFor="let product of productList">
+  <div class="images">
+    <img src={{product.photo}} width='250' />
+  </div>
+  <div class="product">
+    {{product.name}}
+    <p class="desc">{{product.category.name}}</p>
+    €{{product.price}}
+    <div class="buttons">
+      <button class="add" (click)="addToOrderList(product)"> ADD </button>
+    </div>
+  </div>
+</div>
+
+<button (click)="confirmOrderList()">Order selected</button> <br/>
+<button (click)="goToPayment()">Finish eating & Pay</button>

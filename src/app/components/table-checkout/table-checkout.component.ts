@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
+import {Product} from "../../models/product";
+import {ProductService} from "../../services/product/product.service";
 
 @Component({
   selector: 'app-table-checkout',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableCheckoutComponent implements OnInit {
 
-  constructor() { }
+  // todo list of ordered things
+  // todo payment
+  constructor(private router: Router,
+              private productService: ProductService) { }
 
+  products: Product[];
   ngOnInit() {
+    this.products = this.productService.getLocalProducts();
   }
 
+  navBackToOrder() {
+    this.router.navigate(['table/table-order'])
+  }
+
+  doPayment() {
+
+  }
 }
