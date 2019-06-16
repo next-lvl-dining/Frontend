@@ -51,6 +51,6 @@
   <div class="headerRight">
     <a *ngIf="role == 'user'" class="profile" (click)="nav('profile')" [routerLink]="['/profile']">Profile</a>
     <a *ngIf="!isLoggedIn" class="header-login" (click)="nav('header-login')" [routerLink]="['/login']">Login</a>
-    <a *ngIf="isLoggedIn" class="header-logout" (click)="logout()" [routerLink]="['/login']">Logout</a>
+    <a *ngIf="isLoggedIn" class="header-logout" (click)="logout()">Logout</a>
   </div>
 </div>
