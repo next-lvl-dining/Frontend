@@ -10,6 +10,7 @@ import {CheckoutComponent} from './components/checkout/checkout.component';
 import {ReservationComponent} from './components/reservation/reservation.component';
 import {CouponComponent} from './components/coupon/coupon.component';
 import {PortalComponent} from './components/portal/portal.component';
+import {LoggingComponent} from './components/logging/logging.component';
 import {ProductComponent} from './components/product/product.component';
 import {CategoryComponent} from './components/category/category.component';
 import {AdminComponent} from './components/admin/admin.component';
@@ -41,6 +42,7 @@ const routes: Routes = [
     {path: 'home-user', component: HomeUserComponent},
     {path: 'home-employee', component: HomeEmployeeComponent},
     {path: 'paid', component: PaidComponent}
+    {path: 'logging', component: LoggingComponent}
 ];
 
 @NgModule({

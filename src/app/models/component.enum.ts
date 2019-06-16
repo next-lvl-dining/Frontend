@@ -1,0 +1,10 @@
+export enum ServerComponent {
+  LOGIN = 'LOGIN',
+  MONITORING = 'MONITORING',
+  ORDER = 'ORDER',
+  PAYMENT = 'PAYMENT',
+  PROMOTION = 'PROMOTION',
+  RESERVE = 'RESERVE',
+  DELIVER = 'DELIVER',
+  LOGGING = 'LOGGING'
+}
