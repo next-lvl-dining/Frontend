@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 
 import { Product } from '../../models/product';
 import { ProductService } from '../../services/product/product.service';
-import {Item} from '../../models/item';
-import {AuthService} from '../../services/auth/auth.service';
-import {Router} from '@angular/router';
-import {Category} from '../../models/category';
-import {CategoryService} from '../../services/category/category.service';
+import { Item } from '../../models/item';
+import { AuthService } from '../../services/auth/auth.service';
+import { Router } from '@angular/router';
+import { Category } from '../../models/category';
+import { CategoryService } from '../../services/category/category.service';
 
 @Component({
   selector: 'app-order',
@@ -35,8 +35,9 @@ export class OrderComponent implements OnInit {
   getAllProducts() {
     this.productService.getAll().subscribe(data => {
       this.products = data;
-      });
+    });
   }
+
   add(id: string) {
     const item: Item = {
       product: this.find(id),
@@ -67,6 +68,7 @@ export class OrderComponent implements OnInit {
       }
     }
   }
+
   cartCount(): number {
     this.total = 0;
     const cart = JSON.parse(localStorage.getItem('cart'));
@@ -78,6 +80,7 @@ export class OrderComponent implements OnInit {
     }
     return this.total;
   }
+
   find(id: string): Product {
     return this.products[this.getSelectedIndex(id)];
   }
@@ -92,6 +95,6 @@ export class OrderComponent implements OnInit {
   }
 
   private getCategories() {
-  this.categorieService.getAllCategories().subscribe( data => {this.categories = data; });
+    this.categorieService.getAllCategories().subscribe(data => { this.categories = data; });
   }
 }

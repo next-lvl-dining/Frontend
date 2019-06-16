@@ -24,23 +24,27 @@ body {
   margin: 1% auto;
   overflow: hidden;
   width: 35%;
-  height: 350px;
+  height: 300px;
   background: $white;
+  padding: 0 45px;
   box-shadow: 1px 1px 2px rgba($dark, .5);
-
 }
 
+.category {
+  text-align: center;
+  font-size: 32px;
+  text-decoration: underline;
+}
 
 h1 {
-  font-size: 1.2em;
   color: $dark;
   margin-top: -5px;
 }
 
 h2 {
   color: $dark;
-  margin-top: -5px;
-  margin-left: 75%;
+  margin-top: 70px;
+  text-align: right;
 }
 
 .images {
@@ -63,7 +67,7 @@ h2 {
   letter-spacing: 0;
   margin-bottom: 17px;
   color: $dark;
-  font-size: .7em;
+  font-size: .9em;
   line-height: 1.6em;
   margin-right: 25px;
   text-align: justify;
@@ -75,8 +79,6 @@ button {
   display: inline-block;
   outline: 0;
   border: 0;
-  margin: -1px;
-  margin-left: 27%;
   border-radius: 2px;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -89,7 +91,7 @@ button {
 }
 
 .add {
-  width: 67%;
+  width: 100%;
 }
 
 .like {
