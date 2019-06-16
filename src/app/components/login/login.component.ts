@@ -2,6 +2,8 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {HttpResponse} from "@angular/common/http";
+import {log} from "util";
 
 declare const FB: any;
 declare const gapi: any;
@@ -43,7 +45,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
     this.authService.login({ email: this.messageForm.controls.email.value, password: this.messageForm.controls.password.value })
       .subscribe((data) => {
-        this.nav('/reservation');
+        this.nav(data.headers.get('Authorization').slice(7)); // Slice "Bearer "
       },
         error => {
           if (error.status === 400) {
@@ -106,13 +108,20 @@ export class LoginComponent implements OnInit, AfterViewInit {
   login(token: string, provider: string) {
     this.authService.socialLogin(token, provider).subscribe(
       data => {
-        this.nav('/reservation');
+        this.nav(data.headers.get('Authorization').slice(7));
       },
       error => { console.log(error); });
   }
 
-  nav(location: string) {
-    this.router.navigateByUrl(location);
+  nav(auth: string) {
+    this.authService.setSession(auth);
+    let role = localStorage.getItem('role');
+    log(role);
+    if(role === 'table'){
+      this.router.navigate(['/home-table'])
+    } else{
+      this.router.navigateByUrl('/reservation');
+    }
   }
 
 }
