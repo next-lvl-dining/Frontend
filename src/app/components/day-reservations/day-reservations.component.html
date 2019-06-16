@@ -19,9 +19,7 @@
         <td>{{reservation.user.email}}</td>
         <td>{{reservation.numberOfPeople}}</td>
         <td>{{reservation.time}}</td>
-        <td>
-          <div *ngFor="let table of reservation.diningTables">{{table}} </div>
-        </td>
+        <td>{{reservation.diningTables}}</td>
         <td>{{reservation.date | date:'dd-MM-yyyy'}}</td>
         <td>{{reservation.type.toLowerCase()}}</td>
       </tr>

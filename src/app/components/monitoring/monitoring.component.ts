@@ -28,6 +28,10 @@ export class MonitoringComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (!this.authService.hasRole('admin')) {
+      alert('Login as admin to continue');
+      this.router.navigateByUrl('/login');
+    }
     this.backends.forEach((backend) => {
       // Commented until backend is working
       if (backend.url.indexOf('login') !== -1) {

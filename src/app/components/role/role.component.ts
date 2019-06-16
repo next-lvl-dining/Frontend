@@ -22,10 +22,10 @@ export class RoleComponent implements OnInit {
   }
 
   ngOnInit() {
-    // if (!this.authService.isAdmin()) {
-    //   alert('Login as admin to continue');
-    //   this.router.navigateByUrl('/login');
-    // }
+    if (!this.authService.hasRole('admin')) {
+      alert('Login as admin to continue');
+      this.router.navigateByUrl('/login');
+    }
     this.getUsers();
     this.getRoles();
   }
