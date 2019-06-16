@@ -36,6 +36,8 @@ import { LocaldeliveryComponent } from './components/localdelivery/localdelivery
 import { PaidComponent } from './components/paid/paid.component';
 import { DayReservationsComponent } from './components/day-reservations/day-reservations.component';
 import { TableOrderOverviewComponent } from './components/table-order-overview/table-order-overview.component';
+import { TableComponent } from './components/table/table.component';
+import { TableCheckoutComponent } from './components/table-checkout/table-checkout.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +71,8 @@ import { TableOrderOverviewComponent } from './components/table-order-overview/t
     PaidComponent,
     DayReservationsComponent,
     TableOrderOverviewComponent,
+    TableComponent,
+    TableCheckoutComponent,
   ],
   imports: [
     BrowserModule,

@@ -22,6 +22,9 @@ import { HomeUserComponent } from './components/home-user/home-user/home-user.co
 import { HomeTableComponent } from './components/home-table/home-table/home-table.component';
 import { PaidComponent } from './components/paid/paid.component';
 import { DayReservationsComponent } from './components/day-reservations/day-reservations.component';
+import {TableOrderOverviewComponent} from "./components/table-order-overview/table-order-overview.component";
+import {TableComponent} from "./components/table/table.component";
+import {TableCheckoutComponent} from "./components/table-checkout/table-checkout.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -39,12 +42,17 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'monitoring', component: MonitoringComponent },
   { path: 'home-admin', component: HomeAdminComponent },
-  { path: 'home-table', component: HomeTableComponent },
   { path: 'home-user', component: HomeUserComponent },
   { path: 'home-employee', component: HomeEmployeeComponent },
   { path: 'paid', component: PaidComponent },
   { path: 'logging', component: LoggingComponent },
   { path: 'day-reservation', component: DayReservationsComponent },
+  { path: 'table', component: TableComponent, children: [
+      { path: 'table-order-overview', component: TableOrderOverviewComponent},
+      { path: 'table-home', component: HomeTableComponent},
+      { path: 'table-checkout', component: TableCheckoutComponent}
+    ]
+    },
 ];
 
 @NgModule({
