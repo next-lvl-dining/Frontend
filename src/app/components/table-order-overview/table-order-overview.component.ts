@@ -21,6 +21,7 @@ export class TableOrderOverviewComponent implements OnInit {
     log(this.productList.length + " " + this.orderedList.length + " " + this.orderList.length);
     this.productService.getAll().subscribe(x => this.productList = x);
     this.orderedList = this.productService.getLocalProducts();
+    log(this.orderedList.length)
   }
 
   addToOrderList(product: Product) {

@@ -20,9 +20,11 @@ export class ProductService {
     }
 
     getLocalProducts(): Product[] {
-        if(!this.localProducts == undefined){
+        if(this.localProducts != undefined){
+          log('returning the full list' + this.localProducts.length);
           return this.localProducts;
       } else{
+          log('returning empty list');
           return [];
         }
     }
