@@ -9,19 +9,11 @@ import { LoggedInService } from 'src/app/services/loggedIn/logged-in.service';
 })
 export class HeaderComponent implements OnInit {
   role: string;
-  isAdmin = false;
-  isTable = false;
-  isUser = false;
   isLoggedIn = false;
 
   constructor(private authService: AuthService, private loggedInService: LoggedInService, private renderer: Renderer2) { }
 
   ngOnInit() {
-    // this.loggedInService.loggedInUserRole.subscribe(value => {
-    //   console.log('loggedInUserRole: ' + value);
-    //   this.updateHeader();
-    // });
-
     this.loggedInService.isUserLoggedIn.subscribe(value => {
       this.updateHeader();
     });
@@ -29,20 +21,10 @@ export class HeaderComponent implements OnInit {
   }
 
   updateHeader() {
-    this.role = localStorage.getItem('role')
-    // this.loggedInService.loggedInUserRole.next(localStorage.getItem('role'));
-    if (this.authService.hasRole('admin')) {
-      this.isAdmin = true;
-    }
-    if (this.authService.hasRole('table')) {
-      this.isTable = true;
-    }
-    if (this.authService.hasRole('user')) {
-      this.isUser = true;
-    }
+    this.role = localStorage.getItem('role');
     if (this.authService.isLoggedIn()) {
       this.isLoggedIn = true;
-    }
+  }
   }
 
   nav(element: string) {
@@ -55,10 +37,8 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logout();
     this.isLoggedIn = false;
-    this.isAdmin = false;
     this.role = '';
-    // this.loggedInService.loggedInUserRole.next('');
+    this.authService.logout();
   }
 }

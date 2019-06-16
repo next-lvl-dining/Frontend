@@ -34,18 +34,15 @@
     </div>
     <div *ngIf="role == 'user'">
       <a class="order" (click)="nav('order')" [routerLink]="['/order']">Order</a>
-    </div>
-    <div *ngIf="isUser">
-      <a class="order" (click)="nav('order')" [routerLink]="['/order']">Order</a>
       <a class="cart" (click)="nav('cart')" [routerLink]="['/cart']">Cart</a>
       <a class="history" (click)="nav('history')" [routerLink]="['/history']">History</a>
       <a class="reservation" (click)="nav('reservation')" [routerLink]="['/reservation']">Reservation</a>
     </div>
     <div *ngIf="role == 'table'">
-      <p>Add Table Header</p>
+      <a class="order" (click)="nav('order')" [routerLink]="['/order']">Order</a>
     </div>
     <div *ngIf="role == 'employee'">
-      <p>Add Employee Header</p>
+        <a class="dayReservations" (click)="nav('dayReservations')" [routerLink]="['/day-reservation']">Reservations</a>
     </div>
   </div>
   <div class="headerRight">
