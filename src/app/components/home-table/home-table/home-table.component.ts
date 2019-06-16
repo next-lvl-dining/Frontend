@@ -10,6 +10,7 @@ export class HomeTableComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }
