@@ -21,6 +21,7 @@ export class CartComponent implements OnInit {
   ngOnInit() {
     delete this.coupon;
     this.loadCart();
+    this.korting;
   }
 
   loadCart(): void {
@@ -75,8 +76,10 @@ export class CartComponent implements OnInit {
     if (this.coupon != null) {
       this.couponService.useCoupon(this.coupon).subscribe( data => {
         this.nav('/checkout');
+        localStorage.setItem('korting', JSON.stringify(this.korting));
       });
     } else {
+      localStorage.setItem('korting', JSON.stringify(this.korting));
       this.nav('/checkout');
     }
   }

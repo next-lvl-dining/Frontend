@@ -1,33 +1,40 @@
-<p>
-  Your order and payment was succesfull.
-</p>
-<div class="cart" *ngFor="let item of items">
-  <ul class="cartWrap">
-    <li class="items odd">
-
-      <div class="infoWrap">
-        <div class="cartSection">
-          <img src="{{item.product.photo}}" alt="" class="itemImg" />
-          <h3>{{item.product.name}}</h3>
-          <p class="itemNumber">"{{item.product.desc}}"</p>
-
-          <p> {{item.quantity}} x €{{item.product.price}}</p>
-        </div>
+<div class="container">
 
 
-        <div class="prodTotal cartSection">
-          <p>€{{item.product.price * item.quantity}}</p>
-        </div>
-        <div class="cartSection removeWrap">
-          <a class="remove" (click)="remove(item.product.id)">x</a>
-        </div>
-      </div>
-    </li>
-  </ul>
+  <div class="wrap cf">
+    <p>
+      Your order and payment with id <a class="ord">{{order}}</a> was succesfull .
+    </p>
+    <div class="heading cf">
+      <h1>My Order</h1>
+    </div>
+    <div class="cart" *ngFor="let item of items">
+      <ul class="cartWrap">
+        <li class="items odd">
+
+          <div class="infoWrap">
+            <div class="cartSection">
+              <img src="{{item.product.photo}}" alt="" class="itemImg" />
+              <h3>{{item.product.name}}</h3>
+              <p class="itemNumber">"{{item.product.desc}}"</p>
+
+              <p> {{item.quantity}} x €{{item.product.price}}</p>
+            </div>
+
+
+            <div class="prodTotal cartSection">
+              <p>€{{item.product.price * item.quantity}}</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="this.total != 0" class="subtotal cf">
+      <ul>
+        <li class="totalRow final"><span class="label">Korting</span><span class="value">€{{korting}}</span></li>
+        <li class="totalRow final"><span class="label">Total</span><span class="value">€{{total}}</span></li>
+        <li class="totalRow final"><button class="btn" (click)="clearCart()">Track your delivery</button></li>
+      </ul>
+    </div>
+  </div>
 </div>
-
-<p>
-  paid {{total}}
-</p>
-
-<button (click)="clearCart()">bevestig</button>

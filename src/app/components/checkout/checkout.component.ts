@@ -29,7 +29,7 @@ export class CheckoutComponent implements OnInit {
               private paymentService: PaymentService,
               private orderService: OrderService,
               private router: Router) {
-    this.createForm();
+   this.createForm();
   }
 
   ngOnInit() {
@@ -75,14 +75,17 @@ export class CheckoutComponent implements OnInit {
       if (this.paymentMethod === 'creditCard') {
         console.log('test');
         this.orderService.createAddress(address).subscribe(data => {
+          console.log(data.id);
           this.orderService.createDeliveryOrder(
             deliverOrder.userId,
             deliverOrder.totalPrice,
             deliverOrder.totalVat,
-            deliverOrder.status
+            deliverOrder.status,
+            data
           ).subscribe(d => {
             this.openCheckout(deliverOrder.totalPrice);
-            console.log('success -> creditcard');
+            console.log('success -> creditcard ' + d.id);
+            localStorage.setItem('orderid', d.id);
           });
         });
       } else if (this.paymentMethod === 'iDeal') {
@@ -91,19 +94,20 @@ export class CheckoutComponent implements OnInit {
             deliverOrder.userId,
             deliverOrder.totalPrice,
             deliverOrder.totalVat,
-            deliverOrder.status
+            deliverOrder.status,
+            data
           ).subscribe(d => {
             this.idealPayment(deliverOrder.totalPrice);
-            console.log('success -> iDeal');
+            console.log('success -> iDeal')
+            localStorage.setItem('orderid', d.id);
           });
         });
         console.log('iDeal');
       }
     } else {
-      alert('Please select a payment method');
+      alert('Choose a payment method.');
     }
   }
-
   openCheckout(amounts: number) {
     const handler = (window as any).StripeCheckout.configure({
       // public test key to get stripe token
@@ -165,10 +169,10 @@ export class CheckoutComponent implements OnInit {
 
     const sourceData = {
       type: 'ideal',
-      amount: amounts,
+      amount: amounts * 100,
       currency: 'eur',
       owner: {
-        name: 'Richard',
+        name: this.checkoutForm.value.name,
       },
       redirect: {
         return_url: 'http://localhost:4200/paid',
@@ -176,7 +180,8 @@ export class CheckoutComponent implements OnInit {
     };
     this.stripe.createSource(this.idealBank, sourceData).then(result => {
       if (result.error) {
-        console.log('error');
+        console.log(result);
+        this.authRedirect(result.source);
       } else {
         console.log('ik ben er');
         this.authRedirect(result.source);
