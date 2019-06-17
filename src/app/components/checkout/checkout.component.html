@@ -112,31 +112,31 @@
         <h2>How would you like to pay? </h2>
         <div class="line"></div>
       </div>
+      <div>
+        <input [(ngModel)]="paymentMethod" [ngModelOptions]="{standalone: true}" type="radio" id="creditCard" name="payment" value="creditCard" class="input-hidden" >
+        <label for="creditCard">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Visa.svg/1200px-Visa.svg.png" width="126">
+        </label>
+
+        <input [(ngModel)]="paymentMethod" [ngModelOptions]="{standalone: true}" type="radio" id="iDeal" name="payment" value="iDeal" class="input-hidden">
+        <label for="iDeal">
+          <img src="https://www.cardgate.com/wp-content/uploads/iDEAL-logo-302x261.png" width="88">
+        </label>
+      </div>
+      <div [hidden]="paymentMethod != 'iDeal'">
+        <label for="ideal-bank-element">
+          iDEAL Bank
+        </label>
+        <div  id="ideal-bank-element">
+        </div>
+      </div>
       <div class="">
         <button type="submit"  [disabled]="checkoutForm.invalid">ORDER AND PAY</button>
       </div>
     </form>
-    <div [hidden]="paymentMethod != 'iDeal'">
-    <label for="ideal-bank-element">
-      iDEAL Bank
-    </label>
-    <div  id="ideal-bank-element">
-    </div>
+
     </div>
   </div>
-  <div>
-    <input [(ngModel)]="paymentMethod" type="radio" id="creditCard" name="payment" value="creditCard" class="input-hidden" >
-    <label for="creditCard">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Visa.svg/1200px-Visa.svg.png" width="126">
-    </label>
 
-    <input [(ngModel)]="paymentMethod" type="radio" id="iDeal" name="payment" value="iDeal" class="input-hidden">
-    <label for="iDeal">
-      <img src="https://www.cardgate.com/wp-content/uploads/iDEAL-logo-302x261.png" width="88">
-    </label>
-  </div>
-</div>
-<div class="form-row">
 
-</div>
 <div id="error-message" role="alert"></div>
