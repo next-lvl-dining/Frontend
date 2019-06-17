@@ -28,14 +28,7 @@ export class OrderService {
     return this.http.get<Category[]>(this.ORDER_API_URL + '/categories/all')
       .pipe(catchError(this.errorHandler));
   }
-    createDeliveryOrder(userId: string,
-                        totalPrice: number,
-                        totalVat: number,
-                        status: OrderStatus,
-                        address): Observable<DeliveryOrder> {
-      return this.http.post<DeliveryOrder>(this.ORDER_API_URL + '/deliveryorders/new/', {userId, totalPrice, totalVat, status, address})
-        .pipe(catchError(this.errorHandler));
-    }
+    
     getAllDeliveryOrderWithStatus(status : string): Observable<DeliveryOrder[]>{
       return this.http.get<DeliveryOrder[]>(this.ORDER_API_URL + '/deliveryorders/all/status/' + status)
               .pipe(catchError(this.errorHandler));
@@ -86,7 +79,7 @@ export class OrderService {
       tableNumber
     })
       .pipe(
-        tap(log('placed local order')),
+        tap(x => log('placed local order')),
         catchError(this.errorHandler));
   }
 
