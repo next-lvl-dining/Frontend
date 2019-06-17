@@ -3,7 +3,6 @@
 <table style="width:100%">
   <tr>
     <th>OrderID</th>
-    <th>UserId</th> 
     <th>TotalPrice</th>
     <th>Address</th>
     <th>Delliver this order</th>
@@ -12,7 +11,6 @@
   </tr>
   <tr *ngFor="let o of deliveryOrders">
     <td align="left">{{o.id}}</td>
-    <td align="left">{{o.userId}}</td>
     <td align="left">{{o.totalPrice}}</td>
     <td align="left">{{o.address.street}} {{o.address.streetNr}}</td>
     <td align="left"> <input type="checkbox" (change)="checkValue($event)" name={{o.id}} value={{o.id}}> </td>
