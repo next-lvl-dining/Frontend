@@ -41,6 +41,10 @@ export class PortalComponent implements OnInit {
   rabbitmqmaster: Portalrow;
   simulationmaster: Portalrow;
   simulationdevelop: Portalrow;
+  onderzoekA: Portalrow;
+  onderzoekB: Portalrow;
+  notulen: Portalrow;
+  nginxmaster: Portalrow;
   constructor() { }
 
   ngOnInit() {
@@ -191,9 +195,10 @@ export class PortalComponent implements OnInit {
 
 
     this.nginx = new Portalrow();
-    this.nginx.name = 'Frontend';
+    this.nginx.name = 'Frontend - Develop';
     this.nginx.url = 'http://192.168.24.110:80';
     this.nginx.image = this.imageurl + 'nginx.png';
+
 
     this.databaseServer = new Portalrow();
     this.databaseServer.name = 'Databaseserver';
@@ -274,12 +279,37 @@ export class PortalComponent implements OnInit {
     this.finalpresentation.image = this.imageurl + 'drivepresentation.png';
     this.finalpresentation.url = 'https://drive.google.com/open?id=1p7AXvruTk9_mZkKNmxO2DeBXQgiWdi0zDPQ5NocRNWU';
 
+    this.onderzoekA = new Portalrow();
+    this.onderzoekA.name = 'Onderzoek A';
+    this.onderzoekA.url = 'https://drive.google.com/open?id=1UqN91DWLKyRTZG2h0Yau5gRAQ9ERc0o43nFCAuGrtMs';
+    this.onderzoekA.image = this.imageurl + 'drivedocument.png';
+
+    this.onderzoekB = new Portalrow();
+    this.onderzoekB.name = 'Onderzoek B';
+    this.onderzoekB.image = this.imageurl + 'drivedocument.png';
+    this.onderzoekB.url = 'https://drive.google.com/open?id=1fTfXt71kv0y38gi1Su_YP6fs3F84IT7LsfoYhP_AEXY';
+
+    this.notulen = new Portalrow();
+    this.notulen.image = this.imageurl + 'folder.jpg';
+    this.notulen.name = 'Notulen';
+    this.notulen.url = 'https://drive.google.com/open?id=1u7cPdcXD6HYazDhxzoX9X8nSQY5Ej6HT';
+
+    this.nginxmaster = new Portalrow();
+    this.nginxmaster.name = 'Frontend Master';
+    this.nginxmaster.url = 'http://192.168.24.113:80';
+    this.nginxmaster.image = this.imageurl + 'nginx.png';
+
+
     this.portalrows.push(this.finaldelivery);
     this.portalrows.push(this.finalpresentation);
+    this.portalrows.push(this.onderzoekA);
+    this.portalrows.push(this.onderzoekB);
+    this.portalrows.push(this.notulen);
     this.portalrows.push(this.jenkins);
     this.portalrows.push(this.sonarqube);
     this.portalrows.push(this.databaseServer);
     this.portalrows.push(this.nginx);
+    this.portalrows.push(this.nginxmaster);
     this.portalrows.push(this.sonarqubemaster);
     this.portalrows.push(this.jenkinsmaster);
     this.portalrows.push(this.prometheusdevelop);
