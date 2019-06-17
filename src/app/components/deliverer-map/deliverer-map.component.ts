@@ -182,22 +182,22 @@ export class DelivererMapComponent implements OnInit {
     console.log(this.chosenOrders);
     for (let i = 0; i < this.chosenOrders.length; i++) {
       if(i===0){
-        this.orderService.startDelivery(this.chosenOrders[i].id).subscribe();
         orderids.push(this.chosenOrders[i].id);
         startLocation = new XLocation(51.436736,5.478337);
         endLocation = new XLocation(this.chosenOrders[i].lat,this.chosenOrders[i].lon);
         var route = new Route(startLocation,endLocation);
         routes.push(route);
       }else{
+        orderids.push(this.chosenOrders[i].id);
         startLocation = endLocation;
         endLocation = new XLocation(this.chosenOrders[i].lat,this.chosenOrders[i].lon);
         var route = new Route(startLocation,endLocation);
         routes.push(route);
       }
       this.orderService.startDelivery(this.chosenOrders[i].id).subscribe();
-      empid = this.chosenOrders[i].id;
       this.chosenOrders = [];
     }
+    empid = localStorage.getItem('id');
     var delivery = new Delivery(empid,orderids,routes);
     console.log("Delivery = " + delivery.routes[0].endLocation.latitude);
     this.deliveryService.createDelivery(delivery).subscribe();
