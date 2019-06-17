@@ -76,6 +76,7 @@ export class LocaldeliveryComponent implements OnInit {
     this.simulatioService.connect("ws:/192.168.24.110:8088/deliver/simulation/"+localStorage.getItem('orderid')+"/websocket");
     this.simulatioService.messages.subscribe(msg => {
       if(!msg.lat.includes('stop'+localStorage.getItem('orderid'))||!msg.lon.includes('stop'+localStorage.getItem('orderid'))){
+        if(!msg.lat.includes('stop')||!msg.lon.includes('stop')){
       var lon = msg.lon.replace(" ", "");
       lon = lon.replace('\"', '');
       var lonnumber = +lon;
@@ -85,6 +86,7 @@ export class LocaldeliveryComponent implements OnInit {
       console.log(latnumber);
       console.log(lonnumber);
       this.dropMarker({ "lat": lonnumber, "lng": latnumber }, "deliverer" + msg.orderid);}
+        }
       else{
         alert("Your delivery has arived");
       }
