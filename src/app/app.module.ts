@@ -40,6 +40,9 @@ import { DayReservationsComponent } from './components/day-reservations/day-rese
 import { DelivererComponent } from './components/deliverer/deliverer.component';
 import { ManagerMapComponent } from './components/manager-map/manager-map.component';
 import { ManagerComponent } from './components/manager/manager.component';
+import { TableOrderOverviewComponent } from './components/table-order-overview/table-order-overview.component';
+import { TableComponent } from './components/table/table.component';
+import { TableCheckoutComponent } from './components/table-checkout/table-checkout.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +80,9 @@ import { ManagerComponent } from './components/manager/manager.component';
     ManagerMapComponent,
     ManagerComponent,
     DayReservationsComponent,
+    TableOrderOverviewComponent,
+    TableComponent,
+    TableCheckoutComponent,
   ],
   imports: [
     BrowserModule,

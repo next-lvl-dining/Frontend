@@ -1,0 +1,13 @@
+<p>
+  table-checkout works!
+</p>
+<div class="container" *ngFor="let product of products">
+  <div class="product"> Item: {{product.name}} - Price: €{{product.price}}
+  </div>
+</div>
+<div *ngIf="total"> Your total price: {{total}}</div>
+
+<button (click)="navBackToOrder()">Back</button>
+
+<input type="text" name="name" placeholder="your name" [(ngModel)]="name"/>
+<button (click)="doPayment()">Pay</button>

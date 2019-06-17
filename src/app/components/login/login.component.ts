@@ -2,6 +2,8 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {HttpResponse} from "@angular/common/http";
+import {log} from "util";
 
 declare const FB: any;
 declare const gapi: any;
@@ -43,7 +45,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
     this.authService.login({ email: this.messageForm.controls.email.value, password: this.messageForm.controls.password.value })
       .subscribe((data) => {
-        this.navigateAccordingToRole();
+        this.navigateAccordingToRole(data.headers.get('Authorization').slice(7));
       },
         error => {
           if (error.status === 400) {
@@ -106,19 +108,21 @@ export class LoginComponent implements OnInit, AfterViewInit {
   login(token: string, provider: string) {
     this.authService.socialLogin(token, provider).subscribe(
       data => {
-        this.navigateAccordingToRole();
+        this.navigateAccordingToRole(data.headers.get('Authorization').slice(7)); //slice bearer
       },
       error => { console.log(error); });
   }
 
-  navigateAccordingToRole() {
+  navigateAccordingToRole(auth: string) {
+    this.authService.setSession(auth);
     const role = localStorage.getItem('role');
+    log(role);
     if (role === 'admin') {
       this.nav('/role');
     } else if (role === 'employee') {
       this.nav('/day-reservation');
     } else if (role === 'table') {
-      this.nav('/order');
+      this.nav('/table/table-home');
     } else if (role === 'user') {
       this.nav('/reservation');
     }

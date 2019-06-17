@@ -4,11 +4,12 @@ import {Product} from '../../models/product';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
+import {log} from "util";
 
 @Injectable()
 export class ProductService {
 
-    private products: Product[];
+    private localProducts: Product[];
 
     constructor(private http: HttpClient, @Inject('ORDER_API_URL') private ORDER_API_URL: string) {
         /* this.products = [
@@ -18,12 +19,33 @@ export class ProductService {
          ];*/
     }
 
-    findAll(): Product[] {
-        return this.products;
+    getLocalProducts(): Product[] {
+        if(this.localProducts != undefined){
+          log('returning the full list' + this.localProducts.length);
+          return this.localProducts;
+      } else{
+          log('returning empty list');
+          return [];
+        }
     }
 
-    find(id: string): Product {
-        return this.products[this.getSelectedIndex(id)];
+    clearLocalProducts() {
+        this.localProducts = [];
+    }
+
+  calculateTotal(products: Product[]): number {
+    let total = 0;
+    log('calculating price')
+    for(let product of products){
+      total += product.price;
+      log(product.price + "" + total);
+    }
+    return Math.round( total * 100 + Number.EPSILON ) / 100
+  }
+
+    saveProductListLocal(products: Product[]) {
+      log('saving products: ' + products.length);
+      this.localProducts = products;
     }
 
     createProduct(product: Product): Observable<Product> {
@@ -57,8 +79,8 @@ export class ProductService {
     }
 
     private getSelectedIndex(id: string) {
-        for (let i = 0; i < this.products.length; i++) {
-            if (this.products[i].id === id) {
+        for (let i = 0; i < this.localProducts.length; i++) {
+            if (this.localProducts[i].id === id) {
                 return i;
             }
         }
