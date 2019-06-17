@@ -173,7 +173,7 @@ export class CheckoutComponent implements OnInit {
         name: this.checkoutForm.value.name,
       },
       redirect: {
-        return_url: 'http://localhost:4200/paid',
+        return_url: 'http://192.168.24.110/paid',
       },
     };
     this.stripe.createSource(this.idealBank, sourceData).then(result => {
