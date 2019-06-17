@@ -30,6 +30,9 @@
               <li>
                 <a class="monitoring" (click)="nav('monitoring')" [routerLink]="['/monitoring']"><img src="http://cdn.onlinewebfonts.com/svg/img_372046.png" width="28px"> Monitoring</a>
               </li>
+              <li>
+                <a class="activeDelivery" (click)="nav('manager')" [routerLink]="['/manager']"><img src="http://cdn.onlinewebfonts.com/svg/img_372046.png" width="28px"> Active Deliveries</a>
+              </li>
             </ul>
           </nav>
         </div>
@@ -46,6 +49,7 @@
     </div>
     <div *ngIf="role == 'employee'">
       <a class="dayReservations" (click)="nav('dayReservations')" [routerLink]="['/day-reservation']">Reservations</a>
+      <a class="deliverer" (click)="nav('deliverer')" [routerLink]="['/deliverer']">Deliver overview</a>
     </div>
   </div>
   <div class="headerRight">

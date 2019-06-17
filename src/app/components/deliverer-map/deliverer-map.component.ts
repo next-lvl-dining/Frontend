@@ -8,6 +8,8 @@ import { Route } from 'src/app/models/route';
 import { XLocation } from 'src/app/models/xlocation';
 import { Xliff } from '@angular/compiler';
 import { DeliveryService } from 'src/app/services/delivery/delivery.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { Router } from '@angular/router';
 
 declare var H: any;
 
@@ -57,16 +59,24 @@ export class DelivererMapComponent implements OnInit {
 
   deliveryService : DeliveryService;
 
+  authService : AuthService;
 
-  constructor(private delService: Deliveryorderservice, private orservice: OrderService ,private deliverySer : DeliveryService) {
+
+
+  constructor(private delService: Deliveryorderservice, private orservice: OrderService ,private deliverySer : DeliveryService, private authSer: AuthService,  private router: Router) {
     this.deliveryOrderService = delService;
     this.orderService = orservice;
     this.deliveryService = deliverySer;
+    this.authService = authSer;
   }
 
 
 
   ngOnInit() {
+    if (!this.authService.hasRole('employee')) {
+      alert('Login as employee to continue');
+      this.router.navigateByUrl('/login');
+    }
     this.platform = new H.service.Platform({
       "app_id": this.appId,
       "app_code": this.appCode

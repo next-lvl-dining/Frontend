@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
 import { SimulationService } from 'src/app/services/simulation/simulation.service';
 import { WebsocketService } from 'src/app/services/websocket/websocket.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { Router } from '@angular/router';
 
 
 declare var H: any;
@@ -42,11 +44,15 @@ export class ManagerMapComponent implements OnInit {
 
   private ui: any;
 
-  constructor(private ss: SimulationService) { 
+  constructor(private ss: SimulationService, private authService : AuthService, private router : Router) { 
     this.simulatioService = ss;
   }
 
   public ngOnInit() {
+    if (!this.authService.hasRole('admin')) {
+      alert('Login as admin to continue');
+      this.router.navigateByUrl('/login');
+    }
     this.platform = new H.service.Platform({
       "app_id": this.appId,
       "app_code": this.appCode
