@@ -195,13 +195,15 @@ export class DelivererMapComponent implements OnInit {
         routes.push(route);
       }
       this.orderService.startDelivery(this.chosenOrders[i].id).subscribe();
-      this.chosenOrders = [];
     }
+    this.chosenOrders = [];
     empid = localStorage.getItem('id');
     var delivery = new Delivery(empid,orderids,routes);
     console.log("Delivery = " + delivery.routes[0].endLocation.latitude);
     this.deliveryService.createDelivery(delivery).subscribe();
     this.deliveryService.startSimulation(delivery).subscribe();
+    this.authService.logout();
+    this.router.navigateByUrl('/login');
   }
 
 }
