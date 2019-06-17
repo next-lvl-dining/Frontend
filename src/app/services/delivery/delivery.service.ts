@@ -18,11 +18,13 @@ export class DeliveryService {
   constructor(private http: HttpClient, @Inject('DELIVER_API_URL') private DELIVER_API_URL: string) { }
 
   createDelivery(delivery : Delivery): Observable<Response> {
+    console.log("Should create delivery: "+this.DELIVER_API_URL + '/deliveries/create/' + JSON.stringify(delivery));
     return this.http.post<Response>(this.DELIVER_API_URL + '/deliveries/create/', delivery,httpOptions)
       .pipe(catchError(this.errorHandler));
   }
 
   startSimulation(delivery : Delivery): Observable<Response> {
+    console.log("Should start simulation: "+this.DELIVER_API_URL + '/deliveries/create/' + JSON.stringify(delivery));
     return this.http.post<Response>(this.DELIVER_API_URL + '/deliveries/simulation',delivery,httpOptions)
     .pipe(catchError(this.errorHandler));
   }
