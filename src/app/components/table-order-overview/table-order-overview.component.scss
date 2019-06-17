@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+$font: 'Lato', sans-serif;
+
+$white: #ffffff;
+$light: #56a8e0;
+$tan: #3059b0;
+$dark: #4E4E4E;
+
+/* center container in the middle */
+html {
+  display: grid;
+  min-height: 100%;
+}
+
+body {
+  display: grid;
+  background: $light;
+  font-family: $font, sans-serif;
+  text-transform: uppercase;
+}
+
+.container {
+  position: relative;
+  margin: 1% auto;
+  overflow: hidden;
+  width: 35%;
+  height: 300px;
+  background: $white;
+  padding: 0 45px;
+  box-shadow: 1px 1px 2px rgba($dark, .5);
+}
+
+.category {
+  text-align: center;
+  font-size: 32px;
+  text-decoration: underline;
+}
+
+h1 {
+  color: $dark;
+  margin-top: 40px;
+}
+
+h2 {
+  color: $dark;
+  margin-top: 70px;
+  text-align: right;
+}
+
+.images {
+  align-items: center;
+  float: right;
+  margin-top: 30px;
+}
+
+.product {
+  position: absolute;
+  width: 40%;
+  height: 40%;
+  // top: 10%;
+  left: 50%;
+  align-self: center;
+}
+
+.desc {
+  text-transform: none;
+  letter-spacing: 0;
+  margin-bottom: 17px;
+  color: $dark;
+  font-size: .9em;
+  line-height: 1.6em;
+  margin-right: 25px;
+  text-align: justify;
+}
+
+button {
+  background: darken(#ffab00, 1%);
+  padding: 10px;
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: $white;
+  cursor: pointer;
+  &:hover {
+    background: $tan;
+    transition: all .4s ease-in-out;
+  }
+}
+
+.add {
+  width: 100%;
+}
+
+.like {
+  width: 22%;
+}
+
+.sizes {
+  display: grid;
+  color: $dark;
+  grid-template-columns: repeat(auto-fill, 30px);
+  width: 60%;
+  grid-gap: 4px;
+  margin-left: 20px;
+  margin-top: 5px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.pick {
+  margin-top: 11px;
+  margin-bottom:0;
+  margin-left: 20px;
+}
+
+.size {
+  padding: 9px;
+  border: 1px solid $light;
+  font-size: 0.7em;
+  text-align: center;
+  &:hover{
+    background: $dark;
+    color: $white;
+    transition: all .4s ease-in-out;
+  }
+}
+
+.focus{
+  background: $dark;
+  color: $white;
+}
+
+
+.nub {
+  position: fixed;
+  display: inline-block;
+  margin: 50px;
+  font-size: 22px;
+}
+
+
+.nub1 {
+  position: fixed;
+  max-width: 400px;
+  display: inline-block;
+  margin-top: 90px;
+  margin-left: 50px;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.b{
+  margin-top: 10px;
+}

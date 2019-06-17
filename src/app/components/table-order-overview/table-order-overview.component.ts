@@ -6,6 +6,8 @@ import {log} from "util";
 import {OrderType} from "../../util/ordertype";
 import {LocalOrder} from "../../models/localorder";
 import {OrderService} from "../../services/order/order.service";
+import {Category} from "../../models/category";
+import {CategoryService} from "../../services/category/category.service";
 
 @Component({
   selector: 'app-table-order-overview',
@@ -14,18 +16,21 @@ import {OrderService} from "../../services/order/order.service";
 })
 export class TableOrderOverviewComponent implements OnInit {
   productList: Product[] = [];
+  private categories: Category[];
   public orderList: Product[] = [];
   public orderedList: Product[] = [];
 
   constructor(private router: Router,
               private productService: ProductService,
-              private orderService: OrderService) { }
+              private orderService: OrderService,
+              private categorieService: CategoryService) { }
 
   ngOnInit() {
     log(this.productList.length + " " + this.orderedList.length + " " + this.orderList.length);
     this.productService.getAll().subscribe(x => this.productList = x);
     this.orderedList = this.productService.getLocalProducts();
-    log(this.orderedList.length)
+    log(this.orderedList.length);
+    this.getCategories();
   }
 
   addToOrderList(product: Product) {
@@ -79,5 +84,9 @@ export class TableOrderOverviewComponent implements OnInit {
     //   return 1;
     // }
     return 1;
+  }
+
+  private getCategories() {
+    this.categorieService.getAllCategories().subscribe(data => { this.categories = data; });
   }
 }

@@ -45,7 +45,6 @@
       <a class="reservation" (click)="nav('reservation')" [routerLink]="['/reservation']">Reservation</a>
     </div>
     <div *ngIf="role == 'table'">
-      <a class="order" (click)="nav('order')" [routerLink]="['/order']">Order</a>
     </div>
     <div *ngIf="role == 'employee'">
       <a class="dayReservations" (click)="nav('dayReservations')" [routerLink]="['/day-reservation']">Reservations</a>
