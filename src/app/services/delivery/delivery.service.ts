@@ -18,12 +18,12 @@ export class DeliveryService {
   constructor(private http: HttpClient, @Inject('DELIVER_API_URL') private DELIVER_API_URL: string) { }
 
   createDelivery(delivery : Delivery): Observable<Response> {
-    return this.http.post<Response>('http://localhost:8080/deliver/api' + '/deliveries/create/', delivery,httpOptions)
+    return this.http.post<Response>(this.DELIVER_API_URL + '/deliveries/create/', delivery,httpOptions)
       .pipe(catchError(this.errorHandler));
   }
 
   startSimulation(delivery : Delivery): Observable<Response> {
-    return this.http.post<Response>('http://localhost:8080/deliver/api' + '/deliveries/simulation',delivery,httpOptions)
+    return this.http.post<Response>(this.DELIVER_API_URL + '/deliveries/simulation',delivery,httpOptions)
     .pipe(catchError(this.errorHandler));
   }
 
