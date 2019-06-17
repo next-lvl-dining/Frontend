@@ -202,7 +202,8 @@ export class DelivererMapComponent implements OnInit {
     console.log("Delivery = " + delivery.routes[0].endLocation.latitude);
     this.deliveryService.createDelivery(delivery).subscribe();
     this.deliveryService.startSimulation(delivery).subscribe();
-    this.router.navigateByUrl('deliverer');
+    this.authService.logout();
+    this.router.navigateByUrl('/login');
   }
 
 }
