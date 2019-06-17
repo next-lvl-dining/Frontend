@@ -117,7 +117,6 @@ export class CheckoutComponent implements OnInit {
         // gets they credit charge
         this.paymentService.creditCheckout(token.id, amounts.toString()).subscribe(
           data => {
-
             this.nav('paid');
           },
           error => {
@@ -136,7 +135,6 @@ export class CheckoutComponent implements OnInit {
   }
 
   idealBanks() {
-
     // stripe client with public test key
     // calling elements
     const elements = this.stripe.elements();

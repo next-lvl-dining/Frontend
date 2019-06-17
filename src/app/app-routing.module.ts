@@ -22,29 +22,34 @@ import { HomeUserComponent } from './components/home-user/home-user/home-user.co
 import { HomeTableComponent } from './components/home-table/home-table/home-table.component';
 import { PaidComponent } from './components/paid/paid.component';
 import { DayReservationsComponent } from './components/day-reservations/day-reservations.component';
+import { DelivererComponent } from './components/deliverer/deliverer.component';
+import { DeliveryComponent } from './components/delivery/delivery.component';
+import { ManagerComponent } from './components/manager/manager.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'order', component: OrderComponent },
-  { path: 'role', component: RoleComponent },
-  { path: 'coupon', component: CouponComponent },
-  { path: 'cart', component: CartComponent },
-  { path: 'history', component: HistoryComponent },
-  { path: 'checkout', component: CheckoutComponent },
-  { path: 'reservation', component: ReservationComponent },
-  { path: 'portal', component: PortalComponent },
-  { path: 'product', component: ProductComponent },
-  { path: 'category', component: CategoryComponent },
-  { path: 'admin', component: AdminComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'monitoring', component: MonitoringComponent },
-  { path: 'home-admin', component: HomeAdminComponent },
-  { path: 'home-table', component: HomeTableComponent },
-  { path: 'home-user', component: HomeUserComponent },
-  { path: 'home-employee', component: HomeEmployeeComponent },
-  { path: 'paid', component: PaidComponent },
-  { path: 'logging', component: LoggingComponent },
-  { path: 'day-reservation', component: DayReservationsComponent },
+    {path: 'login', component: LoginComponent},
+    {path: 'order', component: OrderComponent},
+    {path: 'role', component: RoleComponent},
+    {path: 'coupon', component: CouponComponent},
+    {path: 'cart', component: CartComponent},
+    {path: 'history', component: HistoryComponent},
+    {path: 'checkout', component: CheckoutComponent},
+    {path: 'reservation', component: ReservationComponent},
+    {path: 'portal', component: PortalComponent},
+    {path: 'product', component: ProductComponent},
+    {path: 'category', component: CategoryComponent},
+    {path: 'admin', component: AdminComponent},
+    {path: 'profile', component: ProfileComponent},
+    {path: 'monitoring', component: MonitoringComponent},
+    {path: 'home-admin', component: HomeAdminComponent},
+    {path: 'home-table', component: HomeTableComponent},
+    {path: 'home-user', component: HomeUserComponent},
+    {path: 'home-employee', component: HomeEmployeeComponent},
+    {path: 'paid', component: PaidComponent},
+    {path: 'delivery', component: DeliveryComponent},
+    {path: 'deliverer', component : DelivererComponent },
+    {path: 'manager', component : ManagerComponent}
+
 ];
 
 @NgModule({

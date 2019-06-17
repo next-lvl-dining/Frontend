@@ -1,6 +1,7 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { LoggedInService } from 'src/app/services/loggedIn/logged-in.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,7 @@ export class HeaderComponent implements OnInit {
   role: string;
   isLoggedIn = false;
 
-  constructor(private authService: AuthService, private loggedInService: LoggedInService, private renderer: Renderer2) { }
+  constructor(private authService: AuthService, private loggedInService: LoggedInService, private renderer: Renderer2, private router: Router) { }
 
   ngOnInit() {
     this.loggedInService.isUserLoggedIn.subscribe(value => {
@@ -24,7 +25,7 @@ export class HeaderComponent implements OnInit {
     this.role = localStorage.getItem('role');
     if (this.authService.isLoggedIn()) {
       this.isLoggedIn = true;
-  }
+    }
   }
 
   nav(element: string) {
@@ -40,5 +41,6 @@ export class HeaderComponent implements OnInit {
     this.isLoggedIn = false;
     this.role = '';
     this.authService.logout();
+    this.router.navigateByUrl('/login');
   }
 }

@@ -29,7 +29,7 @@ $fontSerif : 'Lato', sans-serif;
 body {
   color: #333;
   -webkit-font-smoothing: antialiased;
-  font-family: $fontSerif;
+  font-family:$font;
 
 }
 img {
@@ -50,7 +50,7 @@ img {
 }
 
 .projTitle {
-  font-family: $fontSans;
+  font-family: $font;
   font-weight: bold;
   text-align: center;
   font-size: 2em;
@@ -73,14 +73,14 @@ img {
   border-bottom: 1px solid #D0D0D0;
 
   h1 {
-    font-family: $fontSerif;
+    font-family: $font;
     font-size: 2em;
     float: left;
   }
   a.continue {
     &:link , &:visited {
       text-decoration: none;
-      font-family: $fontSans;
+      font-family: $font;
       letter-spacing: -.015em;
       font-size: .75em;
       padding: 1em;
@@ -115,7 +115,7 @@ img {
 .tableHead {
   display: table;
   width: 100%;
-  font-family: $fontSans;
+  font-family: $font;
   font-size: .75em;
   li {
     display: table-cell;
@@ -161,7 +161,7 @@ img {
       h3 {
 
         font-size: 1em;
-        font-family: $fontSans;
+        font-family: $font;
         font-weight: bold;
         text-transform: uppercase;
         letter-spacing: .025em;
@@ -173,7 +173,7 @@ img {
         font-size: .85em;
 
         color: #777777;
-        font-family: $fontSans;
+        font-family: $font;
         .quantity {
           font-weight: bold;
           color: #333;
@@ -397,7 +397,7 @@ a.remove {
           &:before {
             content: "QTY";
             display: block;
-            font-family: $fontSans;
+            font-family: $font;
             padding: .25em;
             font-size: .75em;
           }

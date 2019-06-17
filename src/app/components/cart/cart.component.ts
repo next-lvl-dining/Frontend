@@ -64,12 +64,11 @@ export class CartComponent implements OnInit {
        this.total = this.total - this.korting;
        console.log('percentage');
      } else if (data.type.toString() === 'FLAT') {
-       this.korting = Math.round(this.korting * 100) / 100;
+       this.korting = data.rate;
        this.total = this.total - this.korting;
-       this.total = Math.round(this.total * 100) / 100;
-       console.log('flat');
+       console.log('flat', this.total, this.korting);
      }
-   });
+   }, error => alert('Coupon code: ' + couponCode + ' is not valid'));
   }
 
   checkout() {

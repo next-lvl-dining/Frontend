@@ -1,19 +1,23 @@
 <div class="cartImage">
   <div class="count">
     <a href="cart" class="cart"><span>{{cartCount()}}</span></a>
-</div>
-
-<div class="container" *ngFor="let product of products">
-  <div class="images">
-    <img src={{product.photo}} width='250' />
   </div>
-  <div class="product">
-    <h1>{{product.name}}</h1>
-    <p class="desc">{{product.category.name}}</p>
-    <h2>€{{product.price}}</h2>
-    <div class="buttons">
-      <button class="add" (click)="add(product.id)"> ADD TO CART </button>
+
+  <div *ngFor="let category of categories">
+    <div class="category">{{category.name}}</div>
+    <div *ngFor="let product of products">
+      <div *ngIf="(category.name == product.category.name)">
+        <div class="container">
+          <div class="images">
+            <img src="../../../assets/images/{{product.name}}.jpg" width='150' />
+          </div>
+          <h1>{{product.name}}</h1>
+
+          <h2>€{{product.price}}</h2>
+
+          <button class="add" (click)="add(product.id)">ADD TO CART</button>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 </div>

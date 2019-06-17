@@ -15,7 +15,7 @@ export class HistoryComponent implements OnInit {
 
     constructor(private orderService: OrderService) {
         // todo remove
-        localStorage.setItem('userId', 'login1')
+        localStorage.setItem('userId', 'login1');
     }
 
     ngOnInit() {
