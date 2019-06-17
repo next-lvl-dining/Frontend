@@ -21,6 +21,6 @@ export class ReservationService {
   }
 
   errorHandler(error: HttpErrorResponse) {
-    return throwError(error.error || 'Server error');
+    return throwError(error || 'Server error');
   }
 }

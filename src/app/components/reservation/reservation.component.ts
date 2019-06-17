@@ -90,7 +90,13 @@ export class ReservationComponent implements OnInit {
       data => {
         alert('Reservation is made');
       },
-      error => { console.log(error); });
+      error => {
+        if (error.error === 'No tables available') {
+          alert('Sorry, whe don\'t have any table available for that date');
+        } else if (error.error === 'Invalid reservation') {
+          alert('Invalid reservation');
+        }
+      });
   }
 
   createTimeSlot(date: Date, startHour: number, startMinutes: number, endHour: number, endMinutes: number): TimeSlot {
