@@ -41,7 +41,7 @@ export class OrderService {
                         totalPrice: number,
                         totalVat: number,
                         status: OrderStatus,
-                        address: Address): Observable<DeliveryOrder> {
+                        address): Observable<DeliveryOrder> {
       return this.http.post<DeliveryOrder>(this.ORDER_API_URL + '/deliveryorders/new/', {userId, totalPrice, totalVat, status, address})
         .pipe(catchError(this.errorHandler));
     }

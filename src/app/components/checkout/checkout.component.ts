@@ -74,34 +74,34 @@ export class CheckoutComponent implements OnInit {
     if (this.paymentMethod != null) {
       if (this.paymentMethod === 'creditCard') {
         console.log('test');
-        this.orderService.createAddress(address).subscribe(data => {
-          console.log(data.id);
+        //this.orderService.createAddress(address).subscribe(data => {
+          //console.log(data.id);
           this.orderService.createDeliveryOrder(
             deliverOrder.userId,
             deliverOrder.totalPrice,
             deliverOrder.totalVat,
             deliverOrder.status,
-            data
+            deliverOrder.address
           ).subscribe(d => {
             this.openCheckout(deliverOrder.totalPrice);
             console.log('success -> creditcard ' + d.id);
             localStorage.setItem('orderid', d.id);
           });
-        });
+        //});
       } else if (this.paymentMethod === 'iDeal') {
-        this.orderService.createAddress(address).subscribe(data => {
+        //this.orderService.createAddress(address).subscribe(data => {
           this.orderService.createDeliveryOrder(
             deliverOrder.userId,
             deliverOrder.totalPrice,
             deliverOrder.totalVat,
             deliverOrder.status,
-            data
+            deliverOrder.address
           ).subscribe(d => {
             this.idealPayment(deliverOrder.totalPrice);
             console.log('success -> iDeal')
             localStorage.setItem('orderid', d.id);
           });
-        });
+       // });
         console.log('iDeal');
       }
     } else {
