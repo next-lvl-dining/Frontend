@@ -40,6 +40,8 @@ const routes: Routes = [
     {path: 'category', component: CategoryComponent},
     {path: 'admin', component: AdminComponent},
     {path: 'profile', component: ProfileComponent},
+    {path: 'logging', component: LoggingComponent},
+    {path: 'day-reservation', component: DayReservationsComponent},
     {path: 'monitoring', component: MonitoringComponent},
     {path: 'home-admin', component: HomeAdminComponent},
     {path: 'home-table', component: HomeTableComponent},
