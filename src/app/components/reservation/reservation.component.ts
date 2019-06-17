@@ -93,9 +93,10 @@ export class ReservationComponent implements OnInit {
       error => {
         if (error.error === 'No tables available') {
           alert('Sorry, whe don\'t have tables available for you reservation');
+        } else {
+          alert('Invalid reservation');
+          console.log(error);
         }
-        alert('Invalid reservation');
-        console.log(error);
       });
   }
 
