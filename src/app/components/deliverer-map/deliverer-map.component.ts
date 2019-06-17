@@ -196,6 +196,7 @@ export class DelivererMapComponent implements OnInit {
       }
       this.orderService.startDelivery(this.chosenOrders[i].id).subscribe();
     }
+    setTimeout(() => console.log("wait"),1000);
     this.orderService.startDelivery(this.chosenOrders[this.chosenOrders.length].id).subscribe();
     this.chosenOrders = [];
     empid = localStorage.getItem('id');
