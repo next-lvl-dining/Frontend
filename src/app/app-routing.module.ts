@@ -25,6 +25,9 @@ import { DayReservationsComponent } from './components/day-reservations/day-rese
 import {TableOrderOverviewComponent} from "./components/table-order-overview/table-order-overview.component";
 import {TableComponent} from "./components/table/table.component";
 import {TableCheckoutComponent} from "./components/table-checkout/table-checkout.component";
+import { DelivererComponent } from './components/deliverer/deliverer.component';
+import { DeliveryComponent } from './components/delivery/delivery.component';
+import { ManagerComponent } from './components/manager/manager.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -47,6 +50,9 @@ const routes: Routes = [
   { path: 'paid', component: PaidComponent },
   { path: 'logging', component: LoggingComponent },
   { path: 'day-reservation', component: DayReservationsComponent },
+  {path: 'delivery', component: DeliveryComponent},
+  {path: 'deliverer', component : DelivererComponent },
+  {path: 'manager', component : ManagerComponent},
   { path: 'table', component: TableComponent, children: [
       { path: 'table-order', component: TableOrderOverviewComponent},
       { path: 'table-home', component: HomeTableComponent},

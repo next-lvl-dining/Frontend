@@ -33,8 +33,13 @@ import { HomeAdminComponent } from './components/home-admin/home-admin/home-admi
 import { HomeEmployeeComponent } from './components/home-employee/home-employee/home-employee.component';
 import { HomeTableComponent } from './components/home-table/home-table/home-table.component';
 import { LocaldeliveryComponent } from './components/localdelivery/localdelivery/localdelivery.component';
+import { DeliveryComponent } from './components/delivery/delivery.component';
+import { DelivererMapComponent } from './components/deliverer-map/deliverer-map.component';
 import { PaidComponent } from './components/paid/paid.component';
 import { DayReservationsComponent } from './components/day-reservations/day-reservations.component';
+import { DelivererComponent } from './components/deliverer/deliverer.component';
+import { ManagerMapComponent } from './components/manager-map/manager-map.component';
+import { ManagerComponent } from './components/manager/manager.component';
 import { TableOrderOverviewComponent } from './components/table-order-overview/table-order-overview.component';
 import { TableComponent } from './components/table/table.component';
 import { TableCheckoutComponent } from './components/table-checkout/table-checkout.component';
@@ -68,7 +73,12 @@ import { TableCheckoutComponent } from './components/table-checkout/table-checko
     HomeEmployeeComponent,
     HomeTableComponent,
     LocaldeliveryComponent,
+    DeliveryComponent,
+    DelivererMapComponent,
     PaidComponent,
+    DelivererComponent,
+    ManagerMapComponent,
+    ManagerComponent,
     DayReservationsComponent,
     TableOrderOverviewComponent,
     TableComponent,

@@ -2,15 +2,15 @@ $accent-col: #ffab00;
 $accent-light-col: #fdc657;
 
 .admin {
-  background-color: #343a40!important;
+  background-color: #343a40 !important;
 }
 
 .employee {
-  background-color: #447cff!important;
+  background-color: #447cff !important;
 }
 
 .table {
-  background-color: darkolivegreen!important;
+  background-color: darkolivegreen !important;
 }
 
 .header {
@@ -26,7 +26,7 @@ $accent-light-col: #fdc657;
   a {
     cursor: pointer;
     padding: 10px;
-    line-height: 80px;
+    line-height: 60px;
     color: white;
     font-weight: bold;
     font-size: 18px;
@@ -46,4 +46,13 @@ $accent-light-col: #fdc657;
   border-bottom: 2px solid darken($accent-col, 1%);
 }
 
+img{
+  color: white;
+  -webkit-filter: brightness(0) invert(1);
+  filter: brightness(0) invert(1);
+}
 
+.filter {
+  -webkit-filter: brightness(0) invert(1);
+  filter: brightness(0) invert(1);
+}
