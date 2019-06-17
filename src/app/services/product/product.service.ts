@@ -33,6 +33,16 @@ export class ProductService {
         this.localProducts = [];
     }
 
+  calculateTotal(products: Product[]): number {
+    let total = 0;
+    log('calculating price')
+    for(let product of products){
+      total += product.price;
+      log(product.price + "" + total);
+    }
+    return Math.round( total * 100 + Number.EPSILON ) / 100
+  }
+
     saveProductListLocal(products: Product[]) {
       log('saving products: ' + products.length);
       this.localProducts = products;

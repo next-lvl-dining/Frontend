@@ -27,17 +27,7 @@ export class TableCheckoutComponent implements OnInit {
 
   ngOnInit() {
     this.products = this.productService.getLocalProducts();
-    this.calculateTotal();
-  }
-
-  calculateTotal() {
-    this.total = 0;
-    log('calculating price')
-    for(let product of this.products){
-      this.total += product.price;
-      log(product.price + "" + this.total);
-    }
-    this.total = Math.round( this.total * 100 + Number.EPSILON ) / 100
+    this.total = this.productService.calculateTotal(this.products);
   }
 
   navBackToOrder() {
@@ -62,10 +52,10 @@ export class TableCheckoutComponent implements OnInit {
         // gets they credit charge
         this.paymentService.creditCheckout(token.id, amounts.toString()).subscribe(
           data => {
-            this.router.navigate(['/table/table-home'])
+            this.router.navigate(['/table/table-home']);
           },
           error => {
-            this.router.navigate(['/table/table-home'])
+            this.router.navigate(['/table/table-home']);
             console.log(error);
           });
       }
