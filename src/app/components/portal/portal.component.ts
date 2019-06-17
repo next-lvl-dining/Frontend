@@ -199,6 +199,8 @@ export class PortalComponent implements OnInit {
     this.databaseServer.name = 'Databaseserver';
     this.databaseServer.url = 'http://192.168.24.111';
     this.databaseServer.image = this.imageurl + 'mysql.png';
+    this.databaseServer.username = 'databaseuser';
+    this.databaseServer.password = 'password';
 
     this.sonarqube = new Portalrow();
     this.sonarqube.name = 'Sonarqube-Develop';
