@@ -67,6 +67,7 @@ export class LocaldeliveryComponent implements OnInit {
     let behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(this.map));
     this.ui = H.ui.UI.createDefault(this.map, defaultLayers);
     var query = "";
+    console.log("This is your order id: "+localStorage.getItem('orderid'));
     this.simulatioService.connect("ws:/192.168.24.110:8088/deliver/simulation/"+localStorage.getItem('orderid')+"/websocket");
     this.simulatioService.messages.subscribe(msg => {
       if(!msg.lat.includes('stop')||!msg.lon.includes('stop')){
