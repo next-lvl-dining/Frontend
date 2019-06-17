@@ -196,6 +196,7 @@ export class DelivererMapComponent implements OnInit {
       }
       this.orderService.startDelivery(this.chosenOrders[i].id).subscribe();
     }
+    this.orderService.startDelivery(this.chosenOrders[this.chosenOrders.length].id).subscribe();
     this.chosenOrders = [];
     empid = localStorage.getItem('id');
     var delivery = new Delivery(empid,orderids,routes);
